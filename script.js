@@ -26,6 +26,67 @@
   }
 
   /* -------------------------------------------------
+     CUSTOM CURSOR — circle bubble follower
+  ------------------------------------------------- */
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorRing = document.getElementById('cursorRing');
+  const isFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  if (isFinePointer && cursorDot && cursorRing){
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let dotX = mouseX, dotY = mouseY;
+    let ringX = mouseX, ringY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function loop(){
+      // dot tracks fast, ring trails with easing for a "bubble" feel
+      dotX += (mouseX - dotX) * 0.35;
+      dotY += (mouseY - dotY) * 0.35;
+      ringX += (mouseX - ringX) * 0.14;
+      ringY += (mouseY - ringY) * 0.14;
+
+      cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%,-50%)`;
+      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    const hoverTargets = 'a, button, input, textarea, select, .accordion__trigger, .filter-btn, .port-card, .tech-card, .testi-slider__dots button, [data-aos] h3, .why-card, .service-card';
+    document.querySelectorAll(hoverTargets).forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('is-active');
+        cursorRing.classList.add('is-active');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('is-active');
+        cursorRing.classList.remove('is-active');
+      });
+    });
+
+    document.addEventListener('mousedown', () => {
+      cursorDot.classList.add('is-click');
+      cursorRing.classList.add('is-click');
+    });
+    document.addEventListener('mouseup', () => {
+      cursorDot.classList.remove('is-click');
+      cursorRing.classList.remove('is-click');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursorDot.style.opacity = '1';
+      cursorRing.style.opacity = '1';
+    });
+  }
+
+  /* -------------------------------------------------
      STICKY NAV
   ------------------------------------------------- */
   const nav = document.getElementById('nav');

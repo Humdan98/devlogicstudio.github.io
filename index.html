@@ -31,6 +31,10 @@
 <!-- ============ NOISE / GRAIN OVERLAY ============ -->
 <div class="grain" aria-hidden="true"></div>
 
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
 <!-- ============ NAVIGATION ============ -->
 <header class="nav" id="nav">
   <div class="nav__inner">
@@ -42,9 +46,9 @@
         <path d="M19 9L15 25" stroke="url(#g1)" stroke-width="1.8" stroke-linecap="round"/>
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#3B82F6"/>
-            <stop offset="0.5" stop-color="#8B5CF6"/>
-            <stop offset="1" stop-color="#06B6D4"/>
+            <stop stop-color="#FFD60A"/>
+            <stop offset="0.5" stop-color="#FFB100"/>
+            <stop offset="1" stop-color="#FFE066"/>
           </linearGradient>
         </defs>
       </svg>
@@ -426,7 +430,9 @@
 
       <article class="port-card" data-cat="corporate" data-aos="fade-up" data-aos-delay="0"
         data-title="Corporate Website" data-desc="A polished corporate presence with a custom CMS, multi-language support, and a streamlined investor relations hub." data-tags="React,Node.js,CMS,SEO">
-        <div class="port-card__media port-card__media--1"></div>
+        <div class="port-card__media port-card__media--1">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80" alt="Modern corporate office workspace representing the corporate website project" loading="lazy">
+        </div>
         <div class="port-card__body">
           <span class="port-card__tag">Corporate</span>
           <h3>Corporate Website</h3>
@@ -436,7 +442,9 @@
 
       <article class="port-card" data-cat="saas" data-aos="fade-up" data-aos-delay="80"
         data-title="SaaS Dashboard" data-desc="A real-time analytics dashboard with role-based access, live data visualizations, and a component library built for scale." data-tags="React,TypeScript,Charts,API">
-        <div class="port-card__media port-card__media--2"></div>
+        <div class="port-card__media port-card__media--2">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Analytics dashboard interface representing the SaaS dashboard project" loading="lazy">
+        </div>
         <div class="port-card__body">
           <span class="port-card__tag">SaaS</span>
           <h3>SaaS Dashboard</h3>
@@ -446,7 +454,9 @@
 
       <article class="port-card" data-cat="ecommerce" data-aos="fade-up" data-aos-delay="160"
         data-title="Shopify Store" data-desc="A high-converting Shopify storefront with custom sections, an optimized checkout, and a 38% lift in conversion rate." data-tags="Shopify,Liquid,CRO,Payments">
-        <div class="port-card__media port-card__media--3"></div>
+        <div class="port-card__media port-card__media--3">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop&q=80" alt="Online shopping product flat lay representing the Shopify store project" loading="lazy">
+        </div>
         <div class="port-card__body">
           <span class="port-card__tag">E-commerce</span>
           <h3>Shopify Store</h3>
@@ -456,7 +466,9 @@
 
       <article class="port-card" data-cat="wordpress" data-aos="fade-up" data-aos-delay="0"
         data-title="WordPress Website" data-desc="A custom WordPress theme with a tailored block editor experience, full SEO setup, and sub-second load times." data-tags="WordPress,PHP,SEO,WooCommerce">
-        <div class="port-card__media port-card__media--4"></div>
+        <div class="port-card__media port-card__media--4">
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&h=600&fit=crop&q=80" alt="Person editing a website on a laptop representing the WordPress website project" loading="lazy">
+        </div>
         <div class="port-card__body">
           <span class="port-card__tag">WordPress</span>
           <h3>WordPress Website</h3>
@@ -466,7 +478,9 @@
 
       <article class="port-card" data-cat="realestate" data-aos="fade-up" data-aos-delay="80"
         data-title="Real Estate Platform" data-desc="A listings platform with map-based search, saved searches, and an agent dashboard for managing inventory." data-tags="Vue.js,MongoDB,Maps API,Auth">
-        <div class="port-card__media port-card__media--5"></div>
+        <div class="port-card__media port-card__media--5">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&q=80" alt="Modern house exterior representing the real estate platform project" loading="lazy">
+        </div>
         <div class="port-card__body">
           <span class="port-card__tag">Real Estate</span>
           <h3>Real Estate Platform</h3>
@@ -476,7 +490,9 @@
 
       <article class="port-card" data-cat="restaurant" data-aos="fade-up" data-aos-delay="160"
         data-title="Restaurant Website" data-desc="An appetite-driving restaurant site with online ordering, table reservations, and a mobile-first menu." data-tags="React,Stripe,Reservations,SEO">
-        <div class="port-card__media port-card__media--6"></div>
+        <div class="port-card__media port-card__media--6">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop&q=80" alt="Restaurant table setting representing the restaurant website project" loading="lazy">
+        </div>
         <div class="port-card__body">
           <span class="port-card__tag">Restaurant</span>
           <h3>Restaurant Website</h3>
@@ -544,7 +560,7 @@
           <div class="testi-card__stars">★★★★★</div>
           <p class="testi-card__quote">Dev Logic Studio rebuilt our entire platform in under eight weeks. Page speed doubled and our support tickets about the website dropped to almost nothing.</p>
           <div class="testi-card__person">
-            <img src="https://i.pravatar.cc/100?img=12" alt="Portrait of Marcus Reid" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&q=80" alt="Portrait of Marcus Reid" loading="lazy">
             <div>
               <strong>Marcus Reid</strong>
               <span>Founder, Northstar Logistics</span>
@@ -555,7 +571,7 @@
           <div class="testi-card__stars">★★★★★</div>
           <p class="testi-card__quote">Our Shopify conversion rate jumped 34% after their redesign. The team communicated clearly at every milestone and delivered exactly on schedule.</p>
           <div class="testi-card__person">
-            <img src="https://i.pravatar.cc/100?img=47" alt="Portrait of Elena Castillo" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80" alt="Portrait of Elena Castillo" loading="lazy">
             <div>
               <strong>Elena Castillo</strong>
               <span>Co-Founder, Bloom &amp; Co.</span>
@@ -566,7 +582,7 @@
           <div class="testi-card__stars">★★★★★</div>
           <p class="testi-card__quote">They migrated our legacy WordPress site without a single hour of downtime, then kept optimizing it for months afterward. Genuinely reliable partners.</p>
           <div class="testi-card__person">
-            <img src="https://i.pravatar.cc/100?img=33" alt="Portrait of Daniel Okafor" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80" alt="Portrait of Daniel Okafor" loading="lazy">
             <div>
               <strong>Daniel Okafor</strong>
               <span>CTO, Meridian Health Group</span>
@@ -738,7 +754,7 @@
             <path d="M19 9L15 25" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round"/>
             <defs>
               <linearGradient id="g2" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#3B82F6"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#06B6D4"/>
+                <stop stop-color="#FFD60A"/><stop offset="0.5" stop-color="#FFB100"/><stop offset="1" stop-color="#FFE066"/>
               </linearGradient>
             </defs>
           </svg>
