@@ -55,7 +55,7 @@
     }
     loop();
 
-    const hoverTargets = 'a, button, input, textarea, select, .accordion__trigger, .filter-btn, .port-card, .tech-card, .testi-slider__dots button, .why-item, .service-row';
+    const hoverTargets = 'a, button, input, textarea, select, .accordion__trigger, .filter-btn, .port-card, .tech-card, .testi-slider__dots button, .why-card, .service-card';
     document.querySelectorAll(hoverTargets).forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursorDot.classList.add('is-active');
@@ -411,7 +411,7 @@
      CARD TILT EFFECT (subtle 3D tilt on pointer move)
   ------------------------------------------------- */
   if (!reducedMotion && window.matchMedia('(pointer: fine)').matches){
-    document.querySelectorAll('.port-card, .hero__panel, .testi-card').forEach(card => {
+    document.querySelectorAll('.service-card, .why-card, .port-card, .hero__panel, .testi-card').forEach(card => {
       card.style.transformStyle = 'preserve-3d';
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
