@@ -96,61 +96,86 @@
 <section class="hero" id="home">
   <div class="hero__bg" aria-hidden="true">
     <canvas id="circuitCanvas"></canvas>
-    <div class="hero__orb hero__orb--1"></div>
-    <div class="hero__orb hero__orb--2"></div>
-    <div class="hero__orb hero__orb--3"></div>
     <div class="hero__grid"></div>
   </div>
 
-  <div class="hero__floaters" aria-hidden="true">
-    <div class="floater floater--1"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.5"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5"/></svg></div>
-    <div class="floater floater--2"><svg viewBox="0 0 24 24" fill="none"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    <div class="floater floater--3"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-    <div class="floater floater--4"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/></svg></div>
-  </div>
+  <div class="container hero__layout">
 
-  <div class="container hero__content">
-    <p class="eyebrow" data-aos="fade-up">
-      <span class="eyebrow__dot"></span>Web Development &amp; Digital Solutions
-    </p>
+    <div class="hero__col-main">
+      <p class="kicker" data-aos="fade-up">
+        <span class="kicker__index">01</span>
+        <span class="kicker__line"></span>
+        <span>Web Development &amp; Digital Solutions</span>
+      </p>
 
-    <h1 class="hero__title" data-aos="fade-up" data-aos-delay="80">
-      <span class="reveal-line"><span class="reveal-line__inner">Build Faster.</span></span>
-      <span class="reveal-line"><span class="reveal-line__inner">Grow <span class="text-gradient">Smarter.</span></span></span>
-      <span class="reveal-line"><span class="reveal-line__inner">Scale Better.</span></span>
-    </h1>
+      <h1 class="hero__title" data-aos="fade-up" data-aos-delay="80">
+        <span class="reveal-line"><span class="reveal-line__inner">Build Faster.</span></span>
+        <span class="reveal-line"><span class="reveal-line__inner">Grow <em>Smarter.</em></span></span>
+        <span class="reveal-line"><span class="reveal-line__inner">Scale Better.</span></span>
+      </h1>
 
-    <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="180">
-      At Dev Logic Studio, we create powerful websites, eCommerce platforms, and custom web applications that help businesses establish a strong digital presence and achieve measurable growth.
-    </p>
+      <div class="hero__bottom-row" data-aos="fade-up" data-aos-delay="180">
+        <p class="hero__subtitle">
+          At Dev Logic Studio, we create powerful websites, eCommerce platforms, and custom web applications that help businesses establish a strong digital presence and achieve measurable growth.
+        </p>
 
-    <div class="hero__actions" data-aos="fade-up" data-aos-delay="260">
-      <a href="#contact" class="btn btn--primary btn--lg ripple">
-        <span>Start Your Project</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#services" class="btn btn--ghost btn--lg ripple">
-        <span>View Our Services</span>
-      </a>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary btn--lg ripple">
+            <span>Start Your Project</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="btn btn--ghost btn--lg ripple">
+            <span>View Our Services</span>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="hero__stats" data-aos="fade-up" data-aos-delay="340">
-      <div class="stat-card">
-        <span class="stat-card__num" data-count="500" data-suffix="+">0</span>
-        <span class="stat-card__label">Projects Completed</span>
+    <aside class="hero__panel" data-aos="fade-up" data-aos-delay="260">
+      <div class="hero__panel-head">
+        <span class="hero__panel-dot"></span>
+        <span class="hero__panel-dot"></span>
+        <span class="hero__panel-dot"></span>
+        <span class="hero__panel-title">status.devlogic</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-card__num" data-count="250" data-suffix="+">0</span>
-        <span class="stat-card__label">Happy Clients</span>
+      <div class="hero__panel-body">
+        <div class="hero__panel-row">
+          <span class="hero__panel-key">uptime</span>
+          <span class="hero__panel-val hero__panel-val--ok">99.98%</span>
+        </div>
+        <div class="hero__panel-row">
+          <span class="hero__panel-key">support</span>
+          <span class="hero__panel-val">24/7</span>
+        </div>
+        <div class="hero__panel-divider"></div>
+
+        <div class="hero__stat-list">
+          <div class="hero__stat-row">
+            <span class="hero__stat-num" data-count="500" data-suffix="+">0</span>
+            <span class="hero__stat-label">Projects Completed</span>
+          </div>
+          <div class="hero__stat-row">
+            <span class="hero__stat-num" data-count="250" data-suffix="+">0</span>
+            <span class="hero__stat-label">Happy Clients</span>
+          </div>
+          <div class="hero__stat-row">
+            <span class="hero__stat-num" data-count="8" data-suffix="+">0</span>
+            <span class="hero__stat-label">Years Experience</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-card">
-        <span class="stat-card__num" data-count="8" data-suffix="+">0</span>
-        <span class="stat-card__label">Years Experience</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-card__num" data-static="24/7">0</span>
-        <span class="stat-card__label">Support Available</span>
-      </div>
+    </aside>
+
+  </div>
+
+  <div class="hero__marquee" aria-hidden="true">
+    <div class="hero__marquee-track">
+      <span>Web Development</span><span>·</span><span>E-commerce</span><span>·</span>
+      <span>UI/UX Design</span><span>·</span><span>WordPress</span><span>·</span>
+      <span>Shopify</span><span>·</span><span>SEO</span><span>·</span>
+      <span>Web Development</span><span>·</span><span>E-commerce</span><span>·</span>
+      <span>UI/UX Design</span><span>·</span><span>WordPress</span><span>·</span>
+      <span>Shopify</span><span>·</span><span>SEO</span><span>·</span>
     </div>
   </div>
 
@@ -162,40 +187,53 @@
 <!-- ============ TRUSTED TECHNOLOGIES ============ -->
 <section class="tech" id="technologies">
   <div class="container">
-    <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>Our Stack</p>
-      <h2 class="section-title">Built on technology you can trust</h2>
-      <p class="section-sub">We work across the platforms and languages that power modern, scalable businesses.</p>
+    <div class="section-head section-head--split" data-aos="fade-up">
+      <p class="kicker"><span class="kicker__index">02</span><span class="kicker__line"></span><span>Our Stack</span></p>
+      <h2 class="section-title">Built on technology<br>you can trust</h2>
     </div>
 
     <div class="tech-marquee" data-aos="fade-up" data-aos-delay="100">
       <div class="tech-marquee__track">
-        <!-- set 1 -->
-        <div class="tech-card"><div class="tech-card__icon">📝</div><span>WordPress</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🛍️</div><span>Shopify</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🛒</div><span>WooCommerce</span></div>
-        <div class="tech-card"><div class="tech-card__icon">⚛️</div><span>React</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🟢</div><span>Vue.js</span></div>
-        <div class="tech-card"><div class="tech-card__icon">▲</div><span>Nuxt.js</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🐘</div><span>PHP</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🗄️</div><span>MySQL</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🍃</div><span>MongoDB</span></div>
-        <div class="tech-card"><div class="tech-card__icon">💛</div><span>JavaScript</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🧱</div><span>HTML5</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🎨</div><span>CSS3</span></div>
-        <!-- set 2 (duplicate for seamless loop) -->
-        <div class="tech-card"><div class="tech-card__icon">📝</div><span>WordPress</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🛍️</div><span>Shopify</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🛒</div><span>WooCommerce</span></div>
-        <div class="tech-card"><div class="tech-card__icon">⚛️</div><span>React</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🟢</div><span>Vue.js</span></div>
-        <div class="tech-card"><div class="tech-card__icon">▲</div><span>Nuxt.js</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🐘</div><span>PHP</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🗄️</div><span>MySQL</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🍃</div><span>MongoDB</span></div>
-        <div class="tech-card"><div class="tech-card__icon">💛</div><span>JavaScript</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🧱</div><span>HTML5</span></div>
-        <div class="tech-card"><div class="tech-card__icon">🎨</div><span>CSS3</span></div>
+        <span class="tech-card">WordPress</span>
+        <span class="tech-card">Shopify</span>
+        <span class="tech-card">WooCommerce</span>
+        <span class="tech-card">React</span>
+        <span class="tech-card">Vue.js</span>
+        <span class="tech-card">Nuxt.js</span>
+        <span class="tech-card">PHP</span>
+        <span class="tech-card">MySQL</span>
+        <span class="tech-card">MongoDB</span>
+        <span class="tech-card">JavaScript</span>
+        <span class="tech-card">HTML5</span>
+        <span class="tech-card">CSS3</span>
+        <span class="tech-card">WordPress</span>
+        <span class="tech-card">Shopify</span>
+        <span class="tech-card">WooCommerce</span>
+        <span class="tech-card">React</span>
+        <span class="tech-card">Vue.js</span>
+        <span class="tech-card">Nuxt.js</span>
+        <span class="tech-card">PHP</span>
+        <span class="tech-card">MySQL</span>
+        <span class="tech-card">MongoDB</span>
+        <span class="tech-card">JavaScript</span>
+        <span class="tech-card">HTML5</span>
+        <span class="tech-card">CSS3</span>
+      </div>
+    </div>
+    <div class="tech-marquee tech-marquee--reverse" data-aos="fade-up" data-aos-delay="160">
+      <div class="tech-marquee__track tech-marquee__track--reverse">
+        <span class="tech-card tech-card--ghost">Custom Themes</span>
+        <span class="tech-card tech-card--ghost">Plugin Development</span>
+        <span class="tech-card tech-card--ghost">Speed Optimization</span>
+        <span class="tech-card tech-card--ghost">SEO Architecture</span>
+        <span class="tech-card tech-card--ghost">API Integrations</span>
+        <span class="tech-card tech-card--ghost">Headless CMS</span>
+        <span class="tech-card tech-card--ghost">Custom Themes</span>
+        <span class="tech-card tech-card--ghost">Plugin Development</span>
+        <span class="tech-card tech-card--ghost">Speed Optimization</span>
+        <span class="tech-card tech-card--ghost">SEO Architecture</span>
+        <span class="tech-card tech-card--ghost">API Integrations</span>
+        <span class="tech-card tech-card--ghost">Headless CMS</span>
       </div>
     </div>
   </div>
@@ -204,103 +242,95 @@
 <!-- ============ SERVICES ============ -->
 <section class="services" id="services">
   <div class="container">
-    <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>What We Do</p>
-      <h2 class="section-title">Services engineered for growth</h2>
-      <p class="section-sub">From the first wireframe to ongoing support, we cover every layer of your digital presence.</p>
+    <div class="section-head section-head--split" data-aos="fade-up">
+      <p class="kicker"><span class="kicker__index">03</span><span class="kicker__line"></span><span>What We Do</span></p>
+      <h2 class="section-title">Services engineered<br>for growth</h2>
     </div>
 
-    <div class="services-grid">
+    <div class="service-list">
 
-      <article class="service-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 9 4-18 3 9h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-row__index">01</div>
+        <div class="service-row__main">
+          <h3>Web Development</h3>
+          <p>Custom-built, high-performance websites tailored to your business goals — no recycled templates.</p>
+          <div class="service-row__tags">
+            <span>CMS Development</span><span>WordPress</span><span>Joomla</span><span>Magento</span><span>Drupal</span><span>Wix</span><span>React</span><span>Vue.js</span>
+          </div>
         </div>
-        <h3>Web Development</h3>
-        <p>Custom-built, high-performance websites tailored to your business goals.</p>
-        <ul class="service-card__list">
-          <li>CMS Development</li><li>WordPress &amp; Joomla</li><li>Magento &amp; Drupal</li>
-          <li>Wix Development</li><li>React &amp; Vue Development</li><li>Custom Websites</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
-      <article class="service-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 6l1.5 12a2 2 0 002 2h11a2 2 0 002-2L21 6M8 10v6M16 10v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="40">
+        <div class="service-row__index">02</div>
+        <div class="service-row__main">
+          <h3>E-commerce Solutions</h3>
+          <p>Conversion-focused online stores engineered to turn browsers into buyers.</p>
+          <div class="service-row__tags">
+            <span>Shopify</span><span>WooCommerce</span><span>Magento Stores</span><span>Product Management</span><span>Store Optimization</span><span>SEO</span>
+          </div>
         </div>
-        <h3>E-commerce Solutions</h3>
-        <p>Conversion-focused online stores that turn visitors into customers.</p>
-        <ul class="service-card__list">
-          <li>Shopify Development</li><li>WooCommerce</li><li>Magento Stores</li>
-          <li>Product Management</li><li>Store Optimization</li><li>SEO Optimization</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
-      <article class="service-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="13.5" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M16 9.5l-9.5 9.5M3 21l4-1 9-9-3-3-9 9-1 4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="80">
+        <div class="service-row__index">03</div>
+        <div class="service-row__main">
+          <h3>Design Services</h3>
+          <p>Distinct visual identities and interfaces that feel considered, not generated.</p>
+          <div class="service-row__tags">
+            <span>UI/UX Design</span><span>Logo Design</span><span>Branding</span><span>Mobile App Design</span><span>Graphic Design</span><span>Email Templates</span>
+          </div>
         </div>
-        <h3>Design Services</h3>
-        <p>Distinct visual identities and interfaces people actually enjoy using.</p>
-        <ul class="service-card__list">
-          <li>UI/UX Design</li><li>Logo Design</li><li>Branding</li>
-          <li>Mobile App Design</li><li>Graphic Design</li><li>Email Templates</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
-      <article class="service-card" data-aos="fade-up" data-aos-delay="240">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-row__index">04</div>
+        <div class="service-row__main">
+          <h3>Website Maintenance</h3>
+          <p>Keeping your site fast, secure, and online — every single day of the year.</p>
+          <div class="service-row__tags">
+            <span>Migration</span><span>Bug Fixing</span><span>Malware Removal</span><span>Hosting Management</span><span>Performance</span><span>Security Monitoring</span>
+          </div>
         </div>
-        <h3>Website Maintenance</h3>
-        <p>Keeping your site fast, secure, and online — every single day.</p>
-        <ul class="service-card__list">
-          <li>Website Migration</li><li>Bug Fixing</li><li>Malware Removal</li>
-          <li>Hosting Management</li><li>Performance Optimization</li><li>Security Monitoring</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
-      <article class="service-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7a5 5 0 010 10M12 7a5 5 0 000 10" stroke="currentColor" stroke-width="1.7"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="40">
+        <div class="service-row__index">05</div>
+        <div class="service-row__main">
+          <h3>WordPress Expertise</h3>
+          <p>Deep WordPress know-how — from custom theming to enterprise-grade speed.</p>
+          <div class="service-row__tags">
+            <span>Custom Themes</span><span>Plugin Development</span><span>WooCommerce Integration</span><span>Speed Optimization</span><span>SEO</span><span>Consultation</span>
+          </div>
         </div>
-        <h3>WordPress Expertise</h3>
-        <p>Deep WordPress know-how — from theming to enterprise-grade speed.</p>
-        <ul class="service-card__list">
-          <li>Custom Themes</li><li>Plugin Development</li><li>WooCommerce Integration</li>
-          <li>Speed Optimization</li><li>SEO Improvements</li><li>Site Consultation</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
-      <article class="service-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6 2l1 4h10l1-4M4 8h16l-1.5 11a2 2 0 01-2 1.8H7.5a2 2 0 01-2-1.8L4 8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="80">
+        <div class="service-row__index">06</div>
+        <div class="service-row__main">
+          <h3>Shopify Expertise</h3>
+          <p>Storefronts built to sell, styled precisely to match your brand.</p>
+          <div class="service-row__tags">
+            <span>Custom Themes</span><span>Shopify Redesign</span><span>Product Listings</span><span>Custom Sections</span><span>Optimization</span><span>Consultation</span>
+          </div>
         </div>
-        <h3>Shopify Expertise</h3>
-        <p>Storefronts built to sell, styled to match your brand precisely.</p>
-        <ul class="service-card__list">
-          <li>Custom Themes</li><li>Shopify Redesign</li><li>Product Listings</li>
-          <li>Custom Sections</li><li>Optimization</li><li>Consultation</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
-      <article class="service-card service-card--wide" data-aos="fade-up" data-aos-delay="160">
-        <div class="service-card__glow"></div>
-        <div class="service-card__icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-5 3 5 3M16 9l5 3-5 3M13 5l-2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <article class="service-row" data-aos="fade-up" data-aos-delay="120">
+        <div class="service-row__index">07</div>
+        <div class="service-row__main">
+          <h3>Custom Development</h3>
+          <p>When off-the-shelf isn't enough, we build it from scratch — and document it properly.</p>
+          <div class="service-row__tags">
+            <span>HTML5/CSS3</span><span>JavaScript</span><span>React</span><span>PHP</span><span>PSD to HTML</span><span>Figma to HTML</span><span>Custom Applications</span>
+          </div>
         </div>
-        <h3>Custom Development</h3>
-        <p>When off-the-shelf isn't enough, we build it from scratch.</p>
-        <ul class="service-card__list service-card__list--wide">
-          <li>HTML5 / CSS3</li><li>JavaScript</li><li>React</li><li>PHP</li>
-          <li>PSD to HTML</li><li>Figma to HTML</li><li>Custom Applications</li>
-        </ul>
+        <div class="service-row__arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </article>
 
     </div>
@@ -310,50 +340,49 @@
 <!-- ============ WHY CHOOSE US ============ -->
 <section class="why" id="expertise">
   <div class="container">
-    <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>Why Dev Logic Studio</p>
-      <h2 class="section-title">Reasons businesses keep coming back</h2>
-      <p class="section-sub">We don't just ship code — we build long-term technical partnerships.</p>
+    <div class="section-head section-head--split" data-aos="fade-up">
+      <p class="kicker"><span class="kicker__index">04</span><span class="kicker__line"></span><span>Why Dev Logic Studio</span></p>
+      <h2 class="section-title">Reasons businesses<br>keep coming back</h2>
     </div>
 
     <div class="why-grid">
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="0">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 8a3 3 0 110 6M21.5 20c0-2.8-2-5-4.5-5.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="0">
+        <span class="why-item__num">01</span>
         <h3>Experienced Team</h3>
         <p>Senior engineers and designers with 8+ years building production software.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="60">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="40">
+        <span class="why-item__num">02</span>
         <h3>Custom Solutions</h3>
         <p>No cookie-cutter templates — every build is engineered around your goals.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="120">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="80">
+        <span class="why-item__num">03</span>
         <h3>Fast Delivery</h3>
         <p>Streamlined workflows and clear milestones keep your launch on schedule.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="180">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="120">
+        <span class="why-item__num">04</span>
         <h3>SEO Optimized</h3>
         <p>Built with clean markup and performance baked in from day one.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="0">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="0">
+        <span class="why-item__num">05</span>
         <h3>Mobile Responsive</h3>
         <p>Pixel-perfect experiences across phones, tablets, and desktops.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="60">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3 8.5-7 11-4-2.5-7-6-7-11V5l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="40">
+        <span class="why-item__num">06</span>
         <h3>Secure Development</h3>
         <p>Security-first practices to protect your data and your customers'.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="120">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="80">
+        <span class="why-item__num">07</span>
         <h3>Ongoing Support</h3>
         <p>We stay on after launch — monitoring, patching, and improving.</p>
       </div>
-      <div class="why-card" data-aos="zoom-in" data-aos-delay="180">
-        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 12h16M4 19h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="why-item" data-aos="fade-up" data-aos-delay="120">
+        <span class="why-item__num">08</span>
         <h3>Transparent Communication</h3>
         <p>Clear timelines, honest pricing, and no surprises along the way.</p>
       </div>
@@ -365,7 +394,7 @@
 <section class="process" id="process">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>How We Work</p>
+      <p class="kicker kicker--center"><span class="kicker__index">05</span><span class="kicker__line"></span><span>How We Work</span></p>
       <h2 class="section-title">A process built for clarity</h2>
       <p class="section-sub">Six structured steps take every project from idea to long-term growth.</p>
     </div>
@@ -411,7 +440,7 @@
 <section class="portfolio" id="portfolio">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>Selected Work</p>
+      <p class="kicker kicker--center"><span class="kicker__index">06</span><span class="kicker__line"></span><span>Selected Work</span></p>
       <h2 class="section-title">Projects that speak for themselves</h2>
       <p class="section-sub">A glimpse at the kind of builds we ship for our clients.</p>
     </div>
@@ -550,7 +579,7 @@
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>Client Stories</p>
+      <p class="kicker kicker--center"><span class="kicker__index">07</span><span class="kicker__line"></span><span>Client Stories</span></p>
       <h2 class="section-title">Trusted by teams who ship</h2>
     </div>
 
@@ -600,7 +629,7 @@
 <section class="faq" id="faq">
   <div class="container container--narrow">
     <div class="section-head" data-aos="fade-up">
-      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>Good to Know</p>
+      <p class="kicker kicker--center"><span class="kicker__index">08</span><span class="kicker__line"></span><span>Good to Know</span></p>
       <h2 class="section-title">Frequently asked questions</h2>
     </div>
 
@@ -660,7 +689,7 @@
     <div class="contact__grid">
 
       <div class="contact__info" data-aos="fade-up">
-        <p class="eyebrow"><span class="eyebrow__dot"></span>Let's Talk</p>
+        <p class="kicker"><span class="kicker__index">09</span><span class="kicker__line"></span><span>Let's Talk</span></p>
         <h2 class="section-title">Start your project today</h2>
         <p class="section-sub section-sub--left">Tell us a little about what you're building and we'll get back to you within one business day with next steps.</p>
 
