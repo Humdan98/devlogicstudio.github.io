@@ -355,7 +355,7 @@ section{position:relative;padding:120px 0;}
 /* ---------- TECH MARQUEE ---------- */
 .tech{padding-top:80px;}
 .tech-marquee{position:relative;overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
-.tech-marquee__track{display:flex;gap:18px;width:max-content;animation:marquee 32s linear infinite;}
+.tech-marquee__track{display:flex;gap:18px;width:max-content;animation:marquee 32s linear infinite; padding: 10px 0;}
 .tech-marquee:hover .tech-marquee__track{animation-play-state:paused;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .tech-card{
