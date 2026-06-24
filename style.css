@@ -21,7 +21,7 @@
   --blue:#FFD60A;      /* primary yellow */
   --purple:#FFB100;    /* deep amber */
   --cyan:#FFE066;       /* pale gold */
-  --hover-blue:#3B82F6; /* text hover accent */
+  --hover-blue: #ffb501; /* text hover accent */
   --on-yellow:#0A0A0A;
 
   --grad-primary: linear-gradient(135deg, var(--blue) 0%, var(--purple) 55%, var(--cyan) 100%);
