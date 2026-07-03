@@ -773,3 +773,7 @@ h1,h2,h3,h4,h5,p,li,label,strong,span:not(.btn span):not(.kicker__line){
     border: 2px solid #ffd60a;
     border-radius: 8px;
 }
+
+.loader__dot {
+    color: #ffd44c;
+}
