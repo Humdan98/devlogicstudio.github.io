@@ -116,7 +116,7 @@ a.nav__logo {
     display: block;
 }
 .nav__logo-subtext {
-    font-size: 13px;
+    font-size: 10px;
     font-weight: normal;
     font-family: 'Inter';
     color: #abab9e;
@@ -766,4 +766,10 @@ h1,h2,h3,h4,h5,p,li,label,strong,span:not(.btn span):not(.kicker__line){
 @media (max-width:480px){
   .container{padding-inline:18px;}
   .hero__title{font-size:38px;}
+}
+
+
+.nav__logo-wrap svg {
+    border: 2px solid #ffd60a;
+    border-radius: 8px;
 }
