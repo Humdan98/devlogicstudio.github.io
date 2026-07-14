@@ -151,10 +151,15 @@ a.nav__logo {
 .btn{
   position:relative;overflow:hidden;isolation:isolate;
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:13px 26px;border-radius:999px;
+  padding:13px 26px;border-radius:0;
   font-weight:700;font-size:15px;letter-spacing:.01em;
   transition:transform var(--dur-fast) var(--ease-soft), box-shadow var(--dur-fast) var(--ease-soft), color var(--dur-fast), background var(--dur-fast);
   white-space:nowrap;
+}
+.service-card__list li:hover {
+    background: var(--blue);
+    color: #000;
+    transition: all 0.3s linear;
 }
 .btn span:not(.btn__spinner){position:relative;z-index:2;}
 .btn--primary{
