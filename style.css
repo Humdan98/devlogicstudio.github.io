@@ -226,7 +226,7 @@ a.nav__logo {
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 .nav__logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:18px;}
-.nav__logo-text em{font-style:normal;color:var(--cyan);}
+.nav__logo-text em{font-style:normal;color:var(--blue);}
 .nav__links{display:flex;align-items:center;gap:30px;}
 .nav__link{
   position:relative;font-size:14.5px;color:var(--text-muted);font-weight:500;
