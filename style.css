@@ -811,3 +811,17 @@ h1,h2,h3,h4,h5,p,li,label,strong,span:not(.btn span):not(.kicker__line){
 footer a.nav__logo {
     display: flex;
 }
+.nav__actions a.btn.btn--primary.btn--sm:before {
+    transform: translateX(0%) skewX(-18deg) scale(1.1);
+    background: linear-gradient(120deg, #ffb100 0%, #ffd60a 50%, #ffb100 100%);
+}
+.nav__actions a.btn.btn--primary.btn--sm {
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+    text-transform: uppercase;
+}
+.nav__actions a.btn.btn--primary.btn--sm:hover:before {
+    background: linear-gradient(120deg, #ffe066 0%, #ffb100 50%, #ffe066 100%);
+    transition: all 0.3s linear;
+}
