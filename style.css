@@ -808,3 +808,6 @@ h1,h2,h3,h4,h5,p,li,label,strong,span:not(.btn span):not(.kicker__line){
 .hero__marquee-track {
     gap: 30px;
 }
+footer a.nav__logo {
+    display: flex;
+}
