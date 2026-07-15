@@ -272,98 +272,40 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
   /* -------------------------------------------------
-     TESTIMONIALS — DRAG SLIDER + BULLETS + ARROWS
+     TESTIMONIALS SLIDER (auto-play carousel)
   ------------------------------------------------- */
-  (function(){
-    const viewport  = document.querySelector('.testi-slider__viewport');
-    const track     = document.getElementById('testiTrack');
-    const dotsWrap  = document.getElementById('testiDots');
-    const prevBtn   = document.getElementById('testiPrev');
-    const nextBtn   = document.getElementById('testiNext');
-    if(!track || !viewport) return;
+  const testiTrack = document.getElementById('testiTrack');
+  const testiCards = testiTrack ? testiTrack.querySelectorAll('.testi-card') : [];
+  const testiDotsWrap = document.getElementById('testiDots');
+  let testiIndex = 0;
+  let testiTimer;
 
-    const cards  = Array.from(track.querySelectorAll('.testi-card'));
-    const total  = cards.length;
-    let   cur    = 0;
-    let   timer;
-
-    // ── Build dots ──
-    cards.forEach((_,i)=>{
-      const d = document.createElement('button');
-      d.setAttribute('aria-label','Go to testimonial '+(i+1));
-      if(i===0) d.classList.add('is-active');
-      d.addEventListener('click',()=>{ goTo(i); restartAuto(); });
-      dotsWrap.appendChild(d);
+  if (testiTrack && testiCards.length){
+    testiCards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Go to testimonial ' + (i+1));
+      if (i === 0) dot.classList.add('is-active');
+      dot.addEventListener('click', () => goToTesti(i));
+      testiDotsWrap.appendChild(dot);
     });
 
-    function goTo(i, animated=true){
-      cur = ((i % total) + total) % total;
-      if(!animated) track.classList.add('no-transition');
-      track.style.transform = `translateX(-${cur * 100}%)`;
-      if(!animated) requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ track.classList.remove('no-transition'); }); });
-      dotsWrap.querySelectorAll('button').forEach((d,idx)=>d.classList.toggle('is-active', idx===cur));
+    function goToTesti(i){
+      testiIndex = (i + testiCards.length) % testiCards.length;
+      testiTrack.style.transform = `translateX(-${testiIndex * 100}%)`;
+      testiDotsWrap.querySelectorAll('button').forEach((d, idx) => d.classList.toggle('is-active', idx === testiIndex));
     }
 
-    prevBtn && prevBtn.addEventListener('click',()=>{ goTo(cur-1); restartAuto(); });
-    nextBtn && nextBtn.addEventListener('click',()=>{ goTo(cur+1); restartAuto(); });
-
-    // ── Autoplay ──
-    function startAuto(){ if(reducedMotion) return; timer = setInterval(()=>goTo(cur+1), 5500); }
-    function stopAuto(){  clearInterval(timer); }
-    function restartAuto(){ stopAuto(); startAuto(); }
-
-    // ── Drag / swipe ──
-    let startX=0, startY=0, dragX=0, isDragging=false, hasMoved=false;
-    const THRESHOLD = 60;
-
-    function onDragStart(x,y){
-      startX=x; startY=y; dragX=0; isDragging=true; hasMoved=false;
-      track.classList.add('no-transition');
-      viewport.classList.add('is-dragging');
-      stopAuto();
+    function startAutoplay(){
+      if (reducedMotion) return;
+      testiTimer = setInterval(() => goToTesti(testiIndex + 1), 5500);
     }
-    function onDragMove(x,y){
-      if(!isDragging) return;
-      const dx = x - startX;
-      const dy = y - startY;
-      if(!hasMoved && Math.abs(dy) > Math.abs(dx)+5){ isDragging=false; return; } // vertical scroll priority
-      hasMoved=true;
-      dragX=dx;
-      track.style.transform = `translateX(calc(-${cur*100}% + ${dx}px))`;
-    }
-    function onDragEnd(){
-      if(!isDragging) return;
-      isDragging=false;
-      viewport.classList.remove('is-dragging');
-      track.classList.remove('no-transition');
-      if(dragX < -THRESHOLD) goTo(cur+1);
-      else if(dragX > THRESHOLD) goTo(cur-1);
-      else goTo(cur);
-      restartAuto();
-    }
+    function stopAutoplay(){ clearInterval(testiTimer); }
 
-    // Mouse
-    viewport.addEventListener('mousedown', e=>{ e.preventDefault(); onDragStart(e.clientX, e.clientY); });
-    window.addEventListener('mousemove',   e=>{ onDragMove(e.clientX, e.clientY); });
-    window.addEventListener('mouseup',     ()=>{ onDragEnd(); });
+    document.querySelector('.testi-slider').addEventListener('mouseenter', stopAutoplay);
+    document.querySelector('.testi-slider').addEventListener('mouseleave', startAutoplay);
 
-    // Touch
-    viewport.addEventListener('touchstart', e=>{ onDragStart(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
-    viewport.addEventListener('touchmove',  e=>{ onDragMove(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
-    viewport.addEventListener('touchend',   ()=>{ onDragEnd(); });
-
-    // Keyboard
-    document.getElementById('testiSlider') && document.getElementById('testiSlider').addEventListener('keydown',e=>{
-      if(e.key==='ArrowLeft'){ goTo(cur-1); restartAuto(); }
-      if(e.key==='ArrowRight'){ goTo(cur+1); restartAuto(); }
-    });
-
-    // Pause on hover
-    viewport.addEventListener('mouseenter', stopAuto);
-    viewport.addEventListener('mouseleave', startAuto);
-
-    startAuto();
-  })();
+    startAutoplay();
+  }
 
   /* -------------------------------------------------
      FAQ ACCORDION
@@ -590,57 +532,6 @@
       window.__circuitResizeT = setTimeout(resize, 250);
     });
   }
-
-  /* -------------------------------------------------
-     VERTICAL TECH COLUMNS (infinite loop, JS-driven)
-  ------------------------------------------------- */
-  (function(){
-    const cols = document.querySelectorAll('.tech-col');
-    if(!cols.length || reducedMotion) return;
-
-    cols.forEach(col => {
-      const inner   = col.querySelector('.tech-col__inner');
-      const dir     = col.getAttribute('data-direction') === 'down' ? -1 : 1; // up = positive translateY going negative
-      const speed   = parseFloat(col.getAttribute('data-speed')) || 25; // px/sec
-      const cards   = Array.from(inner.querySelectorAll('.tech-card')); // only cards, not the heading
-      const half    = cards.length / 2; // we duplicated, so half is one set
-
-      let pos       = dir === 1 ? 0 : -(inner.scrollHeight / 2); // down starts from middle
-      let paused    = false;
-      let lastTime  = null;
-
-      // Measure one set height (first half of cards)
-      function getHalfH(){
-        let h = 0;
-        cards.slice(0, half).forEach(c => { h += c.offsetHeight + 14; }); // 14 = gap
-        return h;
-      }
-
-      col.addEventListener('mouseenter', () => paused = true);
-      col.addEventListener('mouseleave', () => paused = false);
-
-      function tick(ts){
-        if(lastTime === null) lastTime = ts;
-        const dt = (ts - lastTime) / 1000;
-        lastTime = ts;
-
-        if(!paused){
-          pos -= dir * speed * dt;
-          const halfH = getHalfH();
-          // loop: when scrolled one full set, jump back
-          if(dir === 1 && pos <= -halfH) pos += halfH;
-          if(dir === -1 && pos >= 0)     pos -= halfH;
-          inner.style.transform = `translateY(${pos}px)`;
-        }
-        requestAnimationFrame(tick);
-      }
-
-      // Init: down-direction starts at -halfH so it appears mid-list
-      if(dir === -1) pos = -(getHalfH());
-
-      requestAnimationFrame(tick);
-    });
-  })();
 
   /* -------------------------------------------------
      FOOTER YEAR
