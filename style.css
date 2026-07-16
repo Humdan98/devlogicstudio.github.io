@@ -352,47 +352,52 @@ a.nav__logo {
 }
 .hero__stat-label{font-size:12.5px;color:var(--text-muted);}
 
-.hero__marquee{
+/* ---------- HERO TICKER (dual-row infinite scroll) ---------- */
+.hero__ticker{
   position:relative;
-  border-top:1px solid rgba(255,214,10,.15);
-  padding:28px 0;
+  border-top:1px solid rgba(255,214,10,.12);
+  border-bottom:1px solid rgba(255,214,10,.08);
+  background:#060606;
   overflow:hidden;
-  background:rgba(0,0,0,.45);
-  mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
-  -webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
+  padding:0;
 }
-.hero__marquee-track{
-  display:flex;gap:14px;width:max-content;white-space:nowrap;
-  animation:marquee 32s linear infinite;
+.ticker__row{
+  overflow:hidden;
+  padding:14px 0;
+  mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);
 }
-.hero__marquee:hover .hero__marquee-track{ animation-play-state:paused; }
+.ticker__row--reverse{ border-top:1px solid rgba(255,255,255,.04); }
+.ticker__track{
+  display:inline-flex;align-items:center;gap:0;
+  white-space:nowrap;width:max-content;
+}
+.ticker__track--left { animation:tickerLeft 40s linear infinite; }
+.ticker__track--right{ animation:tickerRight 44s linear infinite; }
+.ticker__track:hover { animation-play-state:paused; }
 
-/* Skewed parallelogram chips — matching the reference image */
-.mq-chip{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:13px 32px;
-  background:#0A0A0A;
-  border:1.5px solid var(--blue);
-  border-radius:4px;
-  transform:skewX(-10deg);
+@keyframes tickerLeft { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes tickerRight{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+
+.ticker__track span{
+  display:inline-flex;align-items:center;
   font-family:var(--font-display);
-  font-size:14px;
-  font-weight:800;
-  font-style:italic;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+  font-size:14px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-muted);
+  padding:0 28px;
+  transition:color .2s;
+}
+.ticker__track--left span{ color:var(--text-dim); }
+.ticker__track--right span{ color:rgba(255,214,10,.35); font-size:13px; font-weight:600; }
+.ticker__track span em{
+  font-style:normal;
   color:var(--blue);
-  white-space:nowrap;
-  position:relative;
-  box-shadow:0 0 14px rgba(255,214,10,.18), inset 0 0 14px rgba(255,214,10,.04);
-  transition:box-shadow .3s, border-color .3s, color .3s, background .3s;
+  margin-left:28px;
+  font-size:10px;
+  opacity:.8;
 }
-.mq-chip:hover{
-  background:var(--blue);
-  color:var(--on-yellow);
-  box-shadow:0 0 28px rgba(255,214,10,.5), inset 0 0 20px rgba(255,214,10,.1);
-}
-.mq-chip span{ display:inline-block; transform:skewX(10deg); }
+.ticker__track span:hover{ color:var(--blue); }
 
 .hero__scroll{
   position:relative;left:50%;margin:0 auto -1px;transform:translateX(-50%);z-index:5;
@@ -431,7 +436,7 @@ a.nav__logo {
 .service-card--wide{grid-column:span 2;}
 .service-card:hover{transform:translateY(-6px);border-color:var(--border-strong);}
 .service-card__media{height:300px;overflow:hidden;position:relative;}
-.service-card__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.service-card__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.85);transition:transform .6s var(--ease), filter .5s var(--ease);}
 .service-card:hover .service-card__media img{transform:scale(1.07);filter:grayscale(0) brightness(.95);}
 .service-card__media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,7,7,0) 40%, var(--surface) 100%);}
 .service-card__body-pad{padding:32px 28px;}
@@ -856,69 +861,140 @@ footer a.nav__logo {
     transition: all 0.3s linear;
 }
 /* ===================================================================
-   VERTICAL TECH COLUMNS
+   TECH SECTION — BENTO GRID
    =================================================================== */
-.tech-cols{
+.tech{ padding-top:100px; padding-bottom:40px; }
+
+.tech-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:32px;align-items:end;
+  margin-bottom:52px;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--border);
+}
+.tech-top__desc{
+  color:var(--text-muted);font-size:16px;line-height:1.75;
+  max-width:480px;margin-left:auto;
+}
+@media(max-width:700px){
+  .tech-top{ grid-template-columns:1fr; }
+  .tech-top__desc{ margin-left:0;max-width:100%; }
+}
+
+/* Bento grid */
+.tech-bento{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:1.1fr 1fr 1fr;
+  grid-template-rows:auto auto;
   gap:18px;
-  height:480px;
-  overflow:hidden;
-  mask-image:linear-gradient(180deg, transparent 0%, black 10%, black 90%, transparent 100%);
-  -webkit-mask-image:linear-gradient(180deg, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
-.tech-col{
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
-
-.tech-col__inner{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  /* JS will animate translateY */
-  will-change:transform;
-}
-
-/* vertical cards */
-.tech-cols .tech-card{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:18px 20px;
-  border-radius:var(--radius-md);
-  background:rgba(255,255,255,.035);
+/* Base card */
+.tech-bento__card{
+  position:relative;overflow:hidden;
+  border-radius:var(--radius-lg);
   border:1px solid var(--border);
-  font-weight:600;
-  font-size:15px;
-  white-space:nowrap;
-  color:var(--text);
-  flex-shrink:0;
-  transition:border-color .25s, background .25s, transform .25s;
+  background:var(--surface);
+  padding:32px 28px 28px;
+  transition:border-color .3s var(--ease), transform .3s var(--ease), box-shadow .3s;
+}
+.tech-bento__card:hover{
+  border-color:rgba(255,214,10,.35);
+  transform:translateY(-4px);
+  box-shadow:0 20px 50px -20px rgba(255,214,10,.15);
+}
+
+/* CMS — spans 2 rows on left */
+.tech-bento__card--cms{ grid-row:span 2; }
+
+/* Frameworks — top right */
+.tech-bento__card--fw{ grid-column:2; grid-row:1; }
+
+/* DB — top far right */
+.tech-bento__card--db{ grid-column:3; grid-row:1; }
+
+/* Stat card — spans bottom 2 columns */
+.tech-bento__card--stat{
+  grid-column:2 / 4;grid-row:2;
+  background:linear-gradient(135deg,rgba(255,214,10,.1),rgba(255,177,0,.04));
+  border-color:rgba(255,214,10,.2);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:36px 40px;
+}
+.tech-bento__card--stat:hover{ border-color:rgba(255,214,10,.5); }
+
+/* Section label inside card */
+.tech-bento__label{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-mono);font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:26px;
+}
+.tech-bento__label svg{width:14px;height:14px;flex-shrink:0;}
+
+/* Items grid inside each card */
+.tech-bento__items{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.tech-bento__card--css .tech-bento__items{ grid-template-columns:1fr 1fr 1fr; }
+
+/* Individual tech item */
+.tb-item{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:10px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:14px;font-weight:500;color:var(--text-muted);
+  transition:all .22s var(--ease);
   cursor:default;
 }
-.tech-cols .tech-card:hover{
-  border-color:var(--blue);
+.tb-item:hover{
   background:rgba(255,214,10,.07);
-  transform:translateX(4px);
+  border-color:rgba(255,214,10,.3);
+  color:var(--text);transform:translateX(3px);
 }
-.tech-cols .tech-card__icon{ font-size:22px; }
+.tb-item__icon{ font-size:18px;flex-shrink:0;line-height:1; }
 
-@media(max-width:768px){
-  .tech-cols{
-    grid-template-columns:1fr 1fr;
-    height:380px;
-  }
-  .tech-col:last-child{ display:none; }
+/* Background decorative number */
+.tech-bento__bg-num{
+  position:absolute;bottom:-18px;right:14px;
+  font-family:var(--font-display);font-size:120px;font-weight:800;
+  color:rgba(255,255,255,.025);line-height:1;
+  pointer-events:none;user-select:none;
+  transition:color .3s;
 }
-@media(max-width:480px){
-  .tech-cols{
-    grid-template-columns:1fr;
-    height:300px;
+.tech-bento__card:hover .tech-bento__bg-num{ color:rgba(255,214,10,.04); }
+
+/* Stat pull-quote */
+.tech-bento__stat-num{
+  font-family:var(--font-display);font-size:clamp(48px,6vw,72px);
+  font-weight:700;letter-spacing:-.02em;
+  background:var(--grad-text);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1;margin-bottom:10px;
+}
+.tech-bento__stat-label{
+  font-size:15px;color:var(--text-muted);max-width:320px;line-height:1.6;
+}
+
+/* Responsive */
+@media(max-width:960px){
+  .tech-bento{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
   }
-  .tech-col:last-child,.tech-col:nth-child(2){ display:none; }
+  .tech-bento__card--cms{ grid-row:span 1; }
+  .tech-bento__card--fw { grid-column:2; grid-row:1; }
+  .tech-bento__card--db { grid-column:1; grid-row:2; }
+  .tech-bento__card--stat{ grid-column:2; grid-row:2; }
+}
+@media(max-width:600px){
+  .tech-bento{ grid-template-columns:1fr; }
+  .tech-bento__card--cms,
+  .tech-bento__card--fw,
+  .tech-bento__card--db,
+  .tech-bento__card--stat{ grid-column:1; grid-row:auto; }
+  .tech-bento__items{ grid-template-columns:1fr 1fr; }
 }
 
 /* ===================================================================

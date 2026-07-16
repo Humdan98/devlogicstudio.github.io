@@ -591,56 +591,7 @@
     });
   }
 
-  /* -------------------------------------------------
-     VERTICAL TECH COLUMNS (infinite loop, JS-driven)
-  ------------------------------------------------- */
-  (function(){
-    const cols = document.querySelectorAll('.tech-col');
-    if(!cols.length || reducedMotion) return;
 
-    cols.forEach(col => {
-      const inner   = col.querySelector('.tech-col__inner');
-      const dir     = col.getAttribute('data-direction') === 'down' ? -1 : 1; // up = positive translateY going negative
-      const speed   = parseFloat(col.getAttribute('data-speed')) || 25; // px/sec
-      const cards   = Array.from(inner.querySelectorAll('.tech-card')); // only cards, not the heading
-      const half    = cards.length / 2; // we duplicated, so half is one set
-
-      let pos       = dir === 1 ? 0 : -(inner.scrollHeight / 2); // down starts from middle
-      let paused    = false;
-      let lastTime  = null;
-
-      // Measure one set height (first half of cards)
-      function getHalfH(){
-        let h = 0;
-        cards.slice(0, half).forEach(c => { h += c.offsetHeight + 14; }); // 14 = gap
-        return h;
-      }
-
-      col.addEventListener('mouseenter', () => paused = true);
-      col.addEventListener('mouseleave', () => paused = false);
-
-      function tick(ts){
-        if(lastTime === null) lastTime = ts;
-        const dt = (ts - lastTime) / 1000;
-        lastTime = ts;
-
-        if(!paused){
-          pos -= dir * speed * dt;
-          const halfH = getHalfH();
-          // loop: when scrolled one full set, jump back
-          if(dir === 1 && pos <= -halfH) pos += halfH;
-          if(dir === -1 && pos >= 0)     pos -= halfH;
-          inner.style.transform = `translateY(${pos}px)`;
-        }
-        requestAnimationFrame(tick);
-      }
-
-      // Init: down-direction starts at -halfH so it appears mid-list
-      if(dir === -1) pos = -(getHalfH());
-
-      requestAnimationFrame(tick);
-    });
-  })();
 
   /* -------------------------------------------------
      FOOTER YEAR
