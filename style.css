@@ -46,6 +46,16 @@
   --dur-fast:.2s;
   --dur:.45s;
   --dur-slow:.8s;
+
+  --bg: #0a0a0b;
+    --bg-soft: #101012;
+    --card: #17171a;
+    --card-border: #262629;
+    --gold: #e8b923;
+    --gold-dim: #e8b92322;
+    --gold-line: #e8b92255;
+    --ink: #f3f1ea;
+    --ink-muted: #8d8a82;
 }
 
 /* ---------- RESET ---------- */
