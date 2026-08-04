@@ -499,6 +499,28 @@
     });
   });
 
+
+  // Duplicate each track's content once so the marquee loops seamlessly (translateX -50%).
+  document.querySelectorAll('.owp-track').forEach(function(track){
+    track.innerHTML += track.innerHTML;
+  });
+
+  // Global pause/play control (in addition to hover-to-pause per row).
+  var toggle = document.getElementById('owpToggle');
+  var label = document.getElementById('owpToggleLabel');
+  var tracks = document.querySelectorAll('.owp-track');
+  var paused = false;
+
+  toggle.addEventListener('click', function(){
+    paused = !paused;
+    tracks.forEach(function(t){
+      t.style.animationPlayState = paused ? 'paused' : 'running';
+    });
+    toggle.setAttribute('aria-pressed', String(paused));
+    label.textContent = paused ? 'Resume auto-scroll' : 'Pause auto-scroll';
+  });
+
+  
   /* -------------------------------------------------
      HERO CIRCUIT / LOGIC-NODE CANVAS BACKGROUND
      Signature visual: nodes connect like circuit logic paths,
