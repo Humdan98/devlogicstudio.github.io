@@ -685,7 +685,7 @@ a.nav__logo {
 }
 .footer__social a svg{width:17px;height:17px;}
 .footer__social a:hover{color:#fff;border-color:var(--border-strong);transform:translateY(-3px);background:var(--grad-primary);}
-.footer__col h4{font-family:var(--font-display);font-size:15px;font-weight:600;margin-bottom:18px;}
+.footer__col h4{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:18px;}
 .footer__col a{display:block;font-size:14px;color:var(--text-muted);margin-bottom:12px;transition:color var(--dur-fast);}
 .footer__col a:hover{color:var(--cyan);}
 .footer__bottom{
