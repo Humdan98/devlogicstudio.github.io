@@ -1379,3 +1379,4 @@ footer a.nav__logo {
     .owp-heading{ -webkit-text-stroke: 1px var(--gold-line); }
     .owp-heading .accent{ -webkit-text-stroke: 1px var(--gold); }
   }
+.hero__scroll {margin: 50px auto;left: 0;}
