@@ -423,64 +423,64 @@ updateActiveLink();
   /* -------------------------------------------------
      CONTACT FORM VALIDATION
   ------------------------------------------------- */
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const formSuccess = document.getElementById('formSuccess');
+  // const form = document.getElementById('contactForm');
+  // const submitBtn = document.getElementById('submitBtn');
+  // const formSuccess = document.getElementById('formSuccess');
 
-  const validators = {
-    name: (v) => v.trim().length >= 2 ? '' : 'Please enter your name.',
-    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
-    phone: (v) => (!v || /^[\d+\-()\s]{7,}$/.test(v.trim())) ? '' : 'Please enter a valid phone number.',
-    company: () => '',
-    service: (v) => v ? '' : 'Please select a service.',
-    message: (v) => v.trim().length >= 10 ? '' : 'Please write at least 10 characters.'
-  };
+  // const validators = {
+  //   name: (v) => v.trim().length >= 2 ? '' : 'Please enter your name.',
+  //   email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
+  //   phone: (v) => (!v || /^[\d+\-()\s]{7,}$/.test(v.trim())) ? '' : 'Please enter a valid phone number.',
+  //   company: () => '',
+  //   service: (v) => v ? '' : 'Please select a service.',
+  //   message: (v) => v.trim().length >= 10 ? '' : 'Please write at least 10 characters.'
+  // };
 
-  function validateField(name){
-    const input = form.elements[name];
-    const errorEl = document.getElementById('err-' + name);
-    const msg = validators[name] ? validators[name](input.value) : '';
-    input.closest('.field').classList.toggle('has-error', !!msg);
-    if (errorEl) errorEl.textContent = msg;
-    return !msg;
-  }
+  // function validateField(name){
+  //   const input = form.elements[name];
+  //   const errorEl = document.getElementById('err-' + name);
+  //   const msg = validators[name] ? validators[name](input.value) : '';
+  //   input.closest('.field').classList.toggle('has-error', !!msg);
+  //   if (errorEl) errorEl.textContent = msg;
+  //   return !msg;
+  // }
 
-  ['name','email','phone','company','service','message'].forEach(name => {
-    const input = form.elements[name];
-    if (!input) return;
-    input.addEventListener('blur', () => validateField(name));
-    input.addEventListener('input', () => {
-      if (input.closest('.field').classList.contains('has-error')) validateField(name);
-    });
-  });
+  // ['name','email','phone','company','service','message'].forEach(name => {
+  //   const input = form.elements[name];
+  //   if (!input) return;
+  //   input.addEventListener('blur', () => validateField(name));
+  //   input.addEventListener('input', () => {
+  //     if (input.closest('.field').classList.contains('has-error')) validateField(name);
+  //   });
+  // });
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const fields = ['name','email','phone','company','service','message'];
-    const allValid = fields.map(validateField).every(Boolean);
+  // form.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   const fields = ['name','email','phone','company','service','message'];
+  //   const allValid = fields.map(validateField).every(Boolean);
 
-    if (!allValid){
-      const firstError = form.querySelector('.has-error input, .has-error select, .has-error textarea');
-      if (firstError) firstError.focus();
-      return;
-    }
+  //   if (!allValid){
+  //     const firstError = form.querySelector('.has-error input, .has-error select, .has-error textarea');
+  //     if (firstError) firstError.focus();
+  //     return;
+  //   }
 
-    submitBtn.classList.add('submitBtn-loading');
-    submitBtn.disabled = true;
+  //   submitBtn.classList.add('submitBtn-loading');
+  //   submitBtn.disabled = true;
 
-    // Simulate network request — replace with real endpoint integration
-    setTimeout(() => {
-      submitBtn.classList.remove('submitBtn-loading');
-      submitBtn.disabled = false;
-      formSuccess.classList.add('is-visible');
-      form.reset();
-      fields.forEach(name => {
-        const field = form.elements[name];
-        if (field) field.closest('.field').classList.remove('has-error');
-      });
-      setTimeout(() => formSuccess.classList.remove('is-visible'), 6000);
-    }, 1200);
-  });
+  //   // Simulate network request — replace with real endpoint integration
+  //   setTimeout(() => {
+  //     submitBtn.classList.remove('submitBtn-loading');
+  //     submitBtn.disabled = false;
+  //     formSuccess.classList.add('is-visible');
+  //     form.reset();
+  //     fields.forEach(name => {
+  //       const field = form.elements[name];
+  //       if (field) field.closest('.field').classList.remove('has-error');
+  //     });
+  //     setTimeout(() => formSuccess.classList.remove('is-visible'), 6000);
+  //   }, 1200);
+  // });
 
   /* -------------------------------------------------
      BUTTON RIPPLE EFFECT
