@@ -1378,5 +1378,8 @@ footer a.nav__logo {
     .owp-section{ padding: 4.5rem 0 4rem; }
     .owp-heading{ -webkit-text-stroke: 1px var(--gold-line); }
     .owp-heading .accent{ -webkit-text-stroke: 1px var(--gold); }
+    .services-grid {
+      grid-template-columns: repeat(1,1fr);
+  }
   }
 .hero__scroll {margin: 50px auto;left: 0;}
