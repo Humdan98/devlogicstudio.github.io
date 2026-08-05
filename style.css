@@ -1433,3 +1433,7 @@ footer a.nav__logo {
     letter-spacing: 0;
     font-weight: 900;
 }
+span.nav__logo-text {
+    font-family: var(--font-body);
+    margin-left: -08px;
+}
