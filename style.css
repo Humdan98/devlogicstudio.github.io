@@ -1414,3 +1414,22 @@ footer a.nav__logo {
   }
   }
 .hero__scroll {margin: 50px auto;left: 0;}
+.contact__actions {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.contact__actions .btn.btn--primary.btn--sm:before {
+    transform: translateX(0%) skewX(-18deg) scale(1.1);
+    background: linear-gradient(120deg, #ffb100 0%, #ffd60a 50%, #ffb100 100%);
+}
+.contact__actions a.btn.btn--primary.btn--sm {
+    overflow: visible;
+    width: 90%;
+    font-size: 24px;
+    max-width: 500px;
+    letter-spacing: 0;
+    font-weight: 900;
+}
