@@ -87,32 +87,66 @@
   }
 
   /* -------------------------------------------------
-     STICKY NAV
-  ------------------------------------------------- */
-  const nav = document.getElementById('nav');
-  const onScrollNav = () => {
-    if (window.scrollY > 40) nav.classList.add('is-scrolled');
-    else nav.classList.remove('is-scrolled');
-  };
-  window.addEventListener('scroll', onScrollNav, { passive:true });
-  onScrollNav();
+   STICKY NAV
+------------------------------------------------- */
+const nav = document.getElementById('nav');
 
-  /* active link highlight */
-  const navLinks = document.querySelectorAll('.nav__link');
-  const sections = Array.from(navLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-
-  function updateActiveLink(){
-    let current = sections[0];
-    const offset = 140;
-    sections.forEach(sec => {
-      if (sec && sec.getBoundingClientRect().top - offset <= 0) current = sec;
-    });
-    navLinks.forEach(link => {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + current.id);
-    });
+const onScrollNav = () => {
+  if (window.scrollY > 40) {
+    nav.classList.add('is-scrolled');
+  } else {
+    nav.classList.remove('is-scrolled');
   }
-  window.addEventListener('scroll', updateActiveLink, { passive:true });
-  updateActiveLink();
+};
+
+window.addEventListener('scroll', onScrollNav, { passive: true });
+onScrollNav();
+
+/* -------------------------------------------------
+   ACTIVE LINK HIGHLIGHT
+------------------------------------------------- */
+const navLinks = document.querySelectorAll('.nav__link');
+
+// Only include links that point to sections on the page (#...)
+const sections = Array.from(navLinks)
+  .map(link => {
+    const href = link.getAttribute('href');
+
+    if (!href || !href.startsWith('#')) {
+      return null;
+    }
+
+    return document.querySelector(href);
+  })
+  .filter(Boolean);
+
+function updateActiveLink() {
+  if (!sections.length) return;
+
+  let current = sections[0];
+  const offset = 140;
+
+  sections.forEach(section => {
+    if (section.getBoundingClientRect().top - offset <= 0) {
+      current = section;
+    }
+  });
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+
+    // Don't try to highlight external links
+    if (!href || !href.startsWith('#')) {
+      link.classList.remove('is-active');
+      return;
+    }
+
+    link.classList.toggle('is-active', href === `#${current.id}`);
+  });
+}
+
+window.addEventListener('scroll', updateActiveLink, { passive: true });
+updateActiveLink();
 
   /* -------------------------------------------------
      MOBILE MENU
