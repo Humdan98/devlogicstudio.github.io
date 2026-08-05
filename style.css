@@ -1283,7 +1283,7 @@ footer a.nav__logo {
   .owp-card{
     position:relative;
     flex: 0 0 auto;
-    width: min(80%, 78vw);
+    width: min(1000px, 78vw);
     background: linear-gradient(180deg, var(--card), #131315);
     border: 1px solid var(--card-border);
     border-radius: 14px;
