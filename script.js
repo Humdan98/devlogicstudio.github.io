@@ -402,23 +402,23 @@ updateActiveLink();
   /* -------------------------------------------------
      FAQ ACCORDION
   ------------------------------------------------- */
-  document.querySelectorAll('.accordion__trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const panel = trigger.nextElementSibling;
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+  // document.querySelectorAll('.accordion__trigger').forEach(trigger => {
+  //   trigger.addEventListener('click', () => {
+  //     const panel = trigger.nextElementSibling;
+  //     const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-      // close all others
-      document.querySelectorAll('.accordion__trigger').forEach(t => {
-        t.setAttribute('aria-expanded','false');
-        t.nextElementSibling.style.maxHeight = null;
-      });
+  //     // close all others
+  //     document.querySelectorAll('.accordion__trigger').forEach(t => {
+  //       t.setAttribute('aria-expanded','false');
+  //       t.nextElementSibling.style.maxHeight = null;
+  //     });
 
-      if (!isOpen){
-        trigger.setAttribute('aria-expanded','true');
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-      }
-    });
-  });
+  //     if (!isOpen){
+  //       trigger.setAttribute('aria-expanded','true');
+  //       panel.style.maxHeight = panel.scrollHeight + 'px';
+  //     }
+  //   });
+  // });
 
   /* -------------------------------------------------
      CONTACT FORM VALIDATION
