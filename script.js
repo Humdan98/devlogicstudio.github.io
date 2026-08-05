@@ -272,38 +272,38 @@ updateActiveLink();
   /* -------------------------------------------------
      PORTFOLIO MODAL
   ------------------------------------------------- */
-  const modal = document.getElementById('portfolioModal');
-  const modalMedia = document.getElementById('modalMedia');
-  const modalTag = document.getElementById('modalTag');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalTags = document.getElementById('modalTags');
+  // const modal = document.getElementById('portfolioModal');
+  // const modalMedia = document.getElementById('modalMedia');
+  // const modalTag = document.getElementById('modalTag');
+  // const modalTitle = document.getElementById('modalTitle');
+  // const modalDesc = document.getElementById('modalDesc');
+  // const modalTags = document.getElementById('modalTags');
 
-  function openModal(card){
-    const mediaClass = Array.from(card.querySelector('.port-card__media').classList).find(c => c.startsWith('port-card__media--'));
-    modalMedia.className = 'modal__media ' + (mediaClass || '');
-    modalTag.textContent = card.querySelector('.port-card__tag').textContent;
-    modalTitle.textContent = card.getAttribute('data-title');
-    modalDesc.textContent = card.getAttribute('data-desc');
-    modalTags.innerHTML = '';
-    (card.getAttribute('data-tags') || '').split(',').forEach(tag => {
-      const span = document.createElement('span');
-      span.textContent = tag.trim();
-      modalTags.appendChild(span);
-    });
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(){
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
-  }
+  // function openModal(card){
+  //   const mediaClass = Array.from(card.querySelector('.port-card__media').classList).find(c => c.startsWith('port-card__media--'));
+  //   modalMedia.className = 'modal__media ' + (mediaClass || '');
+  //   modalTag.textContent = card.querySelector('.port-card__tag').textContent;
+  //   modalTitle.textContent = card.getAttribute('data-title');
+  //   modalDesc.textContent = card.getAttribute('data-desc');
+  //   modalTags.innerHTML = '';
+  //   (card.getAttribute('data-tags') || '').split(',').forEach(tag => {
+  //     const span = document.createElement('span');
+  //     span.textContent = tag.trim();
+  //     modalTags.appendChild(span);
+  //   });
+  //   modal.classList.add('is-open');
+  //   modal.setAttribute('aria-hidden','false');
+  //   document.body.style.overflow = 'hidden';
+  // }
+  // function closeModal(){
+  //   modal.classList.remove('is-open');
+  //   modal.setAttribute('aria-hidden','true');
+  //   document.body.style.overflow = '';
+  // }
 
-  portCards.forEach(card => card.addEventListener('click', () => openModal(card)));
-  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  // portCards.forEach(card => card.addEventListener('click', () => openModal(card)));
+  // modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+  // document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
   /* -------------------------------------------------
      TESTIMONIALS — DRAG SLIDER + BULLETS + ARROWS
