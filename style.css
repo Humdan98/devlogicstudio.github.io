@@ -1260,7 +1260,7 @@ footer a.nav__logo {
   }
   .owp-track.reverse{ animation-name: owp-scroll-right; animation-duration: 48s; }
 
-  .owp-section:hover .owp-track,
+  .owp-section .owp-track-viewport:hover .owp-track,
   .owp-track:focus-within{
     animation-play-state: paused;
   }
