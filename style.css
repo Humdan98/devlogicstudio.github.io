@@ -434,7 +434,52 @@ a.nav__logo {
 .tech-card__icon{font-size:18px;}
 
 /* ---------- SERVICES ---------- */
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;}
+.services-grid .service-card:last-child {
+    grid-column: span 6;
+  }
+@media (min-width: 640px) {
+.services-grid .service-card:last-child {
+    grid-column: span 6;
+    display: grid;
+    grid-template-columns: calc(50% - 20px) 1fr;
+    grid-template-areas:
+        "media icon"
+        "media title"
+        "media text"
+        "media list";
+    gap: 1rem 2rem;
+    align-items: center;
+}
+.service-card:last-child .service-card__media {
+    grid-area: media;
+    height: 100%;
+}
+.service-card:last-child .service-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.service-card:last-child .service-card__icon {
+    grid-area: icon;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+.service-card:last-child h3 {
+    grid-area: title;
+    margin: 0;
+}
+.service-card:last-child p {
+    grid-area: text;
+    margin: 0;
+}
+.service-card:last-child .service-card__list {
+    grid-area: list;
+    margin-left: 0;
+    margin-right: 0;
+}
+}
 .service-card{
   position:relative;grid-column:span 2;
   border-radius:var(--radius-lg);
@@ -783,6 +828,9 @@ h1,h2,h3,h4,h5,p,li,label,strong,span:not(.btn span):not(.kicker__line){
   .hero__layout{grid-template-columns:1fr;gap:40px;}
   .hero__panel{max-width:420px;}
   .services-grid{grid-template-columns:repeat(2,1fr);}
+  .services-grid .service-card:last-child {
+    grid-column: span 2;
+  }
   .service-card,.service-card--wide{grid-column:span 1;}
   .why-grid{grid-template-columns:repeat(2,1fr);}
   .timeline{grid-template-columns:repeat(3,1fr);row-gap:48px;}
@@ -1433,8 +1481,11 @@ footer a.nav__logo {
     .owp-heading{ -webkit-text-stroke: 1px var(--gold-line); }
     .owp-heading .accent{ -webkit-text-stroke: 1px var(--gold); }
     .services-grid {
-      grid-template-columns: repeat(1,1fr);
-  }
+        grid-template-columns: repeat(1,1fr);
+    }
+    .services-grid .service-card:last-child {
+      grid-column: span 1;
+    }
   }
 .hero__scroll {margin: 50px auto;left: 0;}
 .contact__actions {
