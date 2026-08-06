@@ -434,7 +434,7 @@ a.nav__logo {
 .tech-card__icon{font-size:18px;}
 
 /* ---------- SERVICES ---------- */
-.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;}
+.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;} 
 .services-grid .service-card:last-child {
     grid-column: span 6;
   }
