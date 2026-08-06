@@ -811,6 +811,29 @@ h1,h2,h3,h4,h5,p,li,label,strong,span:not(.btn span):not(.kicker__line){
   .hero__actions{flex-direction:column;width:100%;}
   .hero__actions .btn{width:100%;}
   .footer__bottom{flex-direction:column;gap:14px;text-align:center;}
+  .why-card__icon {
+      text-align: center;
+      margin: 0 auto 9px;
+      width: 36px;
+      height: 36px;
+  }
+  .why-card h3 {
+      font-size: 14px;
+      line-height: 1.3;
+  }
+  .why-card p {
+      font-size: 12px;
+  }
+  .why-card {
+      text-align: center;
+  }
+  .why-grid {
+      grid-template-columns: repeat(2,1fr);
+      gap: 15px;
+  }
+  .section-head {
+      margin-bottom: 40px;
+  }
 }
 
 @media (max-width:480px){
