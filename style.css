@@ -1637,7 +1637,6 @@ span.nav__logo-text {
   .owt3-nav svg{ width:18px; height:18px; }
   .owt3-nav-prev{ left: max(0.5rem, 2vw); }
   .owt3-nav-next{ right: max(0.5rem, 2vw); }
-  @media (max-width: 700px){ .owt3-nav{ display:none; } }
 
   .owt3-info{ position:relative; z-index:2; text-align:center; }
   .owt3-counter{ font-family:'Fraunces', serif; font-size:0.8rem; color:var(--gold-line); letter-spacing:0.08em; margin-bottom:0.6rem; }
