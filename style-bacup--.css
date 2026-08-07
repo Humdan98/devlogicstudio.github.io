@@ -70,7 +70,6 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  -webkit-tap-highlight-color:transparent; /* removes grey tap flash on mobile Safari/Chrome */
 }
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
@@ -197,7 +196,6 @@ a.nav__logo {
   background:rgba(255,255,255,.04);
   border:1px solid var(--border-strong);
   color:var(--text);
-  -webkit-backdrop-filter:blur(8px); /* Safari support */
   backdrop-filter:blur(8px);
 }
 .btn--ghost::before{
@@ -235,7 +233,6 @@ a.nav__logo {
 .nav.is-scrolled{
   padding:12px 0;
   background:rgba(11,15,25,.72);
-  -webkit-backdrop-filter:blur(16px) saturate(140%); /* Safari support */
   backdrop-filter:blur(16px) saturate(140%);
   border-bottom:1px solid var(--border);
 }
@@ -266,7 +263,7 @@ a.nav__logo {
 
 .mobile-menu{
   position:fixed;inset:0;z-index:100;
-  background:rgba(9,12,20,.97);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px); /* -webkit- for Safari */
+  background:rgba(9,12,20,.97);backdrop-filter:blur(20px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;
   transform:translateY(-100%);opacity:0;
   transition:transform .5s var(--ease), opacity .4s var(--ease);
@@ -308,7 +305,6 @@ a.nav__logo {
   position:absolute;inset:0;
   background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
   background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(ellipse 60% 50% at 78% 35%, black 10%, transparent 70%); /* Safari/Chrome */
   mask-image:radial-gradient(ellipse 60% 50% at 78% 35%, black 10%, transparent 70%);
 }
 
@@ -423,7 +419,7 @@ a.nav__logo {
 
 /* ---------- TECH MARQUEE ---------- */
 .tech{padding-top:80px;}
-.tech-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
+.tech-marquee{position:relative;overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
 .tech-marquee__track{display:flex;gap:18px;width:max-content;animation:marquee 32s linear infinite; padding: 10px 0;}
 .tech-marquee:hover .tech-marquee__track{animation-play-state:paused;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
@@ -607,7 +603,7 @@ a.nav__logo {
 /* portfolio modal */
 .modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease), visibility .35s;}
 .modal.is-open{opacity:1;visibility:visible;}
-.modal__backdrop{position:absolute;inset:0;background:rgba(6,8,14,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+.modal__backdrop{position:absolute;inset:0;background:rgba(6,8,14,.78);backdrop-filter:blur(6px);}
 .modal__panel{
   position:relative;z-index:1;max-width:640px;width:100%;max-height:88vh;overflow:auto;
   background:var(--surface-2);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
@@ -618,7 +614,7 @@ a.nav__logo {
 .modal__close{
   position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;
   background:rgba(0,0,0,.4);color:#fff;display:flex;align-items:center;justify-content:center;
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background var(--dur-fast);
+  backdrop-filter:blur(6px);transition:background var(--dur-fast);
 }
 .modal__close:hover{background:rgba(0,0,0,.6);}
 .modal__close svg{width:18px;height:18px;}
@@ -698,7 +694,7 @@ a.nav__logo {
   background:rgba(255,255,255,.03);border:1px solid var(--border);
   font-size:14.5px;transition:border-color var(--dur-fast), background var(--dur-fast);
 }
-.field select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%239AA4BD' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%239AA4BD' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);background:rgba(255,255,255,.05);}
 .field textarea{resize:vertical;min-height:120px;}
 .field.has-error input,.field.has-error textarea,.field.has-error select{border-color:#F87171;}
@@ -1045,7 +1041,7 @@ footer a.nav__logo {
   position:absolute;bottom:-18px;right:14px;
   font-family:var(--font-display);font-size:120px;font-weight:800;
   color:rgba(255,255,255,.025);line-height:1;
-  pointer-events:none;-webkit-user-select:none;user-select:none;
+  pointer-events:none;user-select:none;
   transition:color .3s;
 }
 .tech-bento__card:hover .tech-bento__bg-num{ color:rgba(255,214,10,.04); }
@@ -1258,7 +1254,6 @@ footer a.nav__logo {
     text-shadow:
       0 1px 0 rgba(255,255,255,0.05),
       0 2px 3px rgba(0,0,0,0.55);
-    -webkit-user-select:none;
     user-select:none;
   }
 
@@ -1546,7 +1541,6 @@ span.nav__logo-text {
     letter-spacing:-0.01em; text-transform:uppercase;
     color: transparent; -webkit-text-stroke: 1.2px var(--gold-line);
     text-shadow: 0 1px 0 rgba(255,255,255,0.05), 0 2px 3px rgba(0,0,0,0.55);
-    -webkit-user-select:none;
     user-select:none;
   }
   .owt3-heading .accent{ -webkit-text-stroke: 1.2px var(--gold); }
@@ -1622,7 +1616,6 @@ span.nav__logo-text {
     font-family:'Fraunces', serif; font-size:0.7rem; color:var(--gold);
     background: rgba(8,8,9,0.55); border:1px solid var(--gold-line);
     padding:0.15rem 0.55rem; border-radius:999px;
-    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     opacity:0; transition: opacity 0.4s ease;
   }
@@ -1633,7 +1626,6 @@ span.nav__logo-text {
     width:46px; height:46px; border-radius:50%;
     border:1px solid var(--card-border);
     background: rgba(10,10,11,0.55);
-    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     color: var(--ink);
     display:flex; align-items:center; justify-content:center;
