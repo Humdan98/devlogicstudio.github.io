@@ -1672,6 +1672,7 @@ span.nav__logo-text {
     .contact__actions a.btn.btn--primary.btn--sm {
         max-width: 300px;
         width: 85%;
+        font-size: 20px;
     }
     .owt3-slide {
         width: min(70vw, 420px);
