@@ -1673,5 +1673,7 @@ span.nav__logo-text {
     .owt3-slide {
         width: min(60vw, 420px);
         height: min(100vw, 320px);
+        left: 35%;
+        right: 35%;
     }
   }
