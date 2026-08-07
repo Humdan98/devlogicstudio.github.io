@@ -1680,4 +1680,11 @@ span.nav__logo-text {
         left: 35%;
         right: 35%;
     }
+    .kicker__line {
+        width: 10px;
+    }
+    .kicker {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
   }
