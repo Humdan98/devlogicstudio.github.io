@@ -1661,3 +1661,17 @@ span.nav__logo-text {
     .owt3-progress-fill.animate{ animation:none; width:0%; }
     .owt3-slide{ transition: opacity 0.4s ease; }
   }
+
+  @media (max-width: 480px) {
+    .contact__actions {
+        justify-content: center;
+    }
+    .contact__actions a.btn.btn--primary.btn--sm {
+        max-width: 300px;
+        width: 85%;
+    }
+    .owt3-slide {
+        width: min(60vw, 420px);
+        height: min(100vw, 320px);
+    }
+  }
