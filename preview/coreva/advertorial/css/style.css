@@ -1,4 +1,3 @@
-/* Tokens */
 :root {
   --brand: #801724;
   --brand-dark: #5e0f1a;
@@ -82,7 +81,6 @@ button, input { font: inherit; }
   }
 }
 
-/* Utilities */
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -130,7 +128,6 @@ mark {
   color: inherit;
 }
 
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -163,8 +160,6 @@ mark {
 .btn--block { width: 100%; }
 .btn__icon { width: 1.1em; height: 1.1em; flex: none; transition: transform 0.2s var(--ease); }
 .btn:hover .btn__icon { transform: translateX(3px); }
-
-/* Small components */
 
 .verified {
   display: inline-flex;
@@ -205,8 +200,6 @@ mark {
   100% { box-shadow: 0 0 0 0 rgb(179 36 47 / 0); }
 }
 
-/* Page chrome */
-
 .reading-progress {
   height: 3px;
   background: rgb(255 255 255 / 0.08);
@@ -233,7 +226,6 @@ mark {
   .site-footer { padding-bottom: 2.75rem; }
 }
 
-/* Sticky mobile CTA */
 .sticky-cta {
   position: fixed;
   inset: auto 0 0;
@@ -283,7 +275,6 @@ mark {
   .sticky-cta { display: none; }
 }
 
-/* Bundle picker */
 .bundles {
   display: grid;
   gap: 0.8rem;
@@ -400,7 +391,6 @@ mark {
 .adv .prose > * + * { margin-top: 1.1em; }
 .adv .prose strong { font-weight: 600; color: var(--ink-serif); }
 
-/* Columns */
 .measure,
 .frame,
 .discovery__inner,
@@ -935,7 +925,7 @@ mark {
 .adv .site-footer .container { max-width: calc(var(--col) + var(--gutter) * 2); }
 .adv .site-footer__legal { max-width: none; }
 
-/* Motion */
+
 @media (prefers-reduced-motion: no-preference) {
   .js .chapter__head,
   .js .whisper,
