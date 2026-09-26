@@ -13,6 +13,7 @@
 
 .sidebar { display: none; }
 
+
 @media (min-width: 1024px) {
   .layout {
     grid-template-columns: minmax(0, var(--measure)) 320px;
@@ -1072,9 +1073,9 @@ thead .compare__us img { width: 44px; margin: 0 auto 0.3rem; }
   font-weight: 800;
 }
 .mark--yes  { color: var(--success); }
-.mark--yes::before  { content: "\2713"; background: var(--success); }
+.mark--yes::before  { content: "\2713"; background: var(--success); min-width: 24px; }
 .mark--no   { color: var(--danger); }
-.mark--no::before   { content: "\2715"; background: var(--danger); }
+.mark--no::before   { content: "\2715"; background: var(--danger); min-width: 24px; }
 .mark--warn { color: var(--warning); }
 .mark--warn::before { content: "!"; background: var(--warning); }
 
