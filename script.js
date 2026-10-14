@@ -627,13 +627,21 @@ updateActiveLink();
         toggle.setAttribute('aria-pressed', String(paused));
         if (label) label.textContent = paused ? 'Resume auto-scroll' : 'Pause auto-scroll';
       });
-      if (isTouch && reduce) toggle.hidden = true;
     }
 
-    if (!isTouch || reduce) return;   // desktop keeps the CSS marquee
+    // Desktop without Reduce Motion keeps the CSS marquee. Touch devices, and any
+    // device with Reduce Motion on (where the CSS animation is switched off),
+    // use the script below — slower when Reduce Motion is on.
+    if (!isTouch && !reduce) return;
 
-    /* ---- Touch: JS-driven auto-scroll on native scrollers ---- */
-    var SPEED = 28;          // px per second
+    /* ---- Touch: auto-scroll layered on top of native swipe ----
+       iOS Safari scrolls overflow boxes on a separate thread; setting
+       scrollLeft every frame fights it (it reports stale positions back,
+       which looked like user swipes, so the rows never moved). Instead the
+       auto-motion is a GPU transform on the track (--owp-x) and native
+       scrolling is left entirely to the user's finger.
+         visible position  v = scrollLeft (user) + off (auto)          */
+    var SPEED = reduce ? 16 : 28;   // px per second (gentler with Reduce Motion)
     var RESUME_AFTER = 2200; // ms after the user stops touching/scrolling
     var section = document.querySelector('.owp-section');
     var visible = true;
@@ -641,29 +649,41 @@ updateActiveLink();
     var rows = Array.prototype.map.call(document.querySelectorAll('.owp-track-viewport'), function(vp){
       var track = vp.querySelector('.owp-track');
       var row = {
-        vp: vp,
+        vp: vp, track: track,
         dir: track.classList.contains('reverse') ? -1 : 1,
-        pos: 0, half: 0, lastSet: -1,
+        base: vp.scrollLeft, off: 0, half: 0,
         touching: false, holdUntil: 0
       };
-      function measure(){
-        row.half = track.scrollWidth / 2;
-        if (row.dir < 0 && row.pos === 0) row.pos = row.half;   // reverse row starts mid-way
-      }
-      row.measure = measure;
-      measure();
-      vp.scrollLeft = row.pos;
+      // distance from a card to its clone = one full loop
+      row.measure = function(){
+        var kids = track.children, n = kids.length / 2;
+        row.half = n >= 1 ? (kids[n].offsetLeft - kids[0].offsetLeft) : 0;
+        if (row.dir < 0 && row.off === 0 && row.half > 0) row.off = row.half / 2; // reverse row starts mid-loop
+        row.apply();
+      };
+      row.wrap = function(){                // keep v inside one loop
+        if (row.half <= 0) return;
+        var v = row.base + row.off;
+        while (v >= row.half){ row.off -= row.half; v -= row.half; }
+        while (v < 0)        { row.off += row.half; v += row.half; }
+      };
+      row.apply = function(){
+        track.style.setProperty('--owp-x', row.off.toFixed(2) + 'px');
+        if (!isTouch) track.style.transform = 'translate3d(' + (-row.off).toFixed(2) + 'px,0,0)';
+      };
+      row.measure();
 
       var hold = function(){ row.holdUntil = performance.now() + RESUME_AFTER; };
       vp.addEventListener('touchstart', function(){ row.touching = true; hold(); }, { passive: true });
+      vp.addEventListener('mouseenter', function(){ if (!isTouch) row.touching = true; });
+      vp.addEventListener('mouseleave', function(){ if (!isTouch) row.touching = false; });
       vp.addEventListener('touchend',   function(){ row.touching = false; hold(); }, { passive: true });
       vp.addEventListener('touchcancel',function(){ row.touching = false; hold(); }, { passive: true });
       vp.addEventListener('scroll', function(){
-        // a scroll we didn't cause = user swipe / momentum → wait before resuming
-        if (Math.abs(vp.scrollLeft - row.lastSet) > 2){
-          row.pos = vp.scrollLeft;
-          hold();
-        }
+        // only the user scrolls this box now, so any scroll = user swipe / momentum
+        row.base = vp.scrollLeft;
+        row.wrap(); row.apply();
+        hold();
       }, { passive: true });
       return row;
     });
@@ -683,16 +703,13 @@ updateActiveLink();
 
     var last = performance.now();
     function tick(now){
-      var dt = Math.min(now - last, 64);   // clamp after tab switches
+      var dt = Math.min(now - last, 64);   // clamp after tab switches / low-power mode
       last = now;
       if (visible && !paused && !document.hidden){
         rows.forEach(function(r){
           if (r.touching || now < r.holdUntil || r.half <= 0) return;
-          r.pos += r.dir * SPEED * dt / 1000;
-          if (r.pos >= r.half) r.pos -= r.half;
-          if (r.pos <= 0)      r.pos += r.half;
-          r.vp.scrollLeft = r.pos;
-          r.lastSet = r.vp.scrollLeft;
+          r.off += r.dir * SPEED * dt / 1000;
+          r.wrap(); r.apply();
         });
       }
       requestAnimationFrame(tick);

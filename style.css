@@ -1882,7 +1882,9 @@ body.menu-open{
   .owp-track,
   .owp-track.reverse{
     animation:none !important;
-    transform:none !important;
+    /* auto-scroll offset set by script.js (no CSS keyframes on touch) */
+    transform:translate3d(calc(var(--owp-x, 0px) * -1), 0, 0) !important;
+    will-change:transform;
     gap:14px;
     padding-inline:16px;
   }
