@@ -184,7 +184,7 @@
 .about-cta__links a:hover svg{transform:translateY(-2px);}
 
 /* ---------- RESPONSIVE ---------- */
-@media (max-width:1100px){
+@media (max-width:900px){ /* was 1100px: two-column layouts collapsed too early, leaving 1024px tablets with a single narrow column */
   .about-hero__layout{grid-template-columns:1fr;gap:40px;}
   .hero-photo{max-width:280px;}
   .split-head{grid-template-columns:1fr;gap:24px;}
@@ -207,4 +207,25 @@
   .edu-card{padding:28px 24px;}
   .about-cta{padding:56px 24px;}
   .about-cta__links{gap:22px;}
+}
+
+/* ---------- Responsive pass ---------- */
+/* Upwork section: let grid columns shrink instead of forcing the page wider */
+.upwork-grid > *{min-width:0;}
+.upwork-grid .btn{white-space:normal;text-align:center;}
+@media (min-width:901px) and (max-width:1100px){
+  .about-hero__layout{gap:40px;}
+  .split-head{gap:48px;}
+  .upwork-grid{gap:40px;}
+}
+/* Hero stats: keep the three stats on one even row on phones
+   (the third one used to wrap onto its own, oddly indented line). */
+@media (max-width:680px){
+  .about-hero__stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+  .about-hero__stat{padding-left:12px;}
+  .about-hero__stat strong{font-size:17px;}
+  .about-hero__stat span{font-size:11.5px;}
+}
+@media (max-width:420px){
+  .upwork-grid .btn{width:100%;justify-content:center;}
 }

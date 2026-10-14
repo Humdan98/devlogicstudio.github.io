@@ -153,20 +153,81 @@ updateActiveLink();
   ------------------------------------------------- */
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
+  let menuScrollY = 0;
 
-  function closeMobileMenu(){
-    burger.classList.remove('is-active');
-    burger.setAttribute('aria-expanded','false');
-    mobileMenu.classList.remove('is-open');
-    document.body.style.overflow = '';
+  function lockScroll(){
+    menuScrollY = window.scrollY || window.pageYOffset;
+    document.body.style.top = (-menuScrollY) + 'px';
+    document.body.classList.add('menu-open');
   }
-  burger.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('is-open');
-    burger.classList.toggle('is-active', open);
-    burger.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  function unlockScroll(){
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+    // html has scroll-behavior:smooth — restore instantly, not animated
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, menuScrollY);
+    html.style.scrollBehavior = prev;
+  }
+
+  function syncMenuActive(){
+    const active = document.querySelector('.nav__link.is-active');
+    const href = active ? active.getAttribute('href') : null;
+    mobileMenu.querySelectorAll('.mobile-menu__nav a').forEach(a => {
+      // aria-current="page" (e.g. About on the About page) always wins
+      a.classList.toggle('is-active',
+        a.getAttribute('aria-current') === 'page' || (!!href && a.getAttribute('href') === href));
+    });
+  }
+
+  function openMobileMenu(){
+    syncMenuActive();
+    lockScroll();
+    mobileMenu.removeAttribute('inert');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenu.classList.add('is-open');
+    burger.classList.add('is-active');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Close menu');
+  }
+
+  function closeMobileMenu(opts){
+    if (!mobileMenu.classList.contains('is-open')) return;
+    mobileMenu.classList.remove('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenu.setAttribute('inert', '');
+    burger.classList.remove('is-active');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open menu');
+    unlockScroll();
+    if (opts && opts.returnFocus) burger.focus({ preventScroll: true });
+  }
+
+  if (burger && mobileMenu){
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.contains('is-open')
+        ? closeMobileMenu({ returnFocus: false })
+        : openMobileMenu();
+    });
+
+    // Close on link tap. Capture phase = runs BEFORE the smooth-scroll
+    // handler on the link, so the page's real scroll position is restored
+    // before that handler measures where to scroll to.
+    mobileMenu.addEventListener('click', e => {
+      if (e.target.closest('a')) closeMobileMenu();
+    }, true);
+
+    // Escape closes
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMobileMenu({ returnFocus: true });
+    });
+
+    // Rotating to / resizing into desktop width closes it
+    window.matchMedia('(min-width: 1101px)').addEventListener('change', e => {
+      if (e.matches) closeMobileMenu();
+    });
+  }
 
   /* -------------------------------------------------
      BACK TO TOP
@@ -534,25 +595,110 @@ updateActiveLink();
   });
 
 
-  // Duplicate each track's content once so the marquee loops seamlessly (translateX -50%).
-  document.querySelectorAll('.owp-track').forEach(function(track){
-    track.innerHTML += track.innerHTML;
-  });
+  (function(){
+    var owpTracks = document.querySelectorAll('.owp-track');
+    if (!owpTracks.length) return;
 
-  // Global pause/play control (in addition to hover-to-pause per row).
-  var toggle = document.getElementById('owpToggle');
-  var label = document.getElementById('owpToggleLabel');
-  var tracks = document.querySelectorAll('.owp-track');
-  var paused = false;
-
-  toggle.addEventListener('click', function(){
-    paused = !paused;
-    tracks.forEach(function(t){
-      t.style.animationPlayState = paused ? 'paused' : 'running';
+    // Duplicate each track's content once so the loop is seamless.
+    owpTracks.forEach(function(track){
+      if (track.dataset.cloned) return;
+      var clones = track.cloneNode(true).children;
+      Array.prototype.slice.call(clones).forEach(function(card){
+        card.setAttribute('aria-hidden', 'true');
+        card.querySelectorAll('a').forEach(function(a){ a.setAttribute('tabindex', '-1'); });
+        track.appendChild(card);
+      });
+      track.dataset.cloned = '1';
     });
-    toggle.setAttribute('aria-pressed', String(paused));
-    label.textContent = paused ? 'Resume auto-scroll' : 'Pause auto-scroll';
-  });
+
+    var toggle = document.getElementById('owpToggle');
+    var label = document.getElementById('owpToggleLabel');
+    var paused = false;
+
+    var isTouch = window.matchMedia('(hover:none), (pointer:coarse)').matches;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (toggle){
+      toggle.addEventListener('click', function(){
+        paused = !paused;
+        owpTracks.forEach(function(t){
+          t.style.animationPlayState = paused ? 'paused' : 'running';
+        });
+        toggle.setAttribute('aria-pressed', String(paused));
+        if (label) label.textContent = paused ? 'Resume auto-scroll' : 'Pause auto-scroll';
+      });
+      if (isTouch && reduce) toggle.hidden = true;
+    }
+
+    if (!isTouch || reduce) return;   // desktop keeps the CSS marquee
+
+    /* ---- Touch: JS-driven auto-scroll on native scrollers ---- */
+    var SPEED = 28;          // px per second
+    var RESUME_AFTER = 2200; // ms after the user stops touching/scrolling
+    var section = document.querySelector('.owp-section');
+    var visible = true;
+
+    var rows = Array.prototype.map.call(document.querySelectorAll('.owp-track-viewport'), function(vp){
+      var track = vp.querySelector('.owp-track');
+      var row = {
+        vp: vp,
+        dir: track.classList.contains('reverse') ? -1 : 1,
+        pos: 0, half: 0, lastSet: -1,
+        touching: false, holdUntil: 0
+      };
+      function measure(){
+        row.half = track.scrollWidth / 2;
+        if (row.dir < 0 && row.pos === 0) row.pos = row.half;   // reverse row starts mid-way
+      }
+      row.measure = measure;
+      measure();
+      vp.scrollLeft = row.pos;
+
+      var hold = function(){ row.holdUntil = performance.now() + RESUME_AFTER; };
+      vp.addEventListener('touchstart', function(){ row.touching = true; hold(); }, { passive: true });
+      vp.addEventListener('touchend',   function(){ row.touching = false; hold(); }, { passive: true });
+      vp.addEventListener('touchcancel',function(){ row.touching = false; hold(); }, { passive: true });
+      vp.addEventListener('scroll', function(){
+        // a scroll we didn't cause = user swipe / momentum → wait before resuming
+        if (Math.abs(vp.scrollLeft - row.lastSet) > 2){
+          row.pos = vp.scrollLeft;
+          hold();
+        }
+      }, { passive: true });
+      return row;
+    });
+
+    // Re-measure when images load or the viewport changes
+    window.addEventListener('resize', function(){ rows.forEach(function(r){ r.measure(); }); });
+    document.querySelectorAll('.owp-card img').forEach(function(img){
+      if (!img.complete) img.addEventListener('load', function(){ rows.forEach(function(r){ r.measure(); }); }, { once: true });
+    });
+
+    // Only animate while the section is on screen (battery friendly)
+    if ('IntersectionObserver' in window && section){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+      }, { rootMargin: '100px 0px' }).observe(section);
+    }
+
+    var last = performance.now();
+    function tick(now){
+      var dt = Math.min(now - last, 64);   // clamp after tab switches
+      last = now;
+      if (visible && !paused && !document.hidden){
+        rows.forEach(function(r){
+          if (r.touching || now < r.holdUntil || r.half <= 0) return;
+          r.pos += r.dir * SPEED * dt / 1000;
+          if (r.pos >= r.half) r.pos -= r.half;
+          if (r.pos <= 0)      r.pos += r.half;
+          r.vp.scrollLeft = r.pos;
+          r.lastSet = r.vp.scrollLeft;
+        });
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
 
   
   /* -------------------------------------------------
@@ -659,6 +805,9 @@ updateActiveLink();
   var prevBtn     = document.getElementById('owt3Prev');
   var nextBtn     = document.getElementById('owt3Next');
   var stageWrap   = document.querySelector('.owt3-stage');
+
+  // Not every page has the testimonial slider (e.g. /about/) — skip instead of crashing.
+  if (!slideEls.length || !counterTot) return;
 
   var len = slideEls.length;
   var active = 0;

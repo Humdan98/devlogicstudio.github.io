@@ -15,7 +15,7 @@
 <link rel="icon" type="image/jpg" href="assets/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -139,17 +139,23 @@
 </header>
 
 <!-- ============ MOBILE MENU ============ -->
-<div class="mobile-menu" id="mobileMenu">
-  <nav aria-label="Mobile">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#expertise">Expertise</a>
-    <a href="#process">Process</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="https://www.upwork.com/freelancers/hamdanzafar">Contact</a>
-  </nav>
-  <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--primary btn--block">Get Free Consultation</a>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+  <div class="mobile-menu__inner">
+    <span class="mobile-menu__eyebrow">Navigate</span>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="#home"><span class="mobile-menu__num">01</span>Home</a>
+      <a href="#services"><span class="mobile-menu__num">02</span>Services</a>
+      <a href="#expertise"><span class="mobile-menu__num">03</span>Expertise</a>
+      <a href="#process"><span class="mobile-menu__num">04</span>Process</a>
+      <a href="#portfolio"><span class="mobile-menu__num">05</span>Portfolio</a>
+      <a href="#testimonials"><span class="mobile-menu__num">06</span>Testimonials</a>
+      <a href="https://www.upwork.com/freelancers/hamdanzafar"><span class="mobile-menu__num">07</span>Contact</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--primary btn--block">Get Free Consultation</a>
+      <p class="mobile-menu__tagline">Dev Logic Studio — Web development &amp; digital solutions</p>
+    </div>
+  </div>
 </div>
 
 <main id="top">
@@ -1352,7 +1358,6 @@
         <a href="#process">Our Process</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
       </div>
 
       <div class="footer__col">

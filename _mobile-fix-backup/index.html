@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Logic Studio — Web Development & Digital Solutions</title>
+<meta name="description" content="Dev Logic Studio builds powerful websites, eCommerce platforms, and custom web applications that help businesses grow. Build faster. Grow smarter. Scale better.">
+<meta name="theme-color" content="#0B0F19">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Dev Logic Studio — Build Faster. Grow Smarter. Scale Better.">
+<meta property="og:description" content="Your business deserves a flawless web experience — 24/7. Websites, eCommerce & custom web apps that drive measurable growth.">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/jpg" href="assets/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__mark">
+    <span>&lt;</span><span class="loader__dot">/</span><span>&gt;</span>
+  </div>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<!-- ============ NOISE / GRAIN OVERLAY ============ -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#home" class="nav__logo" aria-label="Dev Logic Studio home">
+      <div class="nav__logo-wrap">
+      <img src="assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="34" height="34">
+        <defs>
+          <linearGradient id="yg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FFE066"/>
+            <stop offset="0.5" stop-color="#FFD60A"/>
+            <stop offset="1" stop-color="#FFB100"/>
+          </linearGradient>
+        </defs>
+      
+        <rect
+          x="0"
+          y="0"
+          width="160"
+          height="160"
+          rx="28"
+          fill="#0A0A0A"
+          stroke="#222"
+          stroke-width="1"
+        />
+      
+        <rect
+          x="0"
+          y="0"
+          width="160"
+          height="160"
+          rx="28"
+          fill="none"
+          stroke="url(#yg)"
+          stroke-width="2"
+          opacity="0"
+        />
+      
+        <path
+          d="M58 46 L26 80 L58 114"
+          fill="none"
+          stroke="url(#yg)"
+          stroke-width="9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      
+        <path
+          d="M102 46 L134 80 L102 114"
+          fill="none"
+          stroke="url(#yg)"
+          stroke-width="9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      
+        <line
+          x1="86"
+          y1="34"
+          x2="74"
+          y2="126"
+          stroke="url(#yg)"
+          stroke-width="9"
+          stroke-linecap="round"
+        />
+      
+        <circle
+          cx="80"
+          cy="80"
+          r="5.5"
+          fill="#0A0A0A"
+          stroke="url(#yg)"
+          stroke-width="3"
+        />
+      </svg> -->
+      <span class="nav__logo-text">Dev Logic <em>Studio</em>
+        <div class="nav__logo-subtext">DIGITAL SOLUTIONS PROVIDERS</div>
+      </span>
+      </div>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#home" class="nav__link is-active">Home</a>
+      <a href="#services" class="nav__link">Services</a>
+      <a href="#expertise" class="nav__link">Expertise</a>
+      <a href="#process" class="nav__link">Process</a>
+      <a href="#portfolio" class="nav__link">Portfolio</a>
+      <a href="#testimonials" class="nav__link">Testimonials</a>
+      <a href="https://www.upwork.com/freelancers/hamdanzafar" class="nav__link">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--primary btn--sm">
+        <span>Get Free Consultation</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav aria-label="Mobile">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#process">Process</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="https://www.upwork.com/freelancers/hamdanzafar">Contact</a>
+  </nav>
+  <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--primary btn--block">Get Free Consultation</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero__bg" aria-hidden="true">
+    <canvas id="circuitCanvas"></canvas>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container hero__layout">
+
+    <div class="hero__col-main">
+      <p class="kicker" data-aos="fade-up">
+        <span class="kicker__index">01</span>
+        <span class="kicker__line"></span>
+        <span>Web Development &amp; Digital Solutions</span>
+      </p>
+
+      <h1 class="hero__title" data-aos="fade-up" data-aos-delay="80">
+        <span class="reveal-line"><span class="reveal-line__inner">Build Faster.</span></span>
+        <span class="reveal-line"><span class="reveal-line__inner">Grow <em>Smarter.</em></span></span>
+        <span class="reveal-line"><span class="reveal-line__inner">Scale Better.</span></span>
+      </h1>
+
+      <div class="hero__bottom-row" data-aos="fade-up" data-aos-delay="180">
+        <p class="hero__subtitle">
+          At Dev Logic Studio, we create powerful websites, eCommerce platforms, and custom web applications that help businesses establish a strong digital presence and achieve measurable growth.
+        </p>
+
+        <div class="hero__actions">
+          <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--primary btn--lg ripple">
+            <span>Start Your Project</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="btn btn--ghost btn--lg ripple">
+            <span>View Our Services</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero__panel" data-aos="fade-up" data-aos-delay="260">
+      <div class="hero__panel-head">
+        <span class="hero__panel-dot"></span>
+        <span class="hero__panel-dot"></span>
+        <span class="hero__panel-dot"></span>
+        <span class="hero__panel-title">status.devlogic</span>
+      </div>
+      <div class="hero__panel-body">
+        <div class="hero__panel-row">
+          <span class="hero__panel-key">uptime</span>
+          <span class="hero__panel-val hero__panel-val--ok">100%</span>
+        </div>
+        <div class="hero__panel-row">
+          <span class="hero__panel-key">support</span>
+          <span class="hero__panel-val">24/7</span>
+        </div>
+        <div class="hero__panel-divider"></div>
+
+        <div class="hero__stat-list">
+          <div class="hero__stat-row">
+            <span class="hero__stat-num" data-count="200" data-suffix="+">0</span>
+            <span class="hero__stat-label">Projects Completed</span>
+          </div>
+          <div class="hero__stat-row">
+            <span class="hero__stat-num" data-count="40" data-suffix="+">0</span>
+            <span class="hero__stat-label">Happy Clients</span>
+          </div>
+          <div class="hero__stat-row">
+            <span class="hero__stat-num" data-count="8" data-suffix="+">0</span>
+            <span class="hero__stat-label">Years Experience</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="hero__ticker" aria-hidden="true">
+    <div class="ticker__row">
+      <div class="ticker__track ticker__track--left">
+        <span>Web Development<em>✦</em></span><span>UI/UX Design<em>✦</em></span><span>Shopify Stores<em>✦</em></span><span>WordPress<em>✦</em></span><span>E-commerce<em>✦</em></span><span>SEO Optimization<em>✦</em></span><span>React &amp; Vue<em>✦</em></span><span>Custom Applications<em>✦</em></span><span>Branding<em>✦</em></span><span>Maintenance<em>✦</em></span>
+        <span>Web Development<em>✦</em></span><span>UI/UX Design<em>✦</em></span><span>Shopify Stores<em>✦</em></span><span>WordPress<em>✦</em></span><span>E-commerce<em>✦</em></span><span>SEO Optimization<em>✦</em></span><span>React &amp; Vue<em>✦</em></span><span>Custom Applications<em>✦</em></span><span>Branding<em>✦</em></span><span>Maintenance<em>✦</em></span>
+      </div>
+    </div>
+    <div class="ticker__row ticker__row--reverse">
+      <div class="ticker__track ticker__track--right">
+        <span>Performance<em>✦</em></span><span>WooCommerce<em>✦</em></span><span>Figma to Code<em>✦</em></span><span>Plugin Development<em>✦</em></span><span>Migration<em>✦</em></span><span>Speed Optimization<em>✦</em></span><span>Security<em>✦</em></span><span>PSD to HTML<em>✦</em></span><span>Landing Pages<em>✦</em></span><span>API Integration<em>✦</em></span>
+        <span>Performance<em>✦</em></span><span>WooCommerce<em>✦</em></span><span>Figma to Code<em>✦</em></span><span>Plugin Development<em>✦</em></span><span>Migration<em>✦</em></span><span>Speed Optimization<em>✦</em></span><span>Security<em>✦</em></span><span>PSD to HTML<em>✦</em></span><span>Landing Pages<em>✦</em></span><span>API Integration<em>✦</em></span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#technologies" class="hero__scroll" aria-label="Scroll down">
+    <span></span>
+  </a>
+</section>
+
+<section class="owp-section" aria-label="Our Work — Portfolio" id="portfolio">
+
+  <div class="owp-heading-wrap">
+    <span class="owp-eyebrow">Portfolio</span>
+    <h2 class="owp-heading">Our <span class="accent">Work</span></h2>
+    <p class="owp-sub">A curated look at the products and sites we've designed, built, and shipped for clients across industries.</p>
+  </div>
+
+  <div class="owp-rows">
+
+    <div class="owp-track-viewport">
+      <div class="owp-track" id="owpTrack1">
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">humansandland.com</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/humans-and-land.png" alt="Humans and Land website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Humans & Land</div>
+              <div class="owp-card-tag">Ecommerce · Shopify Store</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://humansandland.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">durapaw.ca</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/durapaw.png" alt="DuraPaw website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">DuraPaw</div>
+              <div class="owp-card-tag">Ecommerce · Shopify Store</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://durapaw.ca" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">norani.com</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/norani.png" alt="Norani website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Norani</div>
+              <div class="owp-card-tag">Ecommerce · Shopify Store</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://norani.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">irasshai.co</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/irasshai.png" alt="IraSSHAI website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">iRASSHAi</div>
+              <div class="owp-card-tag">Online · Japanese Grocery Store</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://irasshai.co" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">provinggroundstraining.com</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/provinggroundstraining.png" alt="Proving Grounds Training website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Proving Grounds Training</div>
+              <div class="owp-card-tag">Corporate · Training Platform</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://provinggroundstraining.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="owp-track-viewport">
+      <div class="owp-track reverse" id="owpTrack2">
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">habico.ca</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/habico.png" alt="Habico website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Habico</div>
+              <div class="owp-card-tag">WordPress · Real Estate . Property Listing</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://habico.ca" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">wciottawa.com</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/wciottawa.png" alt="WCI Ottawa website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">WCI Ottawa</div>
+              <div class="owp-card-tag">WordPress · Contractors & Landscaping Professionals</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://wciottawa.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">premiummeatsonline.ca</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/premiummeats.png" alt="Premium Meats Online website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Premium Meats Online</div>
+              <div class="owp-card-tag">Ecommerce · Meat Supplier</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://premiummeatsonline.ca" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">kodainteriors.com</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/kodainteriors.png" alt="Koda Interiors website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Koda Interiors</div>
+              <div class="owp-card-tag">Squarespace . Interior Design Agency</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://kodainteriors.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">hollandrenos.ca</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/hollandrenos.png" alt="Holland Renos website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Holland Renos</div>
+              <div class="owp-card-tag">WordPress · Home Renovation</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://hollandrenos.ca" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">escapeadventures.ca</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/escapeadventures.png" alt="Escape Adventures website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Escape Adventures</div>
+              <div class="owp-card-tag">WordPress · Bike Camps Adventure</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://escapeadventures.ca" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+
+        <div class="owp-card">
+          <div class="owp-card-browser">
+            <span class="owp-dot"></span><span class="owp-dot"></span><span class="owp-dot"></span>
+            <span class="owp-card-url">lauzonmusic.com</span>
+          </div>
+          <div class="owp-card-media">
+            <img src="assets/lauzonmusic.png" alt="Lauzon Music website preview" loading="lazy">
+          </div>
+          <div class="owp-card-body">
+            <div>
+              <div class="owp-card-name">Lauzon Music</div>
+              <div class="owp-card-tag">WordPress · Music Instrument</div>
+            </div>
+            <div class="owp-card-arrow"><a href="https://lauzonmusic.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="owp-controls">
+    <button class="owp-play-toggle" id="owpToggle" aria-pressed="false">
+      <span class="dot"></span>
+      <span id="owpToggleLabel">Pause auto-scroll</span>
+    </button>
+  </div>
+
+</section>
+
+<!-- ============ TRUSTED TECHNOLOGIES ============ -->
+<section class="tech" id="technologies">
+  <div class="container">
+
+    <div class="tech-top" data-aos="fade-up">
+      <div class="tech-top__left">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>Our Stack</p>
+        <h2 class="section-title">Built on technology<br>you can trust</h2>
+      </div>
+      <p class="tech-top__desc">We choose the right tool for every job — no vendor lock-in, no one-size-fits-all approach. Here's what powers our builds.</p>
+    </div>
+
+    <div class="tech-bento" data-aos="fade-up" data-aos-delay="100">
+
+      <!-- CMS Platforms — large card -->
+      <div class="tech-bento__card tech-bento__card--cms">
+        <div class="tech-bento__label">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 9h16M4 13h10M4 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          CMS Platforms
+        </div>
+        <div class="tech-bento__items">
+          <div class="tb-item"><span class="tb-item__icon">📝</span><span>WordPress</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🛍️</span><span>Shopify</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🛒</span><span>WooCommerce</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🟠</span><span>Joomla</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🟣</span><span>Magento</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🌐</span><span>Wix</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🌐</span><span>Drupal</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🌐</span><span>Total CMS</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🌐</span><span>JuiceBox</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🌐</span><span>Squarespace</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🌐</span><span>Strapi</span></div>
+        </div>
+        <span class="tech-bento__bg-num">01</span>
+      </div>
+
+      <div class="tech-bento__card tech-bento__card--fw">
+        <div class="tech-bento__label">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-5 3 5 3M16 9l5 3-5 3M13 5l-2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          JS Frameworks
+        </div>
+        <div class="tech-bento__items">
+          <div class="tb-item"><span class="tb-item__icon">⚛️</span><span>React</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🟢</span><span>Vue.js</span></div>
+          <div class="tb-item"><span class="tb-item__icon">▲</span><span>Nuxt.js</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🟢</span><span>Express.js</span></div>
+          <div class="tb-item"><span class="tb-item__icon">💛</span><span>JavaScript</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🧱</span><span>HTML5</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🎨</span><span>CSS3</span></div>
+        </div>
+        <span class="tech-bento__bg-num">02</span>
+      </div>
+
+      <div class="tech-bento__card tech-bento__card--db">
+        <div class="tech-bento__label">
+          <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke="currentColor" stroke-width="1.6"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" stroke="currentColor" stroke-width="1.6"/></svg>
+          Backend &amp; Databases
+        </div>
+        <div class="tech-bento__items">
+          <div class="tb-item"><span class="tb-item__icon">🐘</span><span>PHP</span></div>
+          <div class="tb-item"><span class="tb-item__icon">⚙️</span><span>Node.js</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🐍</span><span>Python</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🗄️</span><span>MySQL</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🍃</span><span>MongoDB</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🔗</span><span>REST APIs</span></div>
+          <div class="tb-item"><span class="tb-item__icon">🔐</span><span>Security</span></div>
+        </div>
+        <span class="tech-bento__bg-num">03</span>
+      </div>
+
+      <div class="tech-bento__card tech-bento__card--stat">
+        <span class="tech-bento__stat-num">12+</span>
+        <span class="tech-bento__stat-label">Technologies mastered across every project we ship</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>What We Do</p>
+      <h2 class="section-title">Services engineered for growth</h2>
+      <p class="section-sub">From the first wireframe to ongoing support, we cover every layer of your digital presence.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-card__media">
+          <img src="assets/web-development-v2.jpg" alt="Developer writing code on a laptop" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 9 4-18 3 9h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Web Development</h3>
+        <p>Custom-built, high-performance websites tailored to your business goals.</p>
+        <ul class="service-card__list">
+          <li>CMS Development</li><li>WordPress &amp; Joomla</li><li>Magento &amp; Drupal</li>
+          <li>Wix Development</li><li>React &amp; Vue Development</li><li>Custom Websites</li>
+        </ul>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="service-card__media">
+          <img src="assets/ecomerce-store.jpg" alt="Online shopping and e-commerce checkout experience" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 6l1.5 12a2 2 0 002 2h11a2 2 0 002-2L21 6M8 10v6M16 10v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>E-commerce Solutions</h3>
+        <p>Conversion-focused online stores that turn visitors into customers.</p>
+        <ul class="service-card__list">
+          <li>Shopify Development</li><li>WooCommerce</li><li>Magento Stores</li>
+          <li>Product Management</li><li>Store Optimization</li><li>SEO Optimization</li>
+        </ul>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="service-card__media">
+          <img src="assets/design-services.jpg" alt="UI/UX designer sketching wireframes and branding concepts" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="13.5" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M16 9.5l-9.5 9.5M3 21l4-1 9-9-3-3-9 9-1 4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Design Services</h3>
+        <p>Distinct visual identities and interfaces people actually enjoy using.</p>
+        <ul class="service-card__list">
+          <li>UI/UX Design</li><li>Logo Design</li><li>Branding</li>
+          <li>Mobile App Design</li><li>Graphic Design</li><li>Email Templates</li>
+        </ul>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="service-card__media">
+          <img src="assets/maitainence.jpg" alt="Server room representing website hosting and maintenance" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Website Maintenance</h3>
+        <p>Keeping your site fast, secure, and online — every single day.</p>
+        <ul class="service-card__list">
+          <li>Website Migration</li><li>Bug Fixing</li><li>Malware Removal</li>
+          <li>Hosting Management</li><li>Performance Optimization</li><li>Security Monitoring</li>
+        </ul>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-card__media">
+          <img src="assets/wordpress.jpg" alt="Developer customizing a WordPress site theme" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7a5 5 0 010 10M12 7a5 5 0 000 10" stroke="currentColor" stroke-width="1.7"/></svg>
+        </div>
+        <h3>WordPress Expertise</h3>
+        <p>Deep WordPress know-how — from theming to enterprise-grade speed.</p>
+        <ul class="service-card__list">
+          <li>Custom Themes</li><li>Plugin Development</li><li>WooCommerce Integration</li>
+          <li>Speed Optimization</li><li>SEO Improvements</li><li>Site Consultation</li>
+        </ul>
+      </article>
+
+      <article class="service-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="service-card__media">
+          <img src="assets/shopify-dev.jpg" alt="Shopping bags representing a Shopify storefront build" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 2l1 4h10l1-4M4 8h16l-1.5 11a2 2 0 01-2 1.8H7.5a2 2 0 01-2-1.8L4 8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Shopify Expertise</h3>
+        <p>Storefronts built to sell, styled to match your brand precisely.</p>
+        <ul class="service-card__list">
+          <li>Custom Themes</li><li>Shopify Redesign</li><li>Product Listings</li>
+          <li>Custom Sections</li><li>Optimization</li><li>Consultation</li>
+        </ul>
+      </article>
+
+      <article class="service-card service-card--wide" data-aos="fade-up" data-aos-delay="160">
+        <div class="service-card__media">
+          <img src="assets/custom-development.jpg" alt="Close-up of custom application code on screen" loading="lazy">
+        </div>
+        <div class="service-card__glow"></div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-5 3 5 3M16 9l5 3-5 3M13 5l-2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Custom Development</h3>
+        <p>When off-the-shelf isn't enough, we build it from scratch.</p>
+        <ul class="service-card__list service-card__list--wide">
+          <li>HTML5 / CSS3</li><li>JavaScript</li><li>React</li><li>PHP</li>
+          <li>PSD to HTML</li><li>Figma to HTML</li><li>Custom Applications</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="why" id="expertise">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <p class="eyebrow eyebrow--center"><span class="eyebrow__dot"></span>Why Dev Logic Studio</p>
+      <h2 class="section-title">Reasons businesses keep coming back</h2>
+      <p class="section-sub">We don't just ship code — we build long-term technical partnerships.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="0">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 8a3 3 0 110 6M21.5 20c0-2.8-2-5-4.5-5.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Experienced Team</h3>
+        <p>Senior engineers and designers with 8+ years building production software.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="60">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Custom Solutions</h3>
+        <p>No cookie-cutter templates — every build is engineered around your goals.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="120">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Fast Delivery</h3>
+        <p>Streamlined workflows and clear milestones keep your launch on schedule.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="180">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>SEO Optimized</h3>
+        <p>Built with clean markup and performance baked in from day one.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="0">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M11 18h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Mobile Responsive</h3>
+        <p>Pixel-perfect experiences across phones, tablets, and desktops.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="60">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3 8.5-7 11-4-2.5-7-6-7-11V5l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Secure Development</h3>
+        <p>Security-first practices to protect your data and your customers'.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="120">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Ongoing Support</h3>
+        <p>We stay on after launch — monitoring, patching, and improving.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="180">
+        <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 12h16M4 19h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Transparent Communication</h3>
+        <p>Clear timelines, honest pricing, and no surprises along the way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker kicker--center"><span class="kicker__index">05</span><span class="kicker__line"></span><span>How We Work</span></p>
+      <h2 class="section-title">A process built for clarity</h2>
+      <p class="section-sub">Six structured steps take every project from idea to long-term growth.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__line" aria-hidden="true"><span class="timeline__line-fill" id="timelineFill"></span></div>
+
+      <div class="timeline__item" data-aos="fade-up" data-aos-delay="0">
+        <div class="timeline__node">01</div>
+        <h3>Discovery &amp; Planning</h3>
+        <p>We learn your business, audience, and goals to define the right scope.</p>
+      </div>
+      <div class="timeline__item" data-aos="fade-up" data-aos-delay="80">
+        <div class="timeline__node">02</div>
+        <h3>Design &amp; Wireframing</h3>
+        <p>Wireframes and visual concepts map the experience before code begins.</p>
+      </div>
+      <div class="timeline__item" data-aos="fade-up" data-aos-delay="160">
+        <div class="timeline__node">03</div>
+        <h3>Development</h3>
+        <p>Clean, scalable code brings the approved design to life.</p>
+      </div>
+      <div class="timeline__item" data-aos="fade-up" data-aos-delay="240">
+        <div class="timeline__node">04</div>
+        <h3>Testing &amp; Optimization</h3>
+        <p>Cross-browser, performance, and security testing before anything ships.</p>
+      </div>
+      <div class="timeline__item" data-aos="fade-up" data-aos-delay="320">
+        <div class="timeline__node">05</div>
+        <h3>Launch</h3>
+        <p>A controlled go-live with monitoring in place from minute one.</p>
+      </div>
+      <div class="timeline__item" data-aos="fade-up" data-aos-delay="400">
+        <div class="timeline__node">06</div>
+        <h3>Support &amp; Growth</h3>
+        <p>Ongoing maintenance and iteration to keep growing after launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<!-- <section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker kicker--center"><span class="kicker__index">06</span><span class="kicker__line"></span><span>Selected Work</span></p>
+      <h2 class="section-title">Projects that speak for themselves</h2>
+      <p class="section-sub">A glimpse at the kind of builds we ship for our clients.</p>
+    </div>
+
+    <div class="portfolio__filters" data-aos="fade-up" data-aos-delay="80">
+      <button class="filter-btn is-active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="corporate">Corporate</button>
+      <button class="filter-btn" data-filter="saas">SaaS</button>
+      <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+      <button class="filter-btn" data-filter="wordpress">WordPress</button>
+      <button class="filter-btn" data-filter="realestate">Real Estate</button>
+      <button class="filter-btn" data-filter="restaurant">Restaurant</button>
+    </div>
+
+    <div class="portfolio__grid" id="portfolioGrid">
+
+      <article class="port-card" data-cat="corporate" data-aos="fade-up" data-aos-delay="0"
+        data-title="Corporate Website" data-desc="A polished corporate presence with a custom CMS, multi-language support, and a streamlined investor relations hub." data-tags="React,Node.js,CMS,SEO">
+        <div class="port-card__media port-card__media--1">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80" alt="Modern corporate office workspace representing the corporate website project" loading="lazy">
+        </div>
+        <div class="port-card__body">
+          <span class="port-card__tag">Corporate</span>
+          <h3>Corporate Website</h3>
+          <p>Custom CMS with multi-language support</p>
+        </div>
+      </article>
+
+      <article class="port-card" data-cat="saas" data-aos="fade-up" data-aos-delay="80"
+        data-title="SaaS Dashboard" data-desc="A real-time analytics dashboard with role-based access, live data visualizations, and a component library built for scale." data-tags="React,TypeScript,Charts,API">
+        <div class="port-card__media port-card__media--2">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Analytics dashboard interface representing the SaaS dashboard project" loading="lazy">
+        </div>
+        <div class="port-card__body">
+          <span class="port-card__tag">SaaS</span>
+          <h3>SaaS Dashboard</h3>
+          <p>Real-time analytics &amp; role-based access</p>
+        </div>
+      </article>
+
+      <article class="port-card" data-cat="ecommerce" data-aos="fade-up" data-aos-delay="160"
+        data-title="Shopify Store" data-desc="A high-converting Shopify storefront with custom sections, an optimized checkout, and a 38% lift in conversion rate." data-tags="Shopify,Liquid,CRO,Payments">
+        <div class="port-card__media port-card__media--3">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop&q=80" alt="Online shopping product flat lay representing the Shopify store project" loading="lazy">
+        </div>
+        <div class="port-card__body">
+          <span class="port-card__tag">E-commerce</span>
+          <h3>Shopify Store</h3>
+          <p>Custom sections &amp; optimized checkout</p>
+        </div>
+      </article>
+
+      <article class="port-card" data-cat="wordpress" data-aos="fade-up" data-aos-delay="0"
+        data-title="WordPress Website" data-desc="A custom WordPress theme with a tailored block editor experience, full SEO setup, and sub-second load times." data-tags="WordPress,PHP,SEO,WooCommerce">
+        <div class="port-card__media port-card__media--4">
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&h=600&fit=crop&q=80" alt="Person editing a website on a laptop representing the WordPress website project" loading="lazy">
+        </div>
+        <div class="port-card__body">
+          <span class="port-card__tag">WordPress</span>
+          <h3>WordPress Website</h3>
+          <p>Custom theme &amp; sub-second load times</p>
+        </div>
+      </article>
+
+      <article class="port-card" data-cat="realestate" data-aos="fade-up" data-aos-delay="80"
+        data-title="Real Estate Platform" data-desc="A listings platform with map-based search, saved searches, and an agent dashboard for managing inventory." data-tags="Vue.js,MongoDB,Maps API,Auth">
+        <div class="port-card__media port-card__media--5">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&q=80" alt="Modern house exterior representing the real estate platform project" loading="lazy">
+        </div>
+        <div class="port-card__body">
+          <span class="port-card__tag">Real Estate</span>
+          <h3>Real Estate Platform</h3>
+          <p>Map search &amp; agent dashboard</p>
+        </div>
+      </article>
+
+      <article class="port-card" data-cat="restaurant" data-aos="fade-up" data-aos-delay="160"
+        data-title="Restaurant Website" data-desc="An appetite-driving restaurant site with online ordering, table reservations, and a mobile-first menu." data-tags="React,Stripe,Reservations,SEO">
+        <div class="port-card__media port-card__media--6">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop&q=80" alt="Restaurant table setting representing the restaurant website project" loading="lazy">
+        </div>
+        <div class="port-card__body">
+          <span class="port-card__tag">Restaurant</span>
+          <h3>Restaurant Website</h3>
+          <p>Online ordering &amp; table reservations</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section> -->
+
+<!-- ============ PORTFOLIO MODAL ============ -->
+<!-- <div class="modal" id="portfolioModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" data-close aria-label="Close preview">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal__media" id="modalMedia"></div>
+    <div class="modal__body">
+      <span class="modal__tag" id="modalTag"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <div class="modal__tags" id="modalTags"></div>
+      <a href="#contact" class="btn btn--primary" data-close>Start a Similar Project</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- ============ ANIMATED STATS ============ -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-band__grid">
+      <div class="stats-band__item" data-aos="fade-up" data-aos-delay="0">
+        <span class="stats-band__num" data-count="200" data-suffix="+">0</span>
+        <span class="stats-band__label">Projects</span>
+      </div>
+      <div class="stats-band__item" data-aos="fade-up" data-aos-delay="80">
+        <span class="stats-band__num" data-count="40" data-suffix="+">0</span>
+        <span class="stats-band__label">Clients</span>
+      </div>
+      <div class="stats-band__item" data-aos="fade-up" data-aos-delay="160">
+        <span class="stats-band__num" data-count="100" data-suffix="%">0</span>
+        <span class="stats-band__label">Client Satisfaction</span>
+      </div>
+      <div class="stats-band__item" data-aos="fade-up" data-aos-delay="240">
+        <span class="stats-band__num" data-static="24/7">0</span>
+        <span class="stats-band__label">Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<!-- <section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker kicker--center"><span class="kicker__index">07</span><span class="kicker__line"></span><span>Client Stories</span></p>
+      <h2 class="section-title">Trusted by teams who ship</h2>
+    </div>
+
+    <div class="testi-slider" data-aos="fade-up" data-aos-delay="100" id="testiSlider">
+
+      <div class="testi-slider__hint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Drag to explore</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div class="testi-slider__viewport">
+        <div class="testi-slider__track" id="testiTrack">
+          <article class="testi-card">
+            <div class="testi-card__stars">★★★★★</div>
+            <p class="testi-card__quote">Dev Logic Studio rebuilt our entire platform in under eight weeks. Page speed doubled and our support tickets about the website dropped to almost nothing.</p>
+            <div class="testi-card__person">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&q=80" alt="Portrait of Marcus Reid" loading="lazy">
+              <div>
+                <strong>Marcus Reid</strong>
+                <span>Founder, Northstar Logistics</span>
+              </div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-card__stars">★★★★★</div>
+            <p class="testi-card__quote">Our Shopify conversion rate jumped 34% after their redesign. The team communicated clearly at every milestone and delivered exactly on schedule.</p>
+            <div class="testi-card__person">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80" alt="Portrait of Elena Castillo" loading="lazy">
+              <div>
+                <strong>Elena Castillo</strong>
+                <span>Co-Founder, Bloom &amp; Co.</span>
+              </div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-card__stars">★★★★★</div>
+            <p class="testi-card__quote">They migrated our legacy WordPress site without a single hour of downtime, then kept optimizing it for months afterward. Genuinely reliable partners.</p>
+            <div class="testi-card__person">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80" alt="Portrait of Daniel Okafor" loading="lazy">
+              <div>
+                <strong>Daniel Okafor</strong>
+                <span>CTO, Meridian Health Group</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="testi-slider__nav">
+        <button class="testi-arrow testi-arrow--prev" id="testiPrev" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="testi-slider__dots" id="testiDots"></div>
+        <button class="testi-arrow testi-arrow--next" id="testiNext" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+
+<section class="owt3-section testimonials" aria-label="Client Testimonials" id="testimonials">
+
+  <div class="owt3-ambient" id="owt3Ambient"></div>
+
+  <div class="section-head" data-aos="fade-up">
+    <p class="kicker kicker--center"><span class="kicker__index">07</span><span class="kicker__line"></span><span>Client Stories</span></p>
+    <h2 class="section-title">Trusted by teams who ship</h2>
+  </div>
+
+
+  <div class="owt3-stage">
+    <button class="owt3-nav owt3-nav-prev" id="owt3Prev" aria-label="Previous testimonial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <div class="owt3-coverflow" id="owt3Coverflow">
+
+      <div class="owt3-slide" data-index="0" data-tint="232,185,35">
+        <span class="owt3-quote-mark">&ldquo;</span>
+        <div class="owt3-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+        </div>
+        <p class="owt3-quote">I have hired Hamdan for several important jobs, and he has always done a stellar job. He is truly a top-tier developer and makes my life a lot easier when building out websites for clients. I would recommend him to anyone looking for a talented web developer.</p>
+        <div class="owt3-divider"></div>
+        <div class="owt3-person">
+          <div class="owt3-avatar">DS</div>
+          <div>
+            <div class="owt3-person-name">Dylan S.</div>
+            <div class="owt3-person-role">CEO of Westernmerch</div>
+          </div>
+        </div>
+        <!-- <span class="owt3-slide-index">01</span> -->
+      </div>
+
+      <div class="owt3-slide" data-index="1" data-tint="120,180,110">
+        <span class="owt3-quote-mark">&ldquo;</span>
+        <div class="owt3-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+        </div>
+        <p class="owt3-quote">Well-spoken, thoughtful, and an excellent communicator. Very professional. Highly recommend!</p>
+        <div class="owt3-divider"></div>
+        <div class="owt3-person">
+          <div class="owt3-avatar">DN</div>
+          <div>
+            <div class="owt3-person-name">David Novick</div>
+            <div class="owt3-person-role">CEO, More Repeats</div>
+          </div>
+        </div>
+        <!-- <span class="owt3-slide-index">02</span> -->
+      </div>
+
+      <div class="owt3-slide" data-index="2" data-tint="90,150,200">
+        <span class="owt3-quote-mark">&ldquo;</span>
+        <div class="owt3-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+        </div>
+        <p class="owt3-quote">Hamdan is definitely driven to complete the task. He provided me with exactly what I wanted. Will use him in the future again. Thanks Hamdan. Appreciate your good work!</p>
+        <div class="owt3-divider"></div>
+        <div class="owt3-person">
+          <div class="owt3-avatar">BM</div>
+          <div>
+            <div class="owt3-person-name">Briers M</div>
+            <div class="owt3-person-role">COO, Khaki & Co</div>
+          </div>
+        </div>
+        <!-- <span class="owt3-slide-index">03</span> -->
+      </div>
+
+      <div class="owt3-slide" data-index="3" data-tint="200,140,90">
+        <span class="owt3-quote-mark">&ldquo;</span>
+        <div class="owt3-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+        </div>
+        <p class="owt3-quote">Our portfolio site finally looks like the work it&rsquo;s supposed to represent. Client inquiries doubled the month it launched.</p>
+        <div class="owt3-divider"></div>
+        <div class="owt3-person">
+          <div class="owt3-avatar">JT</div>
+          <div>
+            <div class="owt3-person-name">James Torres</div>
+            <div class="owt3-person-role">Principal, Forge &amp; Frame</div>
+          </div>
+        </div>
+        <!-- <span class="owt3-slide-index">04</span> -->
+      </div>
+
+      <div class="owt3-slide" data-index="4" data-tint="160,110,200">
+        <span class="owt3-quote-mark">&ldquo;</span>
+        <div class="owt3-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+        </div>
+        <p class="owt3-quote">Sharp, fast, and honest about tradeoffs. They told us when an idea of ours wasn't worth building, which saved us months.</p>
+        <div class="owt3-divider"></div>
+        <div class="owt3-person">
+          <div class="owt3-avatar">AL</div>
+          <div>
+            <div class="owt3-person-name">Anna Lindqvist</div>
+            <div class="owt3-person-role">Head of Product, Pulse Analytics</div>
+          </div>
+        </div>
+        <!-- <span class="owt3-slide-index">05</span> -->
+      </div>
+
+      <div class="owt3-slide" data-index="5" data-tint="200,90,110">
+        <span class="owt3-quote-mark">&ldquo;</span>
+        <div class="owt3-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 6.3 6.4.5-5 4.4 1.6 6.3L10 15l-5.6 3.5L6 12.2 1 7.8l6.4-.5z"/></svg>
+        </div>
+        <p class="owt3-quote">From kickoff to launch they communicated like a team that actually cared about the outcome, not just the invoice.</p>
+        <div class="owt3-divider"></div>
+        <div class="owt3-person">
+          <div class="owt3-avatar">MC</div>
+          <div>
+            <div class="owt3-person-name">Marcus Chen</div>
+            <div class="owt3-person-role">Managing Partner, Meridian Law</div>
+          </div>
+        </div>
+        <!-- <span class="owt3-slide-index">06</span> -->
+      </div>
+
+    </div>
+
+    <button class="owt3-nav owt3-nav-next" id="owt3Next" aria-label="Next testimonial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="owt3-info">
+    <div class="owt3-counter"><b id="owt3CounterCurrent">01</b> / <span id="owt3CounterTotal">06</span></div>
+    <div class="owt3-progress-track"><div class="owt3-progress-fill" id="owt3ProgressFill"></div></div>
+    <div class="owt3-dots" id="owt3Dots"><!-- dot buttons injected to match slide count --></div>
+  </div>
+
+</section>
+
+<!-- ============ FAQ ============ -->
+<!-- <section class="faq" id="faq">
+  <div class="container container--narrow">
+    <div class="section-head" data-aos="fade-up">
+      <p class="kicker kicker--center"><span class="kicker__index">08</span><span class="kicker__line"></span><span>Good to Know</span></p>
+      <h2 class="section-title">Frequently asked questions</h2>
+    </div>
+
+    <div class="accordion" data-aos="fade-up" data-aos-delay="100">
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>How long does a website take?</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>Most marketing websites take 3–5 weeks from kickoff to launch. Larger eCommerce stores or custom web applications typically run 6–12 weeks depending on scope, integrations, and content readiness.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>Do you provide maintenance?</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>Yes. We offer ongoing maintenance plans that cover security monitoring, performance tuning, backups, plugin and core updates, and priority bug fixing — so your site stays healthy long after launch.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>Can you redesign existing websites?</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>Absolutely. We regularly modernize outdated sites — improving design, speed, and SEO — while preserving the content and rankings you've already built, with zero-downtime migrations.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>Do you build Shopify stores?</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>Yes — from custom theme development and redesigns to product catalog setup and checkout optimization, Shopify is one of our core specialties.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>What technologies do you use?</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion__panel">
+          <p>Depending on the project, we work with WordPress, Shopify, WooCommerce, React, Vue.js, Nuxt.js, PHP, MySQL, MongoDB, JavaScript, HTML5, and CSS3 — choosing whichever stack best fits your goals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+
+      <div class="contact__info" data-aos="fade-up">
+        <p class="kicker"><span class="kicker__index">09</span><span class="kicker__line"></span><span>Let's Talk</span></p>
+        <h2 class="section-title">Start your project today</h2>
+        <p class="section-sub section-sub--left">Tell us a little about what you're building and we'll get back to you within one business day with next steps.</p>
+
+        <ul class="contact__details">
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 5l8 7 8-7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <div><strong>Email us</strong><span>hello@devlogicstudio.com</span></div>
+          </li>
+          <!-- <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 013.2 4.2 2 2 0 015.2 2h2a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+            <div><strong>Call us</strong><span>+1 (415) 555-0192</span></div>
+          </li> -->
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div><strong>Support</strong><span>Available 24/7</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact__actions">
+            <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--primary btn--sm">
+              <span>Get Free Consultation</span>
+            </a>
+          </div>
+      </div>
+      <!-- <form class="contact__form" id="contactForm" data-aos="fade-up" data-aos-delay="100" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required>
+            <span class="field__error" id="err-name"></span>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required>
+            <span class="field__error" id="err-email"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-phone">Phone</label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+            <span class="field__error" id="err-phone"></span>
+          </div>
+          <div class="field">
+            <label for="cf-company">Company</label>
+            <input type="text" id="cf-company" name="company" autocomplete="organization">
+            <span class="field__error" id="err-company"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-service">Service Required</label>
+          <select id="cf-service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>Web Development</option>
+            <option>E-commerce Solutions</option>
+            <option>Design Services</option>
+            <option>Website Maintenance</option>
+            <option>WordPress Expertise</option>
+            <option>Shopify Expertise</option>
+            <option>Custom Development</option>
+          </select>
+          <span class="field__error" id="err-service"></span>
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" required></textarea>
+          <span class="field__error" id="err-message"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block ripple" id="submitBtn">
+          <span class="btn__label">Send Message</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+
+        <div class="form-success" id="formSuccess" role="status">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Thanks! Your message has been sent — we'll be in touch within one business day.</span>
+        </div>
+      </form> -->
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="#home" class="nav__logo">
+          <!-- <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="32" height="32" rx="9" stroke="url(#g2)" stroke-width="1.6"/>
+            <path d="M11 12L7 17L11 22" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M23 12L27 17L23 22" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 9L15 25" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFD60A"/><stop offset="0.5" stop-color="#FFB100"/><stop offset="1" stop-color="#FFE066"/>
+              </linearGradient>
+            </defs>
+          </svg> -->
+          <img src="assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+          <span class="nav__logo-text">Dev Logic <em>Studio</em>
+          <div class="nav__logo-subtext">DIGITAL SOLUTIONS PROVIDERS</div>
+        </span>
+        </a>
+        <p>We design and build websites, eCommerce platforms, and custom web applications that help businesses run smoothly and grow with confidence — around the clock.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Dev Logic Studio on X"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3l18 18M21 3L3 21" stroke="currentColor" stroke-width="0" /><path d="M4 4l8.5 11.2L4.6 20H6l7-7.9L18 20h4l-8.9-11.7L20.4 4H19l-6.4 7.2L7 4H4z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Dev Logic Studio on LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 10v6.5M7.5 7.4v.1M11.5 16.5V10M11.5 12.6c0-1.5 1-2.6 2.4-2.6 1.5 0 2.6 1 2.6 2.7v3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="Dev Logic Studio on GitHub"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .6 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.4.3.7.9.7 1.9v2.7c0 .3.2.6.7.5A10 10 0 0012 2z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Dev Logic Studio on Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="#services">Web Development</a>
+        <a href="#services">E-commerce Solutions</a>
+        <a href="#services">Design Services</a>
+        <a href="#services">Website Maintenance</a>
+        <a href="#services">Custom Development</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#expertise">Why Us</a>
+        <a href="#process">Our Process</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Get in Touch</h4>
+        <a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a>
+        <!-- <a href="tel:+14155550192">+1 (415) 555-0192</a> -->
+        <a href="#contact">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> Dev Logic Studio. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
