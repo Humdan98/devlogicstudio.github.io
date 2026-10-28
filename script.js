@@ -8,16 +8,107 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* -------------------------------------------------
-     LOADER
+     PAGE LOADER
+     Stays up until what the visitor first sees is genuinely ready:
+     HTML parsed, fonts loaded and every image in the first screen
+     downloaded and decoded. Shows real progress, then slides away.
+     First page of a visit gets the full intro; later pages a
+     quick one. A 7s cap (plus a CSS failsafe) means nobody is
+     ever stuck on it.
   ------------------------------------------------- */
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    setTimeout(() => {
-      loader.classList.add('is-hidden');
-      document.body.classList.add('loaded');
-      revealHero();
-    }, 500);
-  });
+  const loader = document.getElementById('loader');
+  const pageReadyCallbacks = [];
+  let pageIsReady = false;
+
+  function firePageReady(){
+    if (pageIsReady) return;
+    pageIsReady = true;
+    document.documentElement.classList.remove('is-loading');
+    document.body.classList.add('loaded');
+    revealHero();
+    pageReadyCallbacks.forEach(fn => { try { fn(); } catch(e){} });
+    window.dispatchEvent(new Event('dls:ready'));
+  }
+  window.onPageReady = (fn) => { pageIsReady ? fn() : pageReadyCallbacks.push(fn); };
+
+  if (loader && loader.hasAttribute('data-loader')){
+    const root = document.documentElement;
+    root.classList.add('is-loading');
+    const bar = document.getElementById('loaderBar');
+    const started = performance.now();
+
+    let firstVisit = true;
+    try { firstVisit = !sessionStorage.getItem('dls-intro'); sessionStorage.setItem('dls-intro', '1'); } catch(e){}
+    const MIN_TIME = reducedMotion ? 0 : (firstVisit ? 2550 : 600); // first visit: let the icon → logo intro play
+    const MAX_TIME = 7000;
+
+    // what we wait for
+    const tasks = [];
+    const track = (p) => { tasks.push(p.then(() => tick(), () => tick())); };
+    let done = 0, total = 0;
+    function tick(){ done++; }
+
+    // 1) web fonts (so text doesn't jump once revealed)
+    if (document.fonts && document.fonts.ready){ total++; track(document.fonts.ready); }
+    // 2) every image visible in the first screen, decoded so it appears instantly.
+    //    Images further down keep loading quietly after the reveal.
+    const fold = window.innerHeight * 1.1;
+    document.querySelectorAll('img').forEach(img => {
+      if (loader.contains(img)) return;
+      const r = img.getBoundingClientRect();
+      if (r.bottom <= 0 || r.top >= fold || (!r.width && !r.height && !img.closest('.hero, .svc-hero'))) return;
+      if (img.loading === 'lazy') img.loading = 'eager'; // it's on screen: fetch it now
+      total++;
+      track(new Promise(res => {
+        const dec = () => (img.decode ? img.decode() : Promise.resolve()).then(res, res);
+        if (img.complete && img.naturalWidth) { dec(); return; }
+        img.addEventListener('load', dec, { once:true });
+        img.addEventListener('error', res, { once:true });
+      }));
+    });
+    // nothing visual to wait for: still respect the minimum display time
+    if (!total){ total++; track(Promise.resolve()); }
+
+    // smooth, honest progress: follows real progress, creeps slowly
+    // while waiting, and only hits 100 when everything is done
+    let shown = 0, finished = false;
+    function render(){
+      const real = total ? done / total : 1;
+      const elapsed = performance.now() - started;
+      const timeShare = Math.min(1, elapsed / Math.max(MIN_TIME, 1));
+      let target = finished ? 100 : Math.min(96, Math.max(real * 100 * Math.min(1, timeShare + .25), timeShare * 30));
+      shown += (target - shown) * (finished ? 0.3 : 0.12);
+      if (finished && shown > 99.4) shown = 100;
+      const v = Math.round(shown);
+      loader.style.setProperty('--p', v);
+      if (v < 100) requestAnimationFrame(render); else complete();
+    }
+    requestAnimationFrame(render);
+
+    const allLoaded = Promise.all(tasks);
+    const minWait = new Promise(r => setTimeout(r, MIN_TIME));
+    const cap = new Promise(r => setTimeout(r, MAX_TIME));
+    Promise.race([Promise.all([allLoaded, minWait]), cap]).then(() => { finished = true; });
+
+    let completed = false;
+    function complete(){
+      if (completed) return; completed = true;
+      loader.classList.add('is-complete');
+      setTimeout(() => {
+        loader.classList.add('is-leaving');
+        firePageReady();
+        setTimeout(() => loader.classList.add('is-hidden'), 900);
+      }, reducedMotion ? 100 : 250);
+    }
+  } else {
+    // older loader markup (or none): keep the simple behaviour
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (loader) loader.classList.add('is-hidden');
+        firePageReady();
+      }, 500);
+    });
+  }
 
   function revealHero(){
     document.querySelectorAll('.reveal-line__inner').forEach((el, i) => {
@@ -26,64 +117,114 @@
   }
 
   /* -------------------------------------------------
-     CUSTOM CURSOR — circle bubble follower
+     CUSTOM CURSOR — inverting "liquid" disc
+     A yellow disc with mix-blend-mode:difference (inverts what it
+     passes over), GPU-driven, stretches slightly in the direction of
+     travel, springs smaller over links/clicks and turns into a
+     solid "View / Visit / Drag" badge over projects and sliders.
   ------------------------------------------------- */
   const cursorDot = document.getElementById('cursorDot');
   const cursorRing = document.getElementById('cursorRing');
   const isFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const calmCursor = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (isFinePointer && cursorDot && cursorRing){
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let dotX = mouseX, dotY = mouseY;
-    let ringX = mouseX, ringY = mouseY;
+  if (isFinePointer && cursorRing){
+    const root = document.documentElement;
+    root.classList.add('has-custom-cursor');
+    if (cursorDot) cursorDot.style.display = 'none';
+
+    // outer element = position + blend; inner body = shape/scale
+    let body = cursorRing.querySelector('.cursor-ring__body');
+    if (!body){
+      body = document.createElement('span');
+      body.className = 'cursor-ring__body';
+      body.innerHTML = '<span class="cursor-ring__label"></span>';
+      cursorRing.appendChild(body);
+    }
+    const label = body.querySelector('.cursor-ring__label');
+
+    const LINK = 'a, button, summary, select, label[for], [role="button"], .service-card, .why-card, .tech-card';
+    const TEXT = 'input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]), textarea, [contenteditable="true"]';
+    const VIEW = '.frame, .work-card, .hub-card, .owp-card, .port-card, [data-cursor="view"]';
+    const DRAG = '.testi-slider__viewport, [data-cursor="drag"]';
+
+    let mx = -200, my = -200, x = -200, y = -200, px = -200, py = -200;
+    let s = 1, targetS = 1, stretch = 0, angle = 0, seen = false, down = false, labelled = false;
+    let last = performance.now();
 
     window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+      mx = e.clientX; my = e.clientY;
+      if (!seen){ seen = true; x = px = mx; y = py = my; root.classList.add('cursor-visible'); }
+    }, { passive:true });
 
-    function loop(){
-      // dot tracks fast, ring trails with easing for a "bubble" feel
-      dotX += (mouseX - dotX) * 0.35;
-      dotY += (mouseY - dotY) * 0.35;
-      ringX += (mouseX - ringX) * 0.14;
-      ringY += (mouseY - ringY) * 0.14;
+    (function loop(now){
+      const dt = Math.max(1, Math.min(64, now - last)); last = now;
+      const f = dt / 16.67;
+      // position: quick but silky follow
+      const k = calmCursor ? 1 : 1 - Math.pow(0.6, f);
+      x += (mx - x) * k; y += (my - y) * k;
 
-      cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%,-50%)`;
-      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
+      // velocity → stretch along the direction of travel
+      const vx = (x - px) / f, vy = (y - py) / f; px = x; py = y;
+      const speed = Math.hypot(vx, vy);
+      const targetStretch = (calmCursor || labelled) ? 0 : Math.min(speed / 60, 0.32);
+      stretch += (targetStretch - stretch) * (1 - Math.pow(0.75, f));
+      if (speed > 0.6) angle = Math.atan2(vy, vx);
+
+      // springy size for hover / press
+      const want = targetS * (down ? 0.55 : 1);
+      s += (want - s) * (1 - Math.pow(0.78, f));
+
+      cursorRing.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      body.style.transform =
+        `translate(-50%, -50%) rotate(${angle}rad) scale(${(s * (1 + stretch)).toFixed(3)}, ${(s * (1 - stretch * 0.45)).toFixed(3)})`;
+      label.style.transform = `rotate(${-angle}rad)`;
       requestAnimationFrame(loop);
+    })(last);
+
+    function setState(target){
+      const el = target && target.nodeType === 1 ? target : (target && target.parentElement);
+      if (!el || !el.closest) return;
+      const isText = !!el.closest(TEXT);
+      const view = el.closest(VIEW);
+      const drag = el.closest(DRAG);
+
+      let text = '';
+      if (!isText && view){
+        const a = view.matches('a') ? view : view.querySelector('a');
+        text = view.getAttribute('data-cursor-label') || (a && a.target === '_blank' ? 'Visit' : 'View');
+      } else if (!isText && drag){
+        text = 'Drag';
+      }
+      labelled = !!text;
+      if (text) label.textContent = text;
+      cursorRing.classList.toggle('is-label', labelled);
+      root.classList.toggle('cursor-text', isText);
+
+      const onLink = !labelled && !isText && !!el.closest(LINK);
+      cursorRing.classList.toggle('is-hover', onLink);
+      targetS = onLink ? 0.45 : 1;
     }
-    loop();
+    document.addEventListener('pointerover', (e) => setState(e.target), { passive:true });
 
-    const hoverTargets = 'a, button, input, textarea, select, .accordion__trigger, .filter-btn, .port-card, .tech-card, .testi-slider__dots button, .why-card, .service-card';
-    document.querySelectorAll(hoverTargets).forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursorDot.classList.add('is-active');
-        cursorRing.classList.add('is-active');
+    document.addEventListener('mousedown', () => { down = true; });
+    document.addEventListener('mouseup', () => { down = false; });
+    window.addEventListener('blur', () => { down = false; });
+    document.addEventListener('mouseleave', () => root.classList.remove('cursor-visible'));
+    document.addEventListener('mouseenter', () => { if (seen) root.classList.add('cursor-visible'); });
+
+    // gentle magnetic pull on buttons
+    if (!calmCursor){
+      document.querySelectorAll('.btn, .nav__burger').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const r = btn.getBoundingClientRect();
+          const bx = (e.clientX - (r.left + r.width / 2)) * 0.16;
+          const by = (e.clientY - (r.top + r.height / 2)) * 0.28;
+          btn.style.translate = `${bx.toFixed(1)}px ${by.toFixed(1)}px`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.translate = ''; });
       });
-      el.addEventListener('mouseleave', () => {
-        cursorDot.classList.remove('is-active');
-        cursorRing.classList.remove('is-active');
-      });
-    });
-
-    document.addEventListener('mousedown', () => {
-      cursorDot.classList.add('is-click');
-      cursorRing.classList.add('is-click');
-    });
-    document.addEventListener('mouseup', () => {
-      cursorDot.classList.remove('is-click');
-      cursorRing.classList.remove('is-click');
-    });
-
-    document.addEventListener('mouseleave', () => {
-      cursorDot.style.opacity = '0';
-      cursorRing.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-      cursorDot.style.opacity = '1';
-      cursorRing.style.opacity = '1';
-    });
+    }
   }
 
   /* -------------------------------------------------
@@ -228,6 +369,40 @@ updateActiveLink();
       if (e.matches) closeMobileMenu();
     });
   }
+
+  /* -------------------------------------------------
+     SERVICES SUBMENU (desktop dropdown + mobile group)
+  ------------------------------------------------- */
+  document.querySelectorAll('.nav__item--menu').forEach(item => {
+    const toggle = item.querySelector('.nav__menu-toggle');
+    if (!toggle) return;
+    const setOpen = (open) => {
+      item.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(!item.classList.contains('is-open'));
+    });
+    // keyboard: opening via focus, closing when focus leaves the menu
+    item.addEventListener('focusout', (e) => {
+      if (!item.contains(e.relatedTarget)) setOpen(false);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && item.classList.contains('is-open')){ setOpen(false); toggle.focus(); }
+    });
+    document.addEventListener('click', (e) => { if (!item.contains(e.target)) setOpen(false); });
+  });
+
+  document.querySelectorAll('.mm-group__toggle').forEach(btn => {
+    const list = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!list) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      list.hidden = !open;
+    });
+  });
 
   /* -------------------------------------------------
      BACK TO TOP
@@ -489,7 +664,7 @@ updateActiveLink();
      Until a key is added, the form opens the visitor's email
      app with their message filled in, so it never breaks.
   ------------------------------------------------- */
-  const CONTACT_FORM_KEY = 'c7cc59d8f-6a58-4876-80a0-429840bd9b72';
+  const CONTACT_FORM_KEY = '7cc59d8f-6a58-4876-80a0-429840bd9b72';
   const CONTACT_EMAIL = 'hello@devlogicstudio.com';
 
   const contactValidators = {

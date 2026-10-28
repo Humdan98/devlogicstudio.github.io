@@ -38,8 +38,9 @@
         if (status) status.textContent = statusText;
       }
     }
-    // wait for the page loader to clear
-    setTimeout(step, 1300);
+    // start typing only once the page loader has cleared
+    if (window.onPageReady) window.onPageReady(function(){ setTimeout(step, 450); });
+    else setTimeout(step, 1300);
   }
 
   /* ---------- Process line fill ---------- */
