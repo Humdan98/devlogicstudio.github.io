@@ -482,66 +482,119 @@ updateActiveLink();
   // });
 
   /* -------------------------------------------------
-     CONTACT FORM VALIDATION
+     CONTACT FORM — validation + sending via Web3Forms
+     ---------------------------------------------------
+     Paste your free Web3Forms access key below (get it at
+     https://web3forms.com — enter hello@devlogicstudio.com).
+     Until a key is added, the form opens the visitor's email
+     app with their message filled in, so it never breaks.
   ------------------------------------------------- */
-  // const form = document.getElementById('contactForm');
-  // const submitBtn = document.getElementById('submitBtn');
-  // const formSuccess = document.getElementById('formSuccess');
+  const CONTACT_FORM_KEY = 'c7cc59d8f-6a58-4876-80a0-429840bd9b72';
+  const CONTACT_EMAIL = 'hello@devlogicstudio.com';
 
-  // const validators = {
-  //   name: (v) => v.trim().length >= 2 ? '' : 'Please enter your name.',
-  //   email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
-  //   phone: (v) => (!v || /^[\d+\-()\s]{7,}$/.test(v.trim())) ? '' : 'Please enter a valid phone number.',
-  //   company: () => '',
-  //   service: (v) => v ? '' : 'Please select a service.',
-  //   message: (v) => v.trim().length >= 10 ? '' : 'Please write at least 10 characters.'
-  // };
+  const contactValidators = {
+    name: (v) => v.trim().length >= 2 ? '' : 'Please enter your name.',
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
+    service: (v) => v ? '' : 'Please pick a service (or "Not sure yet").',
+    message: (v) => v.trim().length >= 10 ? '' : 'Please tell us a little more (at least 10 characters).'
+  };
 
-  // function validateField(name){
-  //   const input = form.elements[name];
-  //   const errorEl = document.getElementById('err-' + name);
-  //   const msg = validators[name] ? validators[name](input.value) : '';
-  //   input.closest('.field').classList.toggle('has-error', !!msg);
-  //   if (errorEl) errorEl.textContent = msg;
-  //   return !msg;
-  // }
+  document.querySelectorAll('.js-contact-form').forEach(form => {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const success = form.querySelector('.form-success');
+    const successText = form.querySelector('.form-success__text');
+    const okMsg = successText ? successText.textContent : '';
 
-  // ['name','email','phone','company','service','message'].forEach(name => {
-  //   const input = form.elements[name];
-  //   if (!input) return;
-  //   input.addEventListener('blur', () => validateField(name));
-  //   input.addEventListener('input', () => {
-  //     if (input.closest('.field').classList.contains('has-error')) validateField(name);
-  //   });
-  // });
+    function validateField(name){
+      const input = form.elements[name];
+      if (!input) return true;
+      const errorEl = form.querySelector('[data-error-for="' + name + '"]');
+      const msg = contactValidators[name] ? contactValidators[name](input.value) : '';
+      input.closest('.field').classList.toggle('has-error', !!msg);
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      if (errorEl) errorEl.textContent = msg;
+      return !msg;
+    }
 
-  // form.addEventListener('submit', (e) => {
-  //   e.preventDefault();
-  //   const fields = ['name','email','phone','company','service','message'];
-  //   const allValid = fields.map(validateField).every(Boolean);
+    Object.keys(contactValidators).forEach(name => {
+      const input = form.elements[name];
+      if (!input) return;
+      input.addEventListener('blur', () => { if (input.value) validateField(name); });
+      input.addEventListener('input', () => {
+        if (input.closest('.field').classList.contains('has-error')) validateField(name);
+      });
+      input.addEventListener('change', () => {
+        if (input.closest('.field').classList.contains('has-error')) validateField(name);
+      });
+    });
 
-  //   if (!allValid){
-  //     const firstError = form.querySelector('.has-error input, .has-error select, .has-error textarea');
-  //     if (firstError) firstError.focus();
-  //     return;
-  //   }
+    function showStatus(msg, isError){
+      if (!success) return;
+      successText.textContent = msg;
+      success.classList.toggle('is-error', !!isError);
+      success.classList.add('is-visible');
+    }
 
-  //   submitBtn.classList.add('submitBtn-loading');
-  //   submitBtn.disabled = true;
+    function data(){
+      const get = (n) => (form.elements[n] ? form.elements[n].value.trim() : '');
+      return {
+        name: get('name'), email: get('email'), service: get('service'),
+        budget: get('budget') || 'Not given', website: get('website') || 'Not given',
+        message: get('message'), page: location.pathname
+      };
+    }
 
-  //   // Simulate network request — replace with real endpoint integration
-  //   setTimeout(() => {
-  //     submitBtn.classList.remove('submitBtn-loading');
-  //     submitBtn.disabled = false;
-  //     formSuccess.classList.add('is-visible');
-  //     form.reset();
-  //     fields.forEach(name => {
-  //       const field = form.elements[name];
-  //       if (field) field.closest('.field').classList.remove('has-error');
-  //     });
-  //     setTimeout(() => formSuccess.classList.remove('is-visible'), 6000);
-  //   }, 1200);
-  // });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (form.elements.botcheck && form.elements.botcheck.checked) return; // bot
+
+      const allValid = Object.keys(contactValidators).map(validateField).every(Boolean);
+      if (!allValid){
+        const firstError = form.querySelector('.has-error input, .has-error select, .has-error textarea');
+        if (firstError) firstError.focus();
+        return;
+      }
+
+      const d = data();
+
+      // No key yet: fall back to the visitor's email app
+      if (!CONTACT_FORM_KEY || CONTACT_FORM_KEY.indexOf('YOUR_') === 0){
+        const body = 'Name: ' + d.name + '\nEmail: ' + d.email + '\nService: ' + d.service +
+          '\nBudget: ' + d.budget + '\nWebsite: ' + d.website + '\n\n' + d.message;
+        location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' +
+          encodeURIComponent('New project enquiry: ' + d.service) + '&body=' + encodeURIComponent(body);
+        return;
+      }
+
+      submitBtn.classList.add('submitBtn-loading');
+      submitBtn.disabled = true;
+      success.classList.remove('is-visible');
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.assign({
+            access_key: CONTACT_FORM_KEY,
+            subject: 'New enquiry: ' + d.service + ' (' + d.name + ')',
+            from_name: 'Dev Logic Studio website',
+            replyto: d.email
+          }, d))
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.success === false) throw new Error(json.message || 'Send failed');
+
+        form.reset();
+        form.querySelectorAll('.field').forEach(f => f.classList.remove('has-error'));
+        showStatus(okMsg, false);
+      } catch (err){
+        showStatus('Sorry, that didn\'t send. Please try again, or email us at ' + CONTACT_EMAIL + '.', true);
+      } finally {
+        submitBtn.classList.remove('submitBtn-loading');
+        submitBtn.disabled = false;
+      }
+    });
+  });
 
   /* -------------------------------------------------
      BUTTON RIPPLE EFFECT

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Maintenance &amp; Support Services | Dev Logic Studio</title>
+<meta name="description" content="Website maintenance and support for WordPress, Shopify and custom sites: updates, backups, security monitoring, malware removal, bug fixes, migrations and speed optimization.">
+<link rel="canonical" href="https://devlogicstudio.com/services/website-maintenance/">
+<meta name="theme-color" content="#0B0F19">
+
+<meta property="og:title" content="Website Maintenance &amp; Support Services | Dev Logic Studio">
+<meta property="og:description" content="Website maintenance and support for WordPress, Shopify and custom sites: updates, backups, security monitoring, malware removal, bug fixes, migrations and speed optimization.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://devlogicstudio.com/services/website-maintenance/">
+<meta property="og:site_name" content="Dev Logic Studio">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/jpg" href="../../assets/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../../about/about.css">
+<link rel="stylesheet" href="../../services/services.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Website Maintenance",
+      "serviceType": "Website Maintenance",
+      "description": "Website maintenance and support for WordPress, Shopify and custom sites: updates, backups, security monitoring, malware removal, bug fixes, migrations and speed optimization.",
+      "url": "https://devlogicstudio.com/services/website-maintenance/",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Dev Logic Studio",
+        "url": "https://devlogicstudio.com/",
+        "email": "hello@devlogicstudio.com"
+      },
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Website Maintenance",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Website Migration"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bug Fixing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Malware Removal"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hosting Management"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Performance Optimization"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Security Monitoring"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://devlogicstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://devlogicstudio.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Website Maintenance",
+          "item": "https://devlogicstudio.com/services/website-maintenance/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which platforms do you maintain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress, WooCommerce, Shopify, Magento, Squarespace, Wix and custom-coded websites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you fix my hacked website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We remove malware, find how it got in, patch the hole, harden security and help you get off Google's or your host's blocklist."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you need to have built my site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We take over maintenance for sites built by other developers all the time. We start with a quick audit so we know what we're working with."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do maintenance plans work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You get a set amount of updates, monitoring, backups and development time each month. Need something bigger? We'll quote it separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast do you respond to problems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Urgent issues like a down site or a broken checkout get priority. Most small fixes are done within one business day."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__mark">
+    <span>&lt;</span><span class="loader__dot">/</span><span>&gt;</span>
+  </div>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="../../index.html#home" class="nav__logo" aria-label="Dev Logic Studio home">
+      <div class="nav__logo-wrap">
+      <img src="../../assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+      <span class="nav__logo-text">Dev Logic <em>Studio</em>
+        <div class="nav__logo-subtext">DIGITAL SOLUTIONS PROVIDERS</div>
+      </span>
+      </div>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="../../index.html#home" class="nav__link">Home</a>
+      <a href="../" class="nav__link is-active">Services</a>
+      <a href="../../index.html#expertise" class="nav__link">Expertise</a>
+      <a href="../../index.html#process" class="nav__link">Process</a>
+      <a href="../../index.html#portfolio" class="nav__link">Portfolio</a>
+      <a href="../../index.html#testimonials" class="nav__link">Testimonials</a>
+      <a href="../../about/index.html" class="nav__link">About</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#contact" class="btn btn--primary btn--sm">
+        <span>Get a Free Quote</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+  <div class="mobile-menu__inner">
+    <span class="mobile-menu__eyebrow">Navigate</span>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="../../index.html#home"><span class="mobile-menu__num">01</span>Home</a>
+      <a href="../" aria-current="page"><span class="mobile-menu__num">02</span>Services</a>
+      <a href="../../index.html#expertise"><span class="mobile-menu__num">03</span>Expertise</a>
+      <a href="../../index.html#process"><span class="mobile-menu__num">04</span>Process</a>
+      <a href="../../index.html#portfolio"><span class="mobile-menu__num">05</span>Portfolio</a>
+      <a href="../../index.html#testimonials"><span class="mobile-menu__num">06</span>Testimonials</a>
+      <a href="../../about/index.html"><span class="mobile-menu__num">07</span>About</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="#contact" class="btn btn--primary btn--block">Get a Free Quote</a>
+      <p class="mobile-menu__tagline">Dev Logic Studio — Web development &amp; digital solutions</p>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero svc-hero">
+  <div class="hero__bg" aria-hidden="true">
+    <canvas id="circuitCanvas"></canvas>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container svc-hero__layout">
+    <div class="svc-hero__copy">
+      <nav class="crumbs" aria-label="Breadcrumb" data-aos="fade-up">
+        <a href="../../index.html">Home</a><span aria-hidden="true">/</span>
+        <a href="../">Services</a><span aria-hidden="true">/</span>
+        <span aria-current="page">Website Maintenance</span>
+      </nav>
+      <h1 class="svc-hero__title" data-aos="fade-up" data-aos-delay="60">Keep your website fast, secure and <em>online</em></h1>
+      <p class="svc-hero__lead" data-aos="fade-up" data-aos-delay="120">We look after your website so you don't have to. Updates, backups, security, bug fixes and small changes, all handled by people who actually know how your site is built.</p>
+      <div class="svc-hero__actions" data-aos="fade-up" data-aos-delay="160">
+        <a href="#contact" class="btn btn--primary btn--lg ripple"><span>Get a Free Quote</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#work" class="btn btn--ghost btn--lg ripple"><span>See Our Work</span></a>
+      </div>
+      <div class="svc-hero__stats" data-aos="fade-up" data-aos-delay="200"><div class="svc-stat"><strong>24/7</strong><span>Support available</span></div><div class="svc-stat"><strong>Backups</strong><span>Before every change</span></div><div class="svc-stat"><strong>Fixes</strong><span>Bugs &amp; malware</span></div></div>
+    </div>
+
+    <figure class="ide" data-aos="fade-up" data-aos-delay="220" aria-label="Example code from a Website Maintenance project">
+      <div class="ide__bar">
+        <i></i><i></i><i></i>
+        <span class="ide__tab"><span class="ide__tab-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>monthly-report.txt</span>
+      </div>
+      <pre class="ide__code" id="ideCode"><code><span class="ide__ln"><i>1</i><span>Website care report</span></span><span class="ide__ln"><i>2</i><span><span class="tk-com">-------------------------------------</span></span></span><span class="ide__ln"><i>3</i><span><span class="tk-ok">[ok]</span>  Core, theme and plugins updated</span></span><span class="ide__ln"><i>4</i><span><span class="tk-ok">[ok]</span>  Daily backups saved off-site</span></span><span class="ide__ln"><i>5</i><span><span class="tk-ok">[ok]</span>  SSL certificate valid</span></span><span class="ide__ln"><i>6</i><span><span class="tk-ok">[ok]</span>  Uptime monitored around the clock</span></span><span class="ide__ln"><i>7</i><span><span class="tk-ok">[ok]</span>  Malware scan clean</span></span><span class="ide__ln"><i>8</i><span><span class="tk-fix">[fix]</span> Broken contact <span class="tk-kw">form</span>  -<span class="tk-tag">&gt;</span> repaired</span></span><span class="ide__ln"><i>9</i><span><span class="tk-fix">[fix]</span> Slow product page    -<span class="tk-tag">&gt;</span> optimized</span></span><span class="ide__ln"><i>10</i><span><span class="tk-com">-------------------------------------</span></span></span><span class="ide__ln"><i>11</i><span>Next check scheduled.</span></span></code></pre>
+      <figcaption class="ide__status"><span class="ide__ok"></span><span id="ideStatus">all checks passed</span><span class="ide__brand">devlogic</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="svc-marquee" aria-hidden="true">
+  <div class="svc-marquee__row"><div class="svc-marquee__track"><span>Updates</span><b>✦</b><span>Backups</span><b>✦</b><span>Security</span><b>✦</b><span>Malware Removal</span><b>✦</b><span>Bug Fixes</span><b>✦</b><span>Migrations</span><b>✦</b><span>Hosting</span><b>✦</b><span>Uptime Monitoring</span><b>✦</b><span>Speed Checks</span><b>✦</b><span>SSL &amp; DNS</span><b>✦</b><span>Updates</span><b>✦</b><span>Backups</span><b>✦</b><span>Security</span><b>✦</b><span>Malware Removal</span><b>✦</b><span>Bug Fixes</span><b>✦</b><span>Migrations</span><b>✦</b><span>Hosting</span><b>✦</b><span>Uptime Monitoring</span><b>✦</b><span>Speed Checks</span><b>✦</b><span>SSL &amp; DNS</span><b>✦</b></div></div>
+  <div class="svc-marquee__row svc-marquee__row--rev"><div class="svc-marquee__track"><span>Updates</span><b>✦</b><span>Backups</span><b>✦</b><span>Security</span><b>✦</b><span>Malware Removal</span><b>✦</b><span>Bug Fixes</span><b>✦</b><span>Migrations</span><b>✦</b><span>Hosting</span><b>✦</b><span>Uptime Monitoring</span><b>✦</b><span>Speed Checks</span><b>✦</b><span>SSL &amp; DNS</span><b>✦</b><span>Updates</span><b>✦</b><span>Backups</span><b>✦</b><span>Security</span><b>✦</b><span>Malware Removal</span><b>✦</b><span>Bug Fixes</span><b>✦</b><span>Migrations</span><b>✦</b><span>Hosting</span><b>✦</b><span>Uptime Monitoring</span><b>✦</b><span>Speed Checks</span><b>✦</b><span>SSL &amp; DNS</span><b>✦</b></div></div>
+</div>
+</section>
+
+<!-- ============ PROBLEM → FIX ============ -->
+<section class="section svc-fix">
+  <div class="container">
+    <div class="svc-head svc-head--split" data-aos="fade-up">
+      <h2>Websites don't break all at once. They slowly fall apart.</h2>
+      <div class="svc-head__copy">
+        <p>A plugin update fails, a form stops sending, the site gets slower every month or something gets hacked. Usually you only find out when a customer tells you.</p>
+        <p>Our maintenance work catches these problems early. We keep everything updated, backed up and monitored, and fix things fast when something does go wrong.</p>
+      </div>
+    </div>
+
+    <div class="fix-table">
+      <div class="fix-table__head" aria-hidden="true">
+        <span>What's going wrong</span>
+        <span>What we do about it</span>
+      </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="0">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>Your site was hacked</strong><p>Malware, spam redirects or Google warnings scaring visitors away.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We remove the malware, close the hole it came through and get you off any blocklists.</p></div>
+        </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="60">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>Things keep breaking</strong><p>Updates cause errors and nobody is there to fix them.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We test updates before they go live and fix errors fast when something does break.</p></div>
+        </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="120">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>No developer on call</strong><p>Your old developer disappeared and you're stuck.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We take over sites built by other developers all the time, starting with a quick audit.</p></div>
+        </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="180">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>Moving hosts feels risky</strong><p>You need a migration without downtime or lost data.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We migrate your site with full backups, minimal downtime and nothing left behind.</p></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section class="section svc-included" id="included">
+  <div class="container">
+    <div class="svc-head" data-aos="fade-up">
+      <h2>Everything included in our Website Maintenance service</h2>
+    </div>
+    <div class="bento">
+      <article class="bento__item bento__item--hero" data-aos="fade-up">
+        <img src="../../assets/maitainence.jpg" alt="" loading="lazy">
+        <div class="bento__body">
+          <span class="bento__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Website Migration</h3>
+          <p>Move to a new host, domain or platform with no lost data and minimal downtime.</p>
+        </div>
+      </article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="60"><h3>Bug Fixing</h3><p>Broken layouts, errors, forms that don't send, checkout issues, found and fixed fast.</p></article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="120"><h3>Malware Removal</h3><p>Clean up hacked sites, remove malware, close the security holes and get you off blocklists.</p></article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="60"><h3>Hosting Management</h3><p>Server setup, SSL, DNS, email deliverability and hosting that fits your traffic.</p></article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="120"><h3>Performance Optimization</h3><p>Regular speed checks and fixes so your site doesn't slow down over time.</p></article>
+      <article class="bento__item bento__item--gold" data-aos="fade-up"><h3>Security Monitoring</h3><p>Updates, firewalls, uptime monitoring and regular backups to keep your site safe.</p></article>
+      <a class="bento__item bento__item--ask" href="#contact" data-aos="fade-up" data-aos-delay="60">
+        <h3>Need something that's not listed?</h3>
+        <p>Tell us what you're trying to do. If it's on the web, there's a good chance we've built something like it.</p>
+        <span class="bento__link">Ask us a question <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="quote-band">
+  <div class="container quote-band__inner">
+    <svg class="quote-band__mark" viewBox="0 0 64 48" aria-hidden="true"><path d="M0 48V28C0 12 8 2 26 0l3 7C19 10 15 15 15 22h11v26H0zm35 0V28C35 12 43 2 61 0l3 7C54 10 50 15 50 22h11v26H35z" fill="currentColor"/></svg>
+    <blockquote data-aos="fade-up">
+      <p>Hamdan is definitely driven to complete the task. He provided me with exactly what I wanted. Will use him in the future again.</p>
+      <footer><strong>Briers M</strong><span>COO, Khaki &amp; Co · verified Upwork review</span></footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section svc-process">
+  <div class="container">
+    <div class="svc-head svc-head--center" data-aos="fade-up">
+      <h2>How a project with us works</h2>
+      <p>Four steps, no surprises. You always know what's happening and what's next.</p>
+    </div>
+    <ol class="flow" id="svcFlow">
+      <span class="flow__line" aria-hidden="true"><span class="flow__fill"></span></span>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="0">
+        <span class="flow__node">1</span>
+        <h3>Free discovery call</h3>
+        <p>We talk through your goals, what's not working and what a win looks like for you.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="90">
+        <span class="flow__node">2</span>
+        <h3>Clear plan &amp; quote</h3>
+        <p>A written scope, timeline and fixed price. No vague estimates, no surprises.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="180">
+        <span class="flow__node">3</span>
+        <h3>Design &amp; build</h3>
+        <p>We build in milestones and share progress, so you're never left guessing.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="270">
+        <span class="flow__node">4</span>
+        <h3>Launch &amp; support</h3>
+        <p>We test everything, launch carefully and stay on for fixes and growth.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="section svc-work" id="work">
+  <div class="container">
+    <div class="svc-work__head" data-aos="fade-up">
+      <h2 class="outline-title">The <span>Work</span></h2>
+      <p>Real sites, live right now. Click any of them and take a look around.</p>
+    </div>
+    <div class="frames">
+      <a class="frame frame--big" href="https://wciottawa.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="0">
+        <div class="frame__bar"><i></i><i></i><i></i><span>wciottawa.com</span></div>
+        <div class="frame__shot"><img src="../../assets/wciottawa.png" alt="WCI Ottawa website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>WCI Ottawa</strong><span>WordPress · Contractors</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+      <a class="frame " href="https://hollandrenos.ca" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="80">
+        <div class="frame__bar"><i></i><i></i><i></i><span>hollandrenos.ca</span></div>
+        <div class="frame__shot"><img src="../../assets/hollandrenos.png" alt="Holland Renos website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>Holland Renos</strong><span>WordPress · Home Renovation</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+      <a class="frame " href="https://lauzonmusic.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="160">
+        <div class="frame__bar"><i></i><i></i><i></i><span>lauzonmusic.com</span></div>
+        <div class="frame__shot"><img src="../../assets/lauzonmusic.png" alt="Lauzon Music website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>Lauzon Music</strong><span>WordPress · Music Instruments</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section svc-faq" id="faq">
+  <div class="container svc-faq__layout">
+    <div class="svc-faq__side" data-aos="fade-up">
+      <h2>Questions people usually ask</h2>
+      <p>Can't find your answer? Send us a quick email and you'll hear back within one business day.</p>
+      <a href="mailto:hello@devlogicstudio.com" class="svc-faq__mail">hello@devlogicstudio.com <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="faq" data-aos="fade-up" data-aos-delay="80">
+      <details open>
+        <summary>Which platforms do you maintain?</summary>
+        <p>WordPress, WooCommerce, Shopify, Magento, Squarespace, Wix and custom-coded websites.</p>
+      </details>
+      <details>
+        <summary>Can you fix my hacked website?</summary>
+        <p>Yes. We remove malware, find how it got in, patch the hole, harden security and help you get off Google's or your host's blocklist.</p>
+      </details>
+      <details>
+        <summary>Do you need to have built my site?</summary>
+        <p>No. We take over maintenance for sites built by other developers all the time. We start with a quick audit so we know what we're working with.</p>
+      </details>
+      <details>
+        <summary>How do maintenance plans work?</summary>
+        <p>You get a set amount of updates, monitoring, backups and development time each month. Need something bigger? We'll quote it separately.</p>
+      </details>
+      <details>
+        <summary>How fast do you respond to problems?</summary>
+        <p>Urgent issues like a down site or a broken checkout get priority. Most small fixes are done within one business day.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELATED ============ -->
+<section class="svc-related">
+  <div class="container">
+    <h2 class="svc-related__title">Often paired with</h2>
+    <div class="related">
+      <a href="../wordpress-development/">
+        <div><strong>WordPress Development</strong><small>Custom themes, plugins, WooCommerce and speed</small></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="../shopify-development/">
+        <div><strong>Shopify Development</strong><small>Custom themes, redesigns and Shopify Plus work</small></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="../web-development/">
+        <div><strong>Website Development</strong><small>Fast, custom websites on the right CMS</small></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact svc-contact" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="contact__info" data-aos="fade-up">
+        <h2 class="svc-contact__title">Ready to talk about your website's upkeep?</h2>
+        <p class="section-sub section-sub--left">Tell us what you're working on and we'll get back to you within one business day with honest advice and next steps. No pressure, no sales pitch.</p>
+        <ul class="contact__details">
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 5l8 7 8-7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <div><strong>Email us directly</strong><span><a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a></span></div>
+          </li>
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div><strong>Fast replies</strong><span>Within one business day</span></div>
+          </li>
+        </ul>
+        <p class="contact__alt">Prefer to hire through Upwork? <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">See my verified profile</a>.</p>
+      </div>
+
+      <form class="contact__form js-contact-form" data-aos="fade-up" data-aos-delay="100" novalidate>
+        <!-- spam trap: real people never see or fill this -->
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-name">Your name</label>
+            <input type="text" id="sf-name" name="name" autocomplete="name" required>
+            <span class="field__error" data-error-for="name"></span>
+          </div>
+          <div class="field">
+            <label for="sf-email">Email</label>
+            <input type="email" id="sf-email" name="email" autocomplete="email" required>
+            <span class="field__error" data-error-for="email"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-service">What do you need?</label>
+            <select id="sf-service" name="service" required>
+              <option value="" disabled>Pick a service</option>
+            <option>Shopify Development</option>
+            <option>WordPress Development</option>
+            <option>E-commerce Development</option>
+            <option>Website Development</option>
+            <option>UI/UX &amp; Website Design</option>
+            <option selected>Website Maintenance</option>
+            <option>Custom Web Development</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="service"></span>
+          </div>
+          <div class="field">
+            <label for="sf-budget">Budget <small>(optional)</small></label>
+            <select id="sf-budget" name="budget">
+              <option value="" selected>Prefer not to say</option>
+            <option>Under $1,000</option>
+            <option>$1,000 – $3,000</option>
+            <option>$3,000 – $7,000</option>
+            <option>$7,000+</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="budget"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sf-website">Current website <small>(optional)</small></label>
+          <input type="text" id="sf-website" name="website" inputmode="url" placeholder="yourbusiness.com">
+          <span class="field__error" data-error-for="website"></span>
+        </div>
+        <div class="field">
+          <label for="sf-message">Tell us about your project</label>
+          <textarea id="sf-message" name="message" rows="5" required placeholder="What are you trying to build or fix? Any deadline?"></textarea>
+          <span class="field__error" data-error-for="message"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block ripple">
+          <span class="btn__label">Send Message</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-note">We reply within one business day. No spam, no sales pressure.</p>
+
+        <div class="form-success" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="form-success__text">Thanks! Your message is on its way. We'll reply within one business day.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="../../index.html#home" class="nav__logo">
+          <img src="../../assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+          <span class="nav__logo-text">Dev Logic <em>Studio</em></span>
+        </a>
+        <p>We design and build websites, eCommerce platforms, and custom web applications that help businesses run smoothly and grow with confidence — around the clock.</p>
+        <div class="footer__social">
+          <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" aria-label="Hamdan on Upwork"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M8 9v3.2a2.8 2.8 0 005.6 0V9M13.6 12a2.4 2.4 0 112.4 2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="mailto:hello@devlogicstudio.com" aria-label="Email Dev Logic Studio"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4V5z" stroke="currentColor" stroke-width="1.4"/><path d="M4 6l8 7 8-7" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="../../services/shopify-development/">Shopify Development</a>
+        <a href="../../services/wordpress-development/">WordPress Development</a>
+        <a href="../../services/ecommerce-development/">E-commerce Development</a>
+        <a href="../../services/web-development/">Website Development</a>
+        <a href="../../services/website-design/">UI/UX &amp; Website Design</a>
+        <a href="../../services/website-maintenance/">Website Maintenance</a>
+        <a href="../../services/custom-web-development/">Custom Web Development</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="../../index.html#home">Home</a>
+        <a href="../">All Services</a>
+        <a href="../../index.html#portfolio">Portfolio</a>
+        <a href="../../index.html#testimonials">Testimonials</a>
+        <a href="../../about/index.html">About Me</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Get in Touch</h4>
+        <a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a>
+        <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">Upwork Profile</a>
+        <a href="#contact">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> Dev Logic Studio. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<script src="../../script.js"></script>
+<script src="../../services/services.js"></script>
+</body>
+</html>

@@ -451,7 +451,8 @@ a.nav__logo {
         "media icon"
         "media title"
         "media text"
-        "media list";
+        "media list"
+        "media more";
     gap: 1rem 2rem;
     align-items: center;
 }
@@ -1988,3 +1989,32 @@ body.menu-open{
 @media (max-width:767px){
   .owp-card-tag,.owp-card-url{font-size:11.5px;}
 }
+
+/* ---------- Service card "Learn more" links + View all (service pages) ---------- */
+.service-card__more{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;
+  margin:-6px 28px 28px;font-size:13.5px;font-weight:600;color:var(--blue);
+  transition:color .2s var(--ease);
+}
+.service-card__more svg{width:15px;height:15px;transition:transform .25s var(--ease);}
+.service-card__more:hover{color:var(--hover-blue);}
+.service-card__more:hover svg{transform:translate(2px,-2px);}
+.services-all{text-align:center;margin-top:44px;}
+@media (min-width: 641px){
+  .service-card:last-child .service-card__more{grid-area:more;margin:-6px 0 28px;justify-self:start;}
+  .service-card:last-child .service-card__list{margin-bottom:0;}
+}
+
+/* ---------- Contact form (live) ---------- */
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+.field label small{font-weight:400;color:var(--text-dim);}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-dim);}
+.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+.field select option{background:#141414;color:var(--text);}
+.form-note{margin-top:12px;font-size:12.5px;color:var(--text-dim);text-align:center;}
+.form-success.is-error{color:#F87171;border-color:rgba(248,113,113,.35);background:rgba(248,113,113,.08);}
+.contact__alt{margin-top:28px;font-size:14px;color:var(--text-muted);}
+.contact__alt a{color:var(--blue);border-bottom:1px solid rgba(255,214,10,.35);}
+.contact__alt a:hover{color:var(--hover-blue);}
+.form-success{color:var(--blue);}
+.form-success:not(.is-visible){padding-block:0;border-width:0;margin-top:0;}

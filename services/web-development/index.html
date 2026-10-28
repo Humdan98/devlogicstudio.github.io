@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Development Services | Custom Business Websites | Dev Logic Studio</title>
+<meta name="description" content="Custom website development for businesses on WordPress, Webflow, Wix, Squarespace, React and Vue. Fast, mobile-friendly, SEO-ready websites built around your goals.">
+<link rel="canonical" href="https://devlogicstudio.com/services/web-development/">
+<meta name="theme-color" content="#0B0F19">
+
+<meta property="og:title" content="Website Development Services | Custom Business Websites | Dev Logic Studio">
+<meta property="og:description" content="Custom website development for businesses on WordPress, Webflow, Wix, Squarespace, React and Vue. Fast, mobile-friendly, SEO-ready websites built around your goals.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://devlogicstudio.com/services/web-development/">
+<meta property="og:site_name" content="Dev Logic Studio">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/jpg" href="../../assets/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../../about/about.css">
+<link rel="stylesheet" href="../../services/services.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Website Development",
+      "serviceType": "Website Development",
+      "description": "Custom website development for businesses on WordPress, Webflow, Wix, Squarespace, React and Vue. Fast, mobile-friendly, SEO-ready websites built around your goals.",
+      "url": "https://devlogicstudio.com/services/web-development/",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Dev Logic Studio",
+        "url": "https://devlogicstudio.com/",
+        "email": "hello@devlogicstudio.com"
+      },
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Website Development",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "CMS Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WordPress & Joomla"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Magento & Drupal"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wix & Squarespace"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "React & Vue Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Websites"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://devlogicstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://devlogicstudio.com/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Website Development",
+          "item": "https://devlogicstudio.com/services/web-development/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to build a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical business website takes 3–6 weeks from kickoff to launch. Larger sites with more pages or custom features can take longer. We'll give you a clear timeline up front."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which platform will you use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Whatever fits you best. For most businesses that's WordPress, but we also build on Webflow, Squarespace, Wix, React and Vue depending on your needs and budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my website be mobile-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every site is fully responsive and tested on phones, tablets and desktops before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SEO included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every build includes the technical basics: clean code, fast loading, meta tags, headings, schema and a sitemap so Google can find and understand your pages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you redesign my current website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We can refresh the design, move you to a better platform, or rebuild from scratch while keeping your rankings safe."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__mark">
+    <span>&lt;</span><span class="loader__dot">/</span><span>&gt;</span>
+  </div>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="../../index.html#home" class="nav__logo" aria-label="Dev Logic Studio home">
+      <div class="nav__logo-wrap">
+      <img src="../../assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+      <span class="nav__logo-text">Dev Logic <em>Studio</em>
+        <div class="nav__logo-subtext">DIGITAL SOLUTIONS PROVIDERS</div>
+      </span>
+      </div>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="../../index.html#home" class="nav__link">Home</a>
+      <a href="../" class="nav__link is-active">Services</a>
+      <a href="../../index.html#expertise" class="nav__link">Expertise</a>
+      <a href="../../index.html#process" class="nav__link">Process</a>
+      <a href="../../index.html#portfolio" class="nav__link">Portfolio</a>
+      <a href="../../index.html#testimonials" class="nav__link">Testimonials</a>
+      <a href="../../about/index.html" class="nav__link">About</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#contact" class="btn btn--primary btn--sm">
+        <span>Get a Free Quote</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+  <div class="mobile-menu__inner">
+    <span class="mobile-menu__eyebrow">Navigate</span>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="../../index.html#home"><span class="mobile-menu__num">01</span>Home</a>
+      <a href="../" aria-current="page"><span class="mobile-menu__num">02</span>Services</a>
+      <a href="../../index.html#expertise"><span class="mobile-menu__num">03</span>Expertise</a>
+      <a href="../../index.html#process"><span class="mobile-menu__num">04</span>Process</a>
+      <a href="../../index.html#portfolio"><span class="mobile-menu__num">05</span>Portfolio</a>
+      <a href="../../index.html#testimonials"><span class="mobile-menu__num">06</span>Testimonials</a>
+      <a href="../../about/index.html"><span class="mobile-menu__num">07</span>About</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="#contact" class="btn btn--primary btn--block">Get a Free Quote</a>
+      <p class="mobile-menu__tagline">Dev Logic Studio — Web development &amp; digital solutions</p>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero svc-hero">
+  <div class="hero__bg" aria-hidden="true">
+    <canvas id="circuitCanvas"></canvas>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container svc-hero__layout">
+    <div class="svc-hero__copy">
+      <nav class="crumbs" aria-label="Breadcrumb" data-aos="fade-up">
+        <a href="../../index.html">Home</a><span aria-hidden="true">/</span>
+        <a href="../">Services</a><span aria-hidden="true">/</span>
+        <span aria-current="page">Website Development</span>
+      </nav>
+      <h1 class="svc-hero__title" data-aos="fade-up" data-aos-delay="60">Business websites that <em>work as hard</em> as you do</h1>
+      <p class="svc-hero__lead" data-aos="fade-up" data-aos-delay="120">We build fast, mobile-friendly websites that bring in leads and make your business look as good online as it is in person. Built on the right CMS for you, so updating it never feels like a chore.</p>
+      <div class="svc-hero__actions" data-aos="fade-up" data-aos-delay="160">
+        <a href="#contact" class="btn btn--primary btn--lg ripple"><span>Get a Free Quote</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#work" class="btn btn--ghost btn--lg ripple"><span>See Our Work</span></a>
+      </div>
+      <div class="svc-hero__stats" data-aos="fade-up" data-aos-delay="200"><div class="svc-stat"><strong>12+</strong><span>Technologies</span></div><div class="svc-stat"><strong>8+</strong><span>Years building sites</span></div><div class="svc-stat"><strong>SEO-ready</strong><span>From day one</span></div></div>
+    </div>
+
+    <figure class="ide" data-aos="fade-up" data-aos-delay="220" aria-label="Example code from a Website Development project">
+      <div class="ide__bar">
+        <i></i><i></i><i></i>
+        <span class="ide__tab"><span class="ide__tab-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 9 4-18 3 9h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>index.html</span>
+      </div>
+      <pre class="ide__code" id="ideCode"><code><span class="ide__ln"><i>1</i><span><span class="tk-tag">&lt;head</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>2</i><span>  <span class="tk-tag">&lt;title</span><span class="tk-tag">&gt;</span>Your Business <span class="tk-pipe">|</span> What You Do, Where<span class="tk-tag">&lt;/title</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>3</i><span>  <span class="tk-tag">&lt;meta</span> name=<span class="tk-str">&quot;description&quot;</span> content=<span class="tk-str">&quot;...&quot;</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>4</i><span>  <span class="tk-tag">&lt;link</span> rel=<span class="tk-str">&quot;preload&quot;</span> as=<span class="tk-str">&quot;image&quot;</span> href=<span class="tk-str">&quot;hero.webp&quot;</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>5</i><span><span class="tk-tag">&lt;/head</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>6</i><span><span class="tk-tag">&lt;body</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>7</i><span>  <span class="tk-tag">&lt;section</span> class=<span class="tk-str">&quot;hero&quot;</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>8</i><span>    <span class="tk-tag">&lt;h1</span><span class="tk-tag">&gt;</span>A clear headline. A clear offer.<span class="tk-tag">&lt;/h1</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>9</i><span>    <span class="tk-tag">&lt;p</span><span class="tk-tag">&gt;</span>Why customers should pick you.<span class="tk-tag">&lt;/p</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>10</i><span>    <span class="tk-tag">&lt;a</span> class=<span class="tk-str">&quot;btn&quot;</span> href=<span class="tk-str">&quot;#contact&quot;</span><span class="tk-tag">&gt;</span>Book a call<span class="tk-tag">&lt;/a</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>11</i><span>  <span class="tk-tag">&lt;/section</span><span class="tk-tag">&gt;</span></span></span><span class="ide__ln"><i>12</i><span><span class="tk-tag">&lt;/body</span><span class="tk-tag">&gt;</span></span></span></code></pre>
+      <figcaption class="ide__status"><span class="ide__ok"></span><span id="ideStatus">mobile · fast · SEO-ready</span><span class="ide__brand">devlogic</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="svc-marquee" aria-hidden="true">
+  <div class="svc-marquee__row"><div class="svc-marquee__track"><span>WordPress</span><b>✦</b><span>Webflow</span><b>✦</b><span>Squarespace</span><b>✦</b><span>Wix</span><b>✦</b><span>React</span><b>✦</b><span>Vue</span><b>✦</b><span>Drupal</span><b>✦</b><span>Joomla</span><b>✦</b><span>Landing Pages</span><b>✦</b><span>Responsive Design</span><b>✦</b><span>WordPress</span><b>✦</b><span>Webflow</span><b>✦</b><span>Squarespace</span><b>✦</b><span>Wix</span><b>✦</b><span>React</span><b>✦</b><span>Vue</span><b>✦</b><span>Drupal</span><b>✦</b><span>Joomla</span><b>✦</b><span>Landing Pages</span><b>✦</b><span>Responsive Design</span><b>✦</b></div></div>
+  <div class="svc-marquee__row svc-marquee__row--rev"><div class="svc-marquee__track"><span>WordPress</span><b>✦</b><span>Webflow</span><b>✦</b><span>Squarespace</span><b>✦</b><span>Wix</span><b>✦</b><span>React</span><b>✦</b><span>Vue</span><b>✦</b><span>Drupal</span><b>✦</b><span>Joomla</span><b>✦</b><span>Landing Pages</span><b>✦</b><span>Responsive Design</span><b>✦</b><span>WordPress</span><b>✦</b><span>Webflow</span><b>✦</b><span>Squarespace</span><b>✦</b><span>Wix</span><b>✦</b><span>React</span><b>✦</b><span>Vue</span><b>✦</b><span>Drupal</span><b>✦</b><span>Joomla</span><b>✦</b><span>Landing Pages</span><b>✦</b><span>Responsive Design</span><b>✦</b></div></div>
+</div>
+</section>
+
+<!-- ============ PROBLEM → FIX ============ -->
+<section class="section svc-fix">
+  <div class="container">
+    <div class="svc-head svc-head--split" data-aos="fade-up">
+      <h2>Your website is often the first thing a customer sees.</h2>
+      <div class="svc-head__copy">
+        <p>If it's slow, outdated or confusing on a phone, people leave before they ever contact you. That's lost business you never even hear about.</p>
+        <p>We build websites with a clear goal: get the right visitors to take action. Clean design, fast loading, solid SEO foundations and a CMS your team can actually use.</p>
+      </div>
+    </div>
+
+    <div class="fix-table">
+      <div class="fix-table__head" aria-hidden="true">
+        <span>What's going wrong</span>
+        <span>What we do about it</span>
+      </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="0">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>An outdated website</strong><p>It doesn't reflect how good your business really is.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We redesign the site so it matches the quality of your business and builds trust fast.</p></div>
+        </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="60">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>Not getting leads</strong><p>People visit but don't call, book or fill in the form.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We structure every page around one clear action, with forms and calls-to-action that work.</p></div>
+        </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="120">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>Broken on mobile</strong><p>Layouts that fall apart on phones, where most visitors are.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We build mobile-first and test on real phones, tablets and desktops before launch.</p></div>
+        </div>
+        <div class="fix-row" data-aos="fade-up" data-aos-delay="180">
+          <div class="fix-row__bad"><span class="fix-ico fix-ico--bad"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><strong>Stuck with the wrong platform</strong><p>A site builder you've outgrown or a CMS nobody can use.</p></div></div>
+          <div class="fix-row__good"><span class="fix-ico fix-ico--good"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We move you to a platform that fits your team, without losing content or rankings.</p></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section class="section svc-included" id="included">
+  <div class="container">
+    <div class="svc-head" data-aos="fade-up">
+      <h2>Everything included in our Website Development service</h2>
+    </div>
+    <div class="bento">
+      <article class="bento__item bento__item--hero" data-aos="fade-up">
+        <img src="../../assets/web-development-v2.jpg" alt="" loading="lazy">
+        <div class="bento__body">
+          <span class="bento__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 9 4-18 3 9h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>CMS Development</h3>
+          <p>Sites on WordPress, Joomla, Drupal, Strapi and other CMSs, set up so your team can manage content.</p>
+        </div>
+      </article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="60"><h3>WordPress &amp; Joomla</h3><p>Custom themes and functionality on the world's most popular content platforms.</p></article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="120"><h3>Magento &amp; Drupal</h3><p>Development for larger, more complex sites that need serious structure.</p></article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="60"><h3>Wix &amp; Squarespace</h3><p>Custom builds and improvements on hosted site builders when simplicity matters most.</p></article>
+      <article class="bento__item" data-aos="fade-up" data-aos-delay="120"><h3>React &amp; Vue Development</h3><p>Modern, fast frontends for sites that need more interactivity or a custom experience.</p></article>
+      <article class="bento__item bento__item--gold" data-aos="fade-up"><h3>Custom Websites</h3><p>Hand-coded sites with no bloat, built exactly to your design and goals.</p></article>
+      <a class="bento__item bento__item--ask" href="#contact" data-aos="fade-up" data-aos-delay="60">
+        <h3>Need something that's not listed?</h3>
+        <p>Tell us what you're trying to do. If it's on the web, there's a good chance we've built something like it.</p>
+        <span class="bento__link">Ask us a question <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="quote-band">
+  <div class="container quote-band__inner">
+    <svg class="quote-band__mark" viewBox="0 0 64 48" aria-hidden="true"><path d="M0 48V28C0 12 8 2 26 0l3 7C19 10 15 15 15 22h11v26H0zm35 0V28C35 12 43 2 61 0l3 7C54 10 50 15 50 22h11v26H35z" fill="currentColor"/></svg>
+    <blockquote data-aos="fade-up">
+      <p>Well-spoken, thoughtful, and an excellent communicator. Very professional. Highly recommend!</p>
+      <footer><strong>David Novick</strong><span>CEO, More Repeats · verified Upwork review</span></footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section svc-process">
+  <div class="container">
+    <div class="svc-head svc-head--center" data-aos="fade-up">
+      <h2>How a project with us works</h2>
+      <p>Four steps, no surprises. You always know what's happening and what's next.</p>
+    </div>
+    <ol class="flow" id="svcFlow">
+      <span class="flow__line" aria-hidden="true"><span class="flow__fill"></span></span>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="0">
+        <span class="flow__node">1</span>
+        <h3>Free discovery call</h3>
+        <p>We talk through your goals, what's not working and what a win looks like for you.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="90">
+        <span class="flow__node">2</span>
+        <h3>Clear plan &amp; quote</h3>
+        <p>A written scope, timeline and fixed price. No vague estimates, no surprises.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="180">
+        <span class="flow__node">3</span>
+        <h3>Design &amp; build</h3>
+        <p>We build in milestones and share progress, so you're never left guessing.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="270">
+        <span class="flow__node">4</span>
+        <h3>Launch &amp; support</h3>
+        <p>We test everything, launch carefully and stay on for fixes and growth.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="section svc-work" id="work">
+  <div class="container">
+    <div class="svc-work__head" data-aos="fade-up">
+      <h2 class="outline-title">The <span>Work</span></h2>
+      <p>Real sites, live right now. Click any of them and take a look around.</p>
+    </div>
+    <div class="frames">
+      <a class="frame frame--big" href="https://provinggroundstraining.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="0">
+        <div class="frame__bar"><i></i><i></i><i></i><span>provinggroundstraining.com</span></div>
+        <div class="frame__shot"><img src="../../assets/provinggroundstraining.png" alt="Proving Grounds Training website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>Proving Grounds Training</strong><span>Corporate Training Platform</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+      <a class="frame " href="https://kodainteriors.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="80">
+        <div class="frame__bar"><i></i><i></i><i></i><span>kodainteriors.com</span></div>
+        <div class="frame__shot"><img src="../../assets/kodainteriors.png" alt="Koda Interiors website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>Koda Interiors</strong><span>Squarespace · Interior Design</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+      <a class="frame " href="https://wciottawa.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="160">
+        <div class="frame__bar"><i></i><i></i><i></i><span>wciottawa.com</span></div>
+        <div class="frame__shot"><img src="../../assets/wciottawa.png" alt="WCI Ottawa website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>WCI Ottawa</strong><span>WordPress · Contractors</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section svc-faq" id="faq">
+  <div class="container svc-faq__layout">
+    <div class="svc-faq__side" data-aos="fade-up">
+      <h2>Questions people usually ask</h2>
+      <p>Can't find your answer? Send us a quick email and you'll hear back within one business day.</p>
+      <a href="mailto:hello@devlogicstudio.com" class="svc-faq__mail">hello@devlogicstudio.com <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="faq" data-aos="fade-up" data-aos-delay="80">
+      <details open>
+        <summary>How long does it take to build a website?</summary>
+        <p>A typical business website takes 3–6 weeks from kickoff to launch. Larger sites with more pages or custom features can take longer. We'll give you a clear timeline up front.</p>
+      </details>
+      <details>
+        <summary>Which platform will you use?</summary>
+        <p>Whatever fits you best. For most businesses that's WordPress, but we also build on Webflow, Squarespace, Wix, React and Vue depending on your needs and budget.</p>
+      </details>
+      <details>
+        <summary>Will my website be mobile-friendly?</summary>
+        <p>Yes. Every site is fully responsive and tested on phones, tablets and desktops before launch.</p>
+      </details>
+      <details>
+        <summary>Is SEO included?</summary>
+        <p>Yes. Every build includes the technical basics: clean code, fast loading, meta tags, headings, schema and a sitemap so Google can find and understand your pages.</p>
+      </details>
+      <details>
+        <summary>Can you redesign my current website?</summary>
+        <p>Yes. We can refresh the design, move you to a better platform, or rebuild from scratch while keeping your rankings safe.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELATED ============ -->
+<section class="svc-related">
+  <div class="container">
+    <h2 class="svc-related__title">Often paired with</h2>
+    <div class="related">
+      <a href="../wordpress-development/">
+        <div><strong>WordPress Development</strong><small>Custom themes, plugins, WooCommerce and speed</small></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="../website-design/">
+        <div><strong>UI/UX &amp; Website Design</strong><small>UI/UX, branding, logos and email templates</small></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="../custom-web-development/">
+        <div><strong>Custom Web Development</strong><small>Web apps, Figma/PSD to HTML, React and PHP</small></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact svc-contact" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="contact__info" data-aos="fade-up">
+        <h2 class="svc-contact__title">Ready to talk about your new website?</h2>
+        <p class="section-sub section-sub--left">Tell us what you're working on and we'll get back to you within one business day with honest advice and next steps. No pressure, no sales pitch.</p>
+        <ul class="contact__details">
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 5l8 7 8-7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <div><strong>Email us directly</strong><span><a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a></span></div>
+          </li>
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div><strong>Fast replies</strong><span>Within one business day</span></div>
+          </li>
+        </ul>
+        <p class="contact__alt">Prefer to hire through Upwork? <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">See my verified profile</a>.</p>
+      </div>
+
+      <form class="contact__form js-contact-form" data-aos="fade-up" data-aos-delay="100" novalidate>
+        <!-- spam trap: real people never see or fill this -->
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-name">Your name</label>
+            <input type="text" id="sf-name" name="name" autocomplete="name" required>
+            <span class="field__error" data-error-for="name"></span>
+          </div>
+          <div class="field">
+            <label for="sf-email">Email</label>
+            <input type="email" id="sf-email" name="email" autocomplete="email" required>
+            <span class="field__error" data-error-for="email"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-service">What do you need?</label>
+            <select id="sf-service" name="service" required>
+              <option value="" disabled>Pick a service</option>
+            <option>Shopify Development</option>
+            <option>WordPress Development</option>
+            <option>E-commerce Development</option>
+            <option selected>Website Development</option>
+            <option>UI/UX &amp; Website Design</option>
+            <option>Website Maintenance</option>
+            <option>Custom Web Development</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="service"></span>
+          </div>
+          <div class="field">
+            <label for="sf-budget">Budget <small>(optional)</small></label>
+            <select id="sf-budget" name="budget">
+              <option value="" selected>Prefer not to say</option>
+            <option>Under $1,000</option>
+            <option>$1,000 – $3,000</option>
+            <option>$3,000 – $7,000</option>
+            <option>$7,000+</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="budget"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sf-website">Current website <small>(optional)</small></label>
+          <input type="text" id="sf-website" name="website" inputmode="url" placeholder="yourbusiness.com">
+          <span class="field__error" data-error-for="website"></span>
+        </div>
+        <div class="field">
+          <label for="sf-message">Tell us about your project</label>
+          <textarea id="sf-message" name="message" rows="5" required placeholder="What are you trying to build or fix? Any deadline?"></textarea>
+          <span class="field__error" data-error-for="message"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block ripple">
+          <span class="btn__label">Send Message</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-note">We reply within one business day. No spam, no sales pressure.</p>
+
+        <div class="form-success" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="form-success__text">Thanks! Your message is on its way. We'll reply within one business day.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="../../index.html#home" class="nav__logo">
+          <img src="../../assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+          <span class="nav__logo-text">Dev Logic <em>Studio</em></span>
+        </a>
+        <p>We design and build websites, eCommerce platforms, and custom web applications that help businesses run smoothly and grow with confidence — around the clock.</p>
+        <div class="footer__social">
+          <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" aria-label="Hamdan on Upwork"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M8 9v3.2a2.8 2.8 0 005.6 0V9M13.6 12a2.4 2.4 0 112.4 2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="mailto:hello@devlogicstudio.com" aria-label="Email Dev Logic Studio"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4V5z" stroke="currentColor" stroke-width="1.4"/><path d="M4 6l8 7 8-7" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="../../services/shopify-development/">Shopify Development</a>
+        <a href="../../services/wordpress-development/">WordPress Development</a>
+        <a href="../../services/ecommerce-development/">E-commerce Development</a>
+        <a href="../../services/web-development/">Website Development</a>
+        <a href="../../services/website-design/">UI/UX &amp; Website Design</a>
+        <a href="../../services/website-maintenance/">Website Maintenance</a>
+        <a href="../../services/custom-web-development/">Custom Web Development</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="../../index.html#home">Home</a>
+        <a href="../">All Services</a>
+        <a href="../../index.html#portfolio">Portfolio</a>
+        <a href="../../index.html#testimonials">Testimonials</a>
+        <a href="../../about/index.html">About Me</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Get in Touch</h4>
+        <a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a>
+        <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">Upwork Profile</a>
+        <a href="#contact">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> Dev Logic Studio. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<script src="../../script.js"></script>
+<script src="../../services/services.js"></script>
+</body>
+</html>

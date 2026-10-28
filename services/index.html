@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Development, Shopify &amp; WordPress Services | Dev Logic Studio</title>
+<meta name="description" content="Explore Dev Logic Studio's services: Shopify and WordPress development, e-commerce stores, website design, maintenance and custom web applications.">
+<link rel="canonical" href="https://devlogicstudio.com/services/">
+<meta name="theme-color" content="#0B0F19">
+
+<meta property="og:title" content="Web Development, Shopify &amp; WordPress Services | Dev Logic Studio">
+<meta property="og:description" content="Explore Dev Logic Studio's services: Shopify and WordPress development, e-commerce stores, website design, maintenance and custom web applications.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://devlogicstudio.com/services/">
+<meta property="og:site_name" content="Dev Logic Studio">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/jpg" href="../assets/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../about/about.css">
+<link rel="stylesheet" href="../services/services.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "name": "Dev Logic Studio services",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Shopify Development",
+          "url": "https://devlogicstudio.com/services/shopify-development/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "WordPress Development",
+          "url": "https://devlogicstudio.com/services/wordpress-development/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "E-commerce Development",
+          "url": "https://devlogicstudio.com/services/ecommerce-development/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Website Development",
+          "url": "https://devlogicstudio.com/services/web-development/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "UI/UX & Website Design",
+          "url": "https://devlogicstudio.com/services/website-design/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Website Maintenance",
+          "url": "https://devlogicstudio.com/services/website-maintenance/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Custom Web Development",
+          "url": "https://devlogicstudio.com/services/custom-web-development/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://devlogicstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://devlogicstudio.com/services/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__mark">
+    <span>&lt;</span><span class="loader__dot">/</span><span>&gt;</span>
+  </div>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="../index.html#home" class="nav__logo" aria-label="Dev Logic Studio home">
+      <div class="nav__logo-wrap">
+      <img src="../assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+      <span class="nav__logo-text">Dev Logic <em>Studio</em>
+        <div class="nav__logo-subtext">DIGITAL SOLUTIONS PROVIDERS</div>
+      </span>
+      </div>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="../index.html#home" class="nav__link">Home</a>
+      <a href="./" class="nav__link is-active">Services</a>
+      <a href="../index.html#expertise" class="nav__link">Expertise</a>
+      <a href="../index.html#process" class="nav__link">Process</a>
+      <a href="../index.html#portfolio" class="nav__link">Portfolio</a>
+      <a href="../index.html#testimonials" class="nav__link">Testimonials</a>
+      <a href="../about/index.html" class="nav__link">About</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#contact" class="btn btn--primary btn--sm">
+        <span>Get a Free Quote</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+  <div class="mobile-menu__inner">
+    <span class="mobile-menu__eyebrow">Navigate</span>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="../index.html#home"><span class="mobile-menu__num">01</span>Home</a>
+      <a href="./" aria-current="page"><span class="mobile-menu__num">02</span>Services</a>
+      <a href="../index.html#expertise"><span class="mobile-menu__num">03</span>Expertise</a>
+      <a href="../index.html#process"><span class="mobile-menu__num">04</span>Process</a>
+      <a href="../index.html#portfolio"><span class="mobile-menu__num">05</span>Portfolio</a>
+      <a href="../index.html#testimonials"><span class="mobile-menu__num">06</span>Testimonials</a>
+      <a href="../about/index.html"><span class="mobile-menu__num">07</span>About</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="#contact" class="btn btn--primary btn--block">Get a Free Quote</a>
+      <p class="mobile-menu__tagline">Dev Logic Studio — Web development &amp; digital solutions</p>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<section class="hero svc-hero hub-hero">
+  <div class="hero__bg" aria-hidden="true">
+    <canvas id="circuitCanvas"></canvas>
+    <div class="hero__grid"></div>
+  </div>
+  <div class="container svc-hero__layout">
+    <div class="svc-hero__copy">
+      <nav class="crumbs" aria-label="Breadcrumb" data-aos="fade-up">
+        <a href="../index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Services</span>
+      </nav>
+      <h1 class="svc-hero__title" data-aos="fade-up" data-aos-delay="60">Web development services, <em>engineered for growth</em></h1>
+      <p class="svc-hero__lead" data-aos="fade-up" data-aos-delay="120">From Shopify stores and WordPress sites to custom web apps and ongoing support. Pick a service to see exactly what's included.</p>
+    </div>
+  </div>
+  <div class="svc-marquee" aria-hidden="true">
+    <div class="svc-marquee__row"><div class="svc-marquee__track"><span>Shopify</span><b>✦</b><span>WordPress</span><b>✦</b><span>WooCommerce</span><b>✦</b><span>Magento</span><b>✦</b><span>React</span><b>✦</b><span>Vue</span><b>✦</b><span>UI/UX Design</span><b>✦</b><span>Branding</span><b>✦</b><span>Maintenance</span><b>✦</b><span>Custom Apps</span><b>✦</b><span>Figma to HTML</span><b>✦</b><span>Speed Optimization</span><b>✦</b><span>Shopify</span><b>✦</b><span>WordPress</span><b>✦</b><span>WooCommerce</span><b>✦</b><span>Magento</span><b>✦</b><span>React</span><b>✦</b><span>Vue</span><b>✦</b><span>UI/UX Design</span><b>✦</b><span>Branding</span><b>✦</b><span>Maintenance</span><b>✦</b><span>Custom Apps</span><b>✦</b><span>Figma to HTML</span><b>✦</b><span>Speed Optimization</span><b>✦</b></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="hub-grid">
+      <a class="hub-card" href="shopify-development/" data-aos="fade-up" data-aos-delay="0">
+        <img src="../assets/shopify-dev.jpg" alt="" loading="lazy">
+        <h2>Shopify Development</h2>
+        <p>We build and customize Shopify and Shopify Plus stores for brands that have outgrown their theme.</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="hub-card" href="wordpress-development/" data-aos="fade-up" data-aos-delay="70">
+        <img src="../assets/wordpress.jpg" alt="" loading="lazy">
+        <h2>WordPress Development</h2>
+        <p>From custom themes to plugin development and WooCommerce, we build WordPress websites that load quickly, rank well and don't need a developer every time you want to change a page..</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="hub-card" href="ecommerce-development/" data-aos="fade-up" data-aos-delay="140">
+        <img src="../assets/ecomerce-store.jpg" alt="" loading="lazy">
+        <h2>E-commerce Development</h2>
+        <p>We plan, build and optimize e-commerce websites on the platform that fits your business, whether that's Shopify, WooCommerce or Magento.</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="hub-card" href="web-development/" data-aos="fade-up" data-aos-delay="0">
+        <img src="../assets/web-development-v2.jpg" alt="" loading="lazy">
+        <h2>Website Development</h2>
+        <p>We build fast, mobile-friendly websites that bring in leads and make your business look as good online as it is in person.</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="hub-card" href="website-design/" data-aos="fade-up" data-aos-delay="70">
+        <img src="../assets/design-services.jpg" alt="" loading="lazy">
+        <h2>UI/UX &amp; Website Design</h2>
+        <p>We design websites, apps and brand identities that look sharp and make sense to your users.</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="hub-card" href="website-maintenance/" data-aos="fade-up" data-aos-delay="140">
+        <img src="../assets/maitainence.jpg" alt="" loading="lazy">
+        <h2>Website Maintenance</h2>
+        <p>We look after your website so you don't have to.</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="hub-card" href="custom-web-development/" data-aos="fade-up" data-aos-delay="0">
+        <img src="../assets/custom-development.jpg" alt="" loading="lazy">
+        <h2>Custom Web Development</h2>
+        <p>Custom web apps, dashboards, tools and pixel-perfect front-ends built from scratch.</p>
+        <span class="hub-card__more">See what's included <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact svc-contact" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="contact__info" data-aos="fade-up">
+        <h2 class="svc-contact__title">Not sure which service you need?</h2>
+        <p class="section-sub section-sub--left">That's fine. Tell us what you're trying to do and we'll point you in the right direction, even if that means a smaller project than you expected.</p>
+        <ul class="contact__details">
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 5l8 7 8-7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <div><strong>Email us directly</strong><span><a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a></span></div>
+          </li>
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div><strong>Fast replies</strong><span>Within one business day</span></div>
+          </li>
+        </ul>
+        <p class="contact__alt">Prefer to hire through Upwork? <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">See my verified profile</a>.</p>
+      </div>
+
+      <form class="contact__form js-contact-form" data-aos="fade-up" data-aos-delay="100" novalidate>
+        <!-- spam trap: real people never see or fill this -->
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-name">Your name</label>
+            <input type="text" id="sf-name" name="name" autocomplete="name" required>
+            <span class="field__error" data-error-for="name"></span>
+          </div>
+          <div class="field">
+            <label for="sf-email">Email</label>
+            <input type="email" id="sf-email" name="email" autocomplete="email" required>
+            <span class="field__error" data-error-for="email"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-service">What do you need?</label>
+            <select id="sf-service" name="service" required>
+              <option value="" disabled selected>Pick a service</option>
+            <option>Shopify Development</option>
+            <option>WordPress Development</option>
+            <option>E-commerce Development</option>
+            <option>Website Development</option>
+            <option>UI/UX &amp; Website Design</option>
+            <option>Website Maintenance</option>
+            <option>Custom Web Development</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="service"></span>
+          </div>
+          <div class="field">
+            <label for="sf-budget">Budget <small>(optional)</small></label>
+            <select id="sf-budget" name="budget">
+              <option value="" selected>Prefer not to say</option>
+            <option>Under $1,000</option>
+            <option>$1,000 – $3,000</option>
+            <option>$3,000 – $7,000</option>
+            <option>$7,000+</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="budget"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sf-website">Current website <small>(optional)</small></label>
+          <input type="text" id="sf-website" name="website" inputmode="url" placeholder="yourbusiness.com">
+          <span class="field__error" data-error-for="website"></span>
+        </div>
+        <div class="field">
+          <label for="sf-message">Tell us about your project</label>
+          <textarea id="sf-message" name="message" rows="5" required placeholder="What are you trying to build or fix? Any deadline?"></textarea>
+          <span class="field__error" data-error-for="message"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block ripple">
+          <span class="btn__label">Send Message</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-note">We reply within one business day. No spam, no sales pressure.</p>
+
+        <div class="form-success" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="form-success__text">Thanks! Your message is on its way. We'll reply within one business day.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="../index.html#home" class="nav__logo">
+          <img src="../assets/dev-logic-icon-white-braces.png" alt="Dev Logic Studio logo" width="70" height="70">
+          <span class="nav__logo-text">Dev Logic <em>Studio</em></span>
+        </a>
+        <p>We design and build websites, eCommerce platforms, and custom web applications that help businesses run smoothly and grow with confidence — around the clock.</p>
+        <div class="footer__social">
+          <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" aria-label="Hamdan on Upwork"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M8 9v3.2a2.8 2.8 0 005.6 0V9M13.6 12a2.4 2.4 0 112.4 2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="mailto:hello@devlogicstudio.com" aria-label="Email Dev Logic Studio"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4V5z" stroke="currentColor" stroke-width="1.4"/><path d="M4 6l8 7 8-7" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="../services/shopify-development/">Shopify Development</a>
+        <a href="../services/wordpress-development/">WordPress Development</a>
+        <a href="../services/ecommerce-development/">E-commerce Development</a>
+        <a href="../services/web-development/">Website Development</a>
+        <a href="../services/website-design/">UI/UX &amp; Website Design</a>
+        <a href="../services/website-maintenance/">Website Maintenance</a>
+        <a href="../services/custom-web-development/">Custom Web Development</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="../index.html#home">Home</a>
+        <a href="./">All Services</a>
+        <a href="../index.html#portfolio">Portfolio</a>
+        <a href="../index.html#testimonials">Testimonials</a>
+        <a href="../about/index.html">About Me</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Get in Touch</h4>
+        <a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a>
+        <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">Upwork Profile</a>
+        <a href="#contact">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> Dev Logic Studio. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<script src="../script.js"></script>
+<script src="../services/services.js"></script>
+</body>
+</html>

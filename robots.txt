@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /backup/
+Disallow: /_mobile-fix-backup/
+Disallow: /preview/
+
+Sitemap: https://devlogicstudio.com/sitemap.xml
