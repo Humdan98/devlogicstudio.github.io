@@ -365,7 +365,7 @@ updateActiveLink();
     });
 
     // Rotating to / resizing into desktop width closes it
-    window.matchMedia('(min-width: 1101px)').addEventListener('change', e => {
+    window.matchMedia('(min-width: 1000px)').addEventListener('change', e => {
       if (e.matches) closeMobileMenu();
     });
   }
