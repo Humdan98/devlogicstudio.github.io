@@ -947,95 +947,192 @@ updateActiveLink();
 
   
   /* -------------------------------------------------
-     HERO CIRCUIT / LOGIC-NODE CANVAS BACKGROUND
-     Signature visual: nodes connect like circuit logic paths,
-     pulsing data packets travel along the connections.
+     HERO BACKGROUND — LIVING CIRCUIT BOARD
+     Faint gold PCB traces sit behind the hero. Small pulses of light
+     travel along them like data through logic; when one arrives, the
+     junction gives a soft flash. Near the cursor the board brightens.
+     Kept deliberately quiet so the headline stays the focus.
+     - pauses when the hero is off-screen or the tab is hidden
+     - static (no motion) for reduced-motion visitors
   ------------------------------------------------- */
   const canvas = document.getElementById('circuitCanvas');
-  if (canvas && !reducedMotion){
+  if (canvas){
     const ctx = canvas.getContext('2d');
-    let w, h, nodes, links, packets;
-    const hero = document.querySelector('.hero');
+    const hero = canvas.closest('.hero') || canvas.parentElement;
+    const GOLD = '255,214,10';
+    const isSmall = () => window.innerWidth < 760;
+    let W = 0, H = 0, DPR = 1, traces = [], pulses = [], flashes = [];
+    let base = null, bright = null;            // pre-rendered trace layers
+    let spot = null, spotCtx = null;           // cursor spotlight buffer
+    let mouse = { x: -9999, y: -9999, on: false };
+    let running = false, visible = true, last = 0;
+
+    const rand = (a, b) => a + Math.random() * (b - a);
+
+    function buildTraces(){
+      const cell = isSmall() ? 40 : 48;
+      const cols = Math.ceil(W / cell), rows = Math.ceil(H / cell);
+      const count = Math.round((W * H) / (isSmall() ? 26000 : 21000));
+      const used = new Set();
+      traces = [];
+      for (let n = 0; n < count; n++){
+        // bias toward the right/top, away from the headline on the left
+        const gx = Math.floor(Math.pow(Math.random(), 0.55) * cols);
+        const gy = Math.floor(Math.random() * rows);
+        if (used.has(gx + ',' + gy)) continue;
+        let x = gx, y = gy, horiz = Math.random() < 0.5;
+        const pts = [[x * cell, y * cell]];
+        const segs = 2 + Math.floor(Math.random() * 4);
+        for (let s = 0; s < segs; s++){
+          const len = 1 + Math.floor(Math.random() * 4);
+          const dir = Math.random() < 0.5 ? -1 : 1;
+          if (horiz) x = Math.max(0, Math.min(cols, x + dir * len));
+          else       y = Math.max(0, Math.min(rows, y + dir * len));
+          const prev = pts[pts.length - 1];
+          if (prev[0] !== x * cell || prev[1] !== y * cell) pts.push([x * cell, y * cell]);
+          horiz = !horiz;
+        }
+        if (pts.length < 2) continue;
+        pts.forEach(p => used.add((p[0] / cell) + ',' + (p[1] / cell)));
+        // segment lengths for travelling along the path
+        let total = 0; const lens = [];
+        for (let i = 1; i < pts.length; i++){ const l = Math.abs(pts[i][0]-pts[i-1][0]) + Math.abs(pts[i][1]-pts[i-1][1]); lens.push(l); total += l; }
+        traces.push({ pts, lens, total });
+      }
+    }
+
+    function paintLayer(alphaLine, alphaPad){
+      const c = document.createElement('canvas');
+      c.width = W * DPR; c.height = H * DPR;
+      const g = c.getContext('2d'); g.scale(DPR, DPR);
+      g.lineWidth = 1; g.lineCap = 'round'; g.lineJoin = 'round';
+      traces.forEach(t => {
+        g.strokeStyle = `rgba(${GOLD},${alphaLine})`;
+        g.beginPath(); g.moveTo(t.pts[0][0], t.pts[0][1]);
+        for (let i = 1; i < t.pts.length; i++) g.lineTo(t.pts[i][0], t.pts[i][1]);
+        g.stroke();
+        // pads at both ends (little rings), vias at corners
+        [t.pts[0], t.pts[t.pts.length - 1]].forEach(p => {
+          g.strokeStyle = `rgba(${GOLD},${alphaPad})`;
+          g.beginPath(); g.arc(p[0], p[1], 2.6, 0, Math.PI * 2); g.stroke();
+        });
+        g.fillStyle = `rgba(${GOLD},${alphaLine * 1.4})`;
+        for (let i = 1; i < t.pts.length - 1; i++){ g.beginPath(); g.arc(t.pts[i][0], t.pts[i][1], 1.1, 0, Math.PI * 2); g.fill(); }
+      });
+      return c;
+    }
+
+    function pointAt(t, d){
+      let i = 0;
+      while (i < t.lens.length && d > t.lens[i]){ d -= t.lens[i]; i++; }
+      if (i >= t.lens.length) return t.pts[t.pts.length - 1];
+      const a = t.pts[i], b = t.pts[i + 1], f = d / t.lens[i];
+      return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f];
+    }
+
+    function spawnPulse(){
+      const t = traces[Math.floor(Math.random() * traces.length)];
+      if (!t) return;
+      const reverse = Math.random() < 0.5;
+      pulses.push({ t, d: 0, speed: rand(22, 45), reverse, len: rand(26, 46) });
+    }
 
     function resize(){
-      w = canvas.width = hero.offsetWidth;
-      h = canvas.height = hero.offsetHeight;
-      buildGraph();
+      const r = hero.getBoundingClientRect();
+      W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = W * DPR; canvas.height = H * DPR;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      buildTraces();
+      base = paintLayer(0.05, 0.11);
+      bright = paintLayer(0.2, 0.35);
+      spot = document.createElement('canvas'); spot.width = spot.height = 360 * DPR; spotCtx = spot.getContext('2d');
+      pulses = []; flashes = [];
+      const start = isSmall() ? 2 : 4;
+      for (let i = 0; i < start; i++){ spawnPulse(); pulses[pulses.length - 1] && (pulses[pulses.length - 1].d = Math.random() * pulses[pulses.length - 1].t.total); }
+      drawFrame(0);
     }
 
-    function buildGraph(){
-      const cols = Math.max(6, Math.floor(w / 160));
-      const rows = Math.max(4, Math.floor(h / 160));
-      nodes = [];
-      for (let i = 0; i < cols; i++){
-        for (let j = 0; j < rows; j++){
-          if (Math.random() > 0.55) continue;
-          nodes.push({
-            x: (i / (cols - 1)) * w + (Math.random() * 60 - 30),
-            y: (j / (rows - 1)) * h + (Math.random() * 60 - 30),
-            r: Math.random() * 1.6 + 1.2
-          });
+    function drawFrame(dt){
+      ctx.clearRect(0, 0, W, H);
+      if (base) ctx.drawImage(base, 0, 0, W, H);
+
+      // cursor spotlight: reveal the brighter board in a soft circle
+      if (mouse.on && bright && !reducedMotion){
+        const R = 180, sx = mouse.x - R, sy = mouse.y - R;
+        spotCtx.setTransform(1, 0, 0, 1, 0, 0);
+        spotCtx.globalCompositeOperation = 'source-over';
+        spotCtx.clearRect(0, 0, spot.width, spot.height);
+        spotCtx.drawImage(bright, sx * DPR, sy * DPR, 2 * R * DPR, 2 * R * DPR, 0, 0, 2 * R * DPR, 2 * R * DPR);
+        spotCtx.globalCompositeOperation = 'destination-in';
+        const g = spotCtx.createRadialGradient(R * DPR, R * DPR, 0, R * DPR, R * DPR, R * DPR);
+        g.addColorStop(0, 'rgba(0,0,0,.6)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+        spotCtx.fillStyle = g; spotCtx.fillRect(0, 0, spot.width, spot.height);
+        ctx.drawImage(spot, sx, sy, 2 * R, 2 * R);
+      }
+
+      // travelling pulses
+      for (let i = pulses.length - 1; i >= 0; i--){
+        const p = pulses[i];
+        p.d += p.speed * dt;
+        const head = Math.min(p.d, p.t.total);
+        const tail = Math.max(0, head - p.len);
+        const steps = 8;
+        for (let s = 0; s <= steps; s++){
+          const dd = tail + (head - tail) * (s / steps);
+          const pt = pointAt(p.t, p.reverse ? p.t.total - dd : dd);
+          const a = (s / steps);
+          ctx.fillStyle = `rgba(${GOLD},${(0.3 * a * a).toFixed(3)})`;
+          ctx.beginPath(); ctx.arc(pt[0], pt[1], 1.2 + a * 1.1, 0, Math.PI * 2); ctx.fill();
+        }
+        const hp = pointAt(p.t, p.reverse ? p.t.total - head : head);
+        const glow = ctx.createRadialGradient(hp[0], hp[1], 0, hp[0], hp[1], 7);
+        glow.addColorStop(0, `rgba(${GOLD},.26)`); glow.addColorStop(1, `rgba(${GOLD},0)`);
+        ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(hp[0], hp[1], 7, 0, Math.PI * 2); ctx.fill();
+        if (p.d - p.len >= p.t.total){
+          flashes.push({ x: hp[0], y: hp[1], life: 1 });
+          pulses.splice(i, 1);
         }
       }
-      links = [];
-      nodes.forEach((n, i) => {
-        nodes.forEach((m, j) => {
-          if (j <= i) return;
-          const d = Math.hypot(n.x - m.x, n.y - m.y);
-          if (d < 190 && Math.random() > 0.5) links.push({ a:n, b:m, d });
-        });
-      });
-      packets = links
-        .filter(() => Math.random() > 0.7)
-        .map(link => ({ link, t: Math.random(), speed: 0.0025 + Math.random() * 0.003 }));
-    }
+      const target = isSmall() ? 2 : 4;
+      while (pulses.length < target && traces.length) spawnPulse();
 
-    function draw(){
-      ctx.clearRect(0, 0, w, h);
-
-      // links
-      links.forEach(({a,b,d}) => {
-        const alpha = Math.max(0, 0.16 - d / 1900);
-        ctx.strokeStyle = `rgba(139,148,255,${alpha})`;
+      // junction flashes
+      for (let i = flashes.length - 1; i >= 0; i--){
+        const f = flashes[i];
+        f.life -= dt * 0.9;
+        if (f.life <= 0){ flashes.splice(i, 1); continue; }
+        const r = 3 + (1 - f.life) * 12;
+        ctx.strokeStyle = `rgba(${GOLD},${(0.22 * f.life).toFixed(3)})`;
         ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      });
-
-      // nodes
-      nodes.forEach(n => {
-        ctx.beginPath();
-        ctx.fillStyle = 'rgba(160,180,255,0.5)';
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      // traveling packets (the "logic" pulses)
-      packets.forEach(p => {
-        p.t += p.speed;
-        if (p.t > 1) p.t = 0;
-        const x = p.link.a.x + (p.link.b.x - p.link.a.x) * p.t;
-        const y = p.link.a.y + (p.link.b.y - p.link.a.y) * p.t;
-        const grad = ctx.createRadialGradient(x, y, 0, x, y, 5);
-        grad.addColorStop(0, 'rgba(6,182,212,0.9)');
-        grad.addColorStop(1, 'rgba(6,182,212,0)');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(x, y, 4.5, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      requestAnimationFrame(draw);
+        ctx.beginPath(); ctx.arc(f.x, f.y, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = `rgba(${GOLD},${(0.32 * f.life).toFixed(3)})`;
+        ctx.beginPath(); ctx.arc(f.x, f.y, 2.2, 0, Math.PI * 2); ctx.fill();
+      }
     }
+
+    function loop(now){
+      if (!running) return;
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      drawFrame(dt);
+      requestAnimationFrame(loop);
+    }
+    function play(){ if (running || reducedMotion || !visible || document.hidden) return; running = true; last = 0; requestAnimationFrame(loop); }
+    function stop(){ running = false; }
 
     resize();
-    draw();
-    window.addEventListener('resize', () => {
-      clearTimeout(window.__circuitResizeT);
-      window.__circuitResizeT = setTimeout(resize, 250);
-    });
+    if (!reducedMotion){
+      if ('IntersectionObserver' in window){
+        new IntersectionObserver(es => { visible = es[0].isIntersecting; visible ? play() : stop(); }, { threshold: 0 }).observe(hero);
+      }
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
+      hero.addEventListener('mousemove', e => { const r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.on = true; });
+      hero.addEventListener('mouseleave', () => { mouse.on = false; });
+      play();
+    }
+    let rT;
+    window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 250); });
   }
 
 
