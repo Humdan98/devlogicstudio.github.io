@@ -3,27 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Me — Hamdan Zafar | Dev Logic Studio</title>
-<meta name="description" content="Hamdan Zafar — Full Stack Web & E-commerce Developer, Shopify Plus Specialist, and founder of Dev Logic Studio. 8+ years of experience, verified on Upwork.">
+<title>About Dev Logic Studio | Shopify &amp; WordPress Web Studio</title>
+<meta name="description" content="Dev Logic Studio is a small web studio led by Hamdan Zafar, with 8+ years building Shopify, Shopify Plus and WordPress sites. You work directly with the developer.">
+<link rel="canonical" href="https://devlogicstudio.com/about/">
 <meta name="theme-color" content="#0B0F19">
 
-<meta property="og:title" content="About Me — Hamdan Zafar | Dev Logic Studio">
-<meta property="og:description" content="Full Stack Web & E-commerce Developer, Shopify Plus Specialist, and founder of Dev Logic Studio.">
-<meta property="og:type" content="profile">
+<meta property="og:title" content="About Dev Logic Studio | Shopify &amp; WordPress Web Studio">
+<meta property="og:description" content="Dev Logic Studio is a small web studio led by Hamdan Zafar, with 8+ years building Shopify, Shopify Plus and WordPress sites. You work directly with the developer.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://devlogicstudio.com/about/">
 <meta property="og:site_name" content="Dev Logic Studio">
 <meta property="og:image" content="https://devlogicstudio.com/assets/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://devlogicstudio.com/about/">
+<meta name="twitter:image" content="https://devlogicstudio.com/assets/og-default.jpg">
 
 <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="about.css">
+<link rel="stylesheet" href="../about/about.css">
+<link rel="stylesheet" href="../services/services.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "name": "About Dev Logic Studio",
+      "url": "https://devlogicstudio.com/about/",
+      "about": {
+        "@type": "ProfessionalService",
+        "name": "Dev Logic Studio",
+        "url": "https://devlogicstudio.com/",
+        "email": "hello@devlogicstudio.com",
+        "founder": {
+          "@type": "Person",
+          "name": "Hamdan Zafar",
+          "jobTitle": "Founder & Lead Developer"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://devlogicstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://devlogicstudio.com/about/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -52,10 +97,7 @@
 <script>try{if(sessionStorage.getItem('dls-intro'))document.getElementById('loader').classList.add('loader--quick')}catch(e){}</script>
 <noscript><style>.loader{display:none!important}html.is-loading,html.is-loading body{overflow:auto!important}[data-aos]{opacity:1!important;transform:none!important}</style></noscript>
 
-<!-- ============ NOISE / GRAIN OVERLAY ============ -->
 <div class="grain" aria-hidden="true"></div>
-
-<!-- ============ CUSTOM CURSOR ============ -->
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
@@ -73,17 +115,55 @@
 
     <nav class="nav__links" id="navLinks" aria-label="Primary">
       <a href="../index.html#home" class="nav__link">Home</a>
-      <a href="../index.html#services" class="nav__link">Services</a>
+      <div class="nav__item nav__item--menu">
+        <a href="../services/" class="nav__link">Services</a>
+        <button class="nav__menu-toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu" aria-label="Show services menu"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav__menu" id="navServicesMenu">
+          <div class="nav__menu-panel">
+            <div class="nav__menu-grid">
+          <a class="nav__menu-item" href="../services/shopify-development/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2l1 4h10l1-4M4 8h16l-1.5 11a2 2 0 01-2 1.8H7.5a2 2 0 01-2-1.8L4 8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+            <span><strong>Shopify Development</strong><small>Custom themes, redesigns and Shopify Plus work</small></span>
+          </a>
+          <a class="nav__menu-item" href="../services/wordpress-development/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7a5 5 0 010 10M12 7a5 5 0 000 10" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <span><strong>WordPress Development</strong><small>Custom themes, plugins, WooCommerce and speed</small></span>
+          </a>
+          <a class="nav__menu-item" href="../services/ecommerce-development/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 6l1.5 12a2 2 0 002 2h11a2 2 0 002-2L21 6M8 10v6M16 10v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>E-commerce Development</strong><small>Shopify, WooCommerce and Magento stores</small></span>
+          </a>
+          <a class="nav__menu-item" href="../services/web-development/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 9 4-18 3 9h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Website Development</strong><small>Fast, custom websites on the right CMS</small></span>
+          </a>
+          <a class="nav__menu-item" href="../services/website-design/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="13.5" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M16 9.5l-9.5 9.5M3 21l4-1 9-9-3-3-9 9-1 4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>UI/UX &amp; Website Design</strong><small>UI/UX, branding, logos and email templates</small></span>
+          </a>
+          <a class="nav__menu-item" href="../services/website-maintenance/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Website Maintenance</strong><small>Updates, security, backups and bug fixes</small></span>
+          </a>
+          <a class="nav__menu-item" href="../services/custom-web-development/">
+            <span class="nav__menu-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-5 3 5 3M16 9l5 3-5 3M13 5l-2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Custom Web Development</strong><small>Web apps, Figma/PSD to HTML, React and PHP</small></span>
+          </a>
+            </div>
+            <a class="nav__menu-all" href="../services/">View all services <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
       <a href="../index.html#expertise" class="nav__link">Expertise</a>
       <a href="../index.html#process" class="nav__link">Process</a>
       <a href="../index.html#portfolio" class="nav__link">Portfolio</a>
       <a href="../index.html#testimonials" class="nav__link">Testimonials</a>
-      <a href="index.html" class="nav__link is-active">About</a>
+      <a href="../about/index.html" class="nav__link is-active" aria-current="page">About</a>
     </nav>
 
     <div class="nav__actions">
-      <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
-        <span>View Upwork Profile</span>
+      <a href="#contact" class="btn btn--primary btn--sm">
+        <span>Get a Free Quote</span>
       </a>
       <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -98,15 +178,30 @@
     <span class="mobile-menu__eyebrow">Navigate</span>
     <nav class="mobile-menu__nav" aria-label="Mobile">
       <a href="../index.html#home"><span class="mobile-menu__num">01</span>Home</a>
-      <a href="../index.html#services"><span class="mobile-menu__num">02</span>Services</a>
+      <div class="mm-group">
+        <div class="mm-group__row">
+          <a href="../services/"><span class="mobile-menu__num">02</span>Services</a>
+          <button class="mm-group__toggle" type="button" aria-expanded="false" aria-controls="mmServices" aria-label="Show all services"><span></span></button>
+        </div>
+        <div class="mm-group__list" id="mmServices" hidden>
+          <a class="mm-sub" href="../services/shopify-development/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2l1 4h10l1-4M4 8h16l-1.5 11a2 2 0 01-2 1.8H7.5a2 2 0 01-2-1.8L4 8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span><span class="mm-sub__txt">Shopify</span></a>
+          <a class="mm-sub" href="../services/wordpress-development/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7a5 5 0 010 10M12 7a5 5 0 000 10" stroke="currentColor" stroke-width="1.7"/></svg></span><span class="mm-sub__txt">WordPress</span></a>
+          <a class="mm-sub" href="../services/ecommerce-development/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 6l1.5 12a2 2 0 002 2h11a2 2 0 002-2L21 6M8 10v6M16 10v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mm-sub__txt">E-commerce</span></a>
+          <a class="mm-sub" href="../services/web-development/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 9 4-18 3 9h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mm-sub__txt">Websites</span></a>
+          <a class="mm-sub" href="../services/website-design/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="13.5" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M16 9.5l-9.5 9.5M3 21l4-1 9-9-3-3-9 9-1 4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mm-sub__txt">UI/UX Design</span></a>
+          <a class="mm-sub" href="../services/website-maintenance/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mm-sub__txt">Maintenance</span></a>
+          <a class="mm-sub" href="../services/custom-web-development/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-5 3 5 3M16 9l5 3-5 3M13 5l-2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mm-sub__txt">Custom Dev</span></a>
+          <a class="mm-sub mm-sub--all" href="../services/"><span class="mm-sub__ico"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="mm-sub__txt">All services</span></a>
+        </div>
+      </div>
       <a href="../index.html#expertise"><span class="mobile-menu__num">03</span>Expertise</a>
       <a href="../index.html#process"><span class="mobile-menu__num">04</span>Process</a>
       <a href="../index.html#portfolio"><span class="mobile-menu__num">05</span>Portfolio</a>
       <a href="../index.html#testimonials"><span class="mobile-menu__num">06</span>Testimonials</a>
-      <a href="index.html" aria-current="page"><span class="mobile-menu__num">07</span>About</a>
+      <a href="../about/index.html" aria-current="page"><span class="mobile-menu__num">07</span>About</a>
     </nav>
     <div class="mobile-menu__foot">
-      <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">View Upwork Profile</a>
+      <a href="#contact" class="btn btn--primary btn--block">Get a Free Quote</a>
       <p class="mobile-menu__mail">or email <a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a></p>
     </div>
   </div>
@@ -114,331 +209,301 @@
 
 <main id="top" tabindex="-1">
 
-<!-- ============ ABOUT HERO ============ -->
+<!-- ============ HERO ============ -->
 <section class="about-hero" id="about-top">
   <div class="container about-hero__layout">
-
     <div class="about-hero__col">
-      <p class="kicker about-hero__eyebrow" data-aos="fade-up"><span class="kicker__index">01</span><span class="kicker__line"></span><span>Full Stack Web & E-commerce Developer</span></p>
-
-      <h1 class="about-hero__title" data-aos="fade-up" data-aos-delay="60">Hi, I'm <em>Hamdan Zafar</em></h1>
-      <span class="about-hero__role" data-aos="fade-up" data-aos-delay="100">Shopify Plus Specialist · WordPress Developer · Development Lead</span>
-
-      <p class="about-hero__desc" data-aos="fade-up" data-aos-delay="140">
-        Web and e-commerce developer with 8+ years of professional experience, specializing in Shopify, Shopify Plus, WordPress, custom storefronts, integrations, performance optimization, and hands-on technical leadership.
+      <nav class="crumbs" aria-label="Breadcrumb" data-aos="fade-up">
+        <a href="../index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">About</span>
+      </nav>
+      <h1 class="about-hero__title" data-aos="fade-up" data-aos-delay="60">A small studio with <em>senior hands</em> on every project</h1>
+      <p class="about-hero__desc" data-aos="fade-up" data-aos-delay="120">
+        Dev Logic Studio is run by me, Hamdan Zafar. I've spent 8+ years building Shopify, Shopify Plus and WordPress sites, including years leading a team of 8–10 developers. When you work with us, you work with me directly, from the first call to launch and beyond.
       </p>
-
-      <div class="about-hero__actions" data-aos="fade-up" data-aos-delay="180">
-        <a href="#experience" class="btn btn--primary btn--lg ripple">
-          <span>View Experience</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#about-contact" class="btn btn--ghost btn--lg ripple">
-          <span>Contact</span>
-        </a>
+      <div class="about-hero__actions" data-aos="fade-up" data-aos-delay="160">
+        <a href="#contact" class="btn btn--primary btn--lg ripple"><span>Get a Free Quote</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#work" class="btn btn--ghost btn--lg ripple"><span>See Our Work</span></a>
       </div>
-
-      <div class="about-hero__stats" data-aos="fade-up" data-aos-delay="220">
-        <div class="about-hero__stat"><strong>8+</strong><span>Years experience</span></div>
-        <div class="about-hero__stat"><strong>Shopify Plus</strong><span>Primary specialization</span></div>
-        <div class="about-hero__stat"><strong>Lead + Build</strong><span>Technical ownership</span></div>
+      <div class="about-hero__stats" data-aos="fade-up" data-aos-delay="200">
+        <div class="about-hero__stat"><strong>8+</strong><span>Years building for the web</span></div>
+        <div class="about-hero__stat"><strong>Shopify Plus</strong><span>Main specialty</span></div>
+        <div class="about-hero__stat"><strong>1:1</strong><span>You talk to the builder</span></div>
       </div>
     </div>
-
     <div class="hero-photo" data-aos="fade-up" data-aos-delay="140">
-      <img src="../assets/Hamdan-profile.webp" alt="Hamdan Zafar">
-      <!-- <div class="hero-photo__placeholder">
-        <div class="hero-photo__avatar">HZ</div>
-        <small>Add your photo here — swap this placeholder block in about.html</small>
-      </div> -->
-      <div class="hero-photo__badge"><i></i><span>Open to opportunities</span></div>
+      <img src="../assets/Hamdan-profile.webp" alt="Hamdan Zafar, founder of Dev Logic Studio">
+      <div class="hero-photo__badge"><i></i><span>Taking new projects</span></div>
     </div>
-
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
-<section class="section" id="about-me">
+<!-- ============ STORY ============ -->
+<section class="section story" id="story">
   <div class="container">
-    <div class="split-head">
-      <div class="split-head__left" data-aos="fade-up">
-        <p class="kicker"><span class="kicker__index">01</span><span class="kicker__line"></span><span>About</span></p>
-        <h2>Technical depth with practical e-commerce experience.</h2>
+    <div class="story__grid">
+      <div class="story__intro" data-aos="fade-up">
+        <p class="story__eyebrow">The story</p>
+        <h2 class="story__title">Why I started <em>Dev Logic Studio</em></h2>
+        <p>For years I watched good businesses get let down by their websites. Not because the work was hard, but because nobody senior was paying attention to it.</p>
+        <p>Big agencies would win the project, then pass it to a junior. Freelancers would disappear halfway through. Either way, the business owner was left chasing updates and paying for fixes.</p>
+        <blockquote class="story__quote">
+          <p>I wanted to build the studio I'd want to hire: senior work, a clear plan, and one person who actually answers your emails.</p>
+          <footer><img src="../assets/Hamdan-profile.webp" alt="" width="40" height="40" loading="lazy"><span><strong>Hamdan Zafar</strong>Founder &amp; Lead Developer</span></footer>
+        </blockquote>
       </div>
-      <div class="split-head__copy" data-aos="fade-up" data-aos-delay="80">
-        <p>I am a Full Stack Web &amp; E-commerce Developer with a professional background spanning Shopify, Shopify Plus, WordPress, custom web development, CMS platforms, integrations, and e-commerce optimization.</p>
-        <p>My career began in frontend and WordPress development and progressed into Shopify development and technical leadership. I have led development teams while remaining actively involved in implementation, debugging, optimization, client communication, and technical decision-making.</p>
-        <p>That combination of hands-on development and technical ownership is why I founded <strong>Dev Logic Studio</strong> — a way to bring the same standard of work to more businesses under one roof, while I stay personally involved in every project we take on.</p>
+
+      <ol class="story__road" data-aos="fade-up" data-aos-delay="100">
+        <li>
+          <span class="story__year">2017</span>
+          <h3>Learning the craft</h3>
+          <p>Started out building WordPress and front-end sites for small businesses, and learned early how much a good website can change things for them.</p>
+        </li>
+        <li>
+          <span class="story__year">2020</span>
+          <h3>Leading a team</h3>
+          <p>Moved into Shopify and became team lead at TechLeadz IT Solutions in Lahore, running a team of 8–10 developers until 2021 while still writing code every day.</p>
+        </li>
+        <li>
+          <span class="story__year">2022</span>
+          <h3>Shopify Plus for US brands</h3>
+          <p>Joined C2 Digital, a US agency, building and customising Shopify and Shopify Plus stores for clients across the US.</p>
+        </li>
+        <li>
+          <span class="story__year">Nov 2022</span>
+          <h3>Development lead at Kleeq</h3>
+          <p>Full-stack web and e-commerce developer and development lead. I own projects end to end: building and customising websites, handling the technical work and turning business requirements into practical solutions, with a focus on quality, performance and functionality.</p>
+        </li>
+        <li class="is-now">
+          <span class="story__year">Today</span>
+          <h3>Dev Logic Studio</h3>
+          <p>Everything I learned, in one small studio. I lead every project myself, from the first call to launch and the support after.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="story__compare" data-aos="fade-up">
+      <div class="story__opt">
+        <span class="story__opt-label">Big agency</span>
+        <p>Senior people pitch, juniors build. You pay for the overhead.</p>
+      </div>
+      <div class="story__opt">
+        <span class="story__opt-label">Solo freelancer</span>
+        <p>Cheaper, but no process and no backup if they vanish.</p>
+      </div>
+      <div class="story__opt story__opt--us">
+        <span class="story__opt-label">Dev Logic Studio</span>
+        <p>Senior hands on your project, a clear process and fixed quotes, without agency prices.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section class="section" id="experience">
+<!-- ============ WHY US ============ -->
+<section class="section">
   <div class="container">
-    <div class="section-head" data-aos="fade-up">
-      <p class="kicker kicker--center"><span class="kicker__index">02</span><span class="kicker__line"></span><span>Experience</span></p>
-      <h2 class="section-title">Professional Experience</h2>
+    <div class="svc-head svc-head--center" data-aos="fade-up">
+      <h2>What working with us looks like</h2>
+      <p>No jargon and no surprises. Just good work and straight answers.</p>
     </div>
-
-    <div class="exp-list">
-
-      <article class="exp-job exp-job--featured" data-aos="fade-up" data-aos-delay="0">
-        <div class="exp-job__meta"><span>2024 — Present</span><span>Remote · Founder-led</span></div> <!-- Placeholder: update with your actual founding year -->
-        <h3>Dev Logic Studio</h3>
-        <h4>Founder &amp; Lead Developer</h4>
-        <p class="exp-job__note">My current, primary practice — I lead every client engagement personally</p>
-        <ul>
-          <li>Founded the studio to bring hands-on Shopify, WordPress, and custom web development to more businesses under one roof.</li>
-          <li>Personally lead every client project from scope to launch — no hand-offs to a rotating team.</li>
-          <li>Take on select ongoing contracts (including Kleeq, below) alongside studio client work.</li>
-        </ul>
-      </article>
-
-      <article class="exp-job" data-aos="fade-up" data-aos-delay="80">
-        <div class="exp-job__meta"><span>Nov 2022 — Present</span><span>Remote · Contract · US-based</span></div>
-        <h3>Kleeq</h3>
-        <h4>Full Stack Web &amp; E-commerce Developer, Development Lead</h4>
-        <p class="exp-job__note">Primary / sole developer responsible for development</p>
-        <ul>
-          <li>Manage the company's development work across e-commerce stores, themes, apps, integrations, and ongoing technical improvements.</li>
-          <li>Develop and customize Shopify and Shopify Plus storefronts and e-commerce functionality, including Checkout Champ integrations and conversion-focused features.</li>
-          <li>Handle store optimization, A/B testing, and ongoing technical maintenance.</li>
-        </ul>
-      </article>
-
-      <article class="exp-job" data-aos="fade-up" data-aos-delay="160">
-        <div class="exp-job__meta"><span>Jan 2022 — Present</span><span>Remote · Freelance</span></div>
-        <h3>Upwork</h3>
-        <h4>Web &amp; E-commerce Developer | Shopify Plus | WordPress</h4>
-        <ul>
-          <li>Deliver custom web and e-commerce development for clients across Shopify, Shopify Plus, and WordPress — see the transparency section below for verified reviews.</li>
-          <li>Provide ongoing development, debugging, optimization, and migrations for e-commerce projects.</li>
-        </ul>
-      </article>
-
-      <article class="exp-job" data-aos="fade-up" data-aos-delay="240">
-        <div class="exp-job__meta"><span>Jan 2022 — Oct 2023</span><span>Remote · Full-time · US-based</span></div>
-        <h3>C2 Digital</h3>
-        <h4>Full Stack Shopify Developer</h4>
-        <ul>
-          <li>Developed and customized Shopify and Shopify Plus e-commerce stores using Liquid, HTML, CSS, JavaScript, AJAX, and JSON.</li>
-          <li>Collaborated with clients to translate business requirements into practical technical solutions.</li>
-          <li>Delivered responsive, cross-browser-tested storefronts across desktop, tablet, and mobile.</li>
-        </ul>
-      </article>
-
-      <article class="exp-job" data-aos="fade-up" data-aos-delay="320">
-        <div class="exp-job__meta"><span>Aug 2017 — Dec 2021</span><span>Onsite · Lahore, Pakistan</span></div>
-        <h3>TechLeadz</h3>
-        <h4>Team Lead / Senior Web Developer</h4>
-        <p class="exp-job__note">Career progression: Frontend &amp; WordPress Developer → Shopify Developer → Team Lead</p>
-        <ul>
-          <li>Progressed from Frontend/WordPress development into Shopify development, building fully custom e-commerce stores from scratch.</li>
-          <li>Became Team Lead in 2020, managing a team of 8–10 developers while staying hands-on with development, code reviews, and mentoring.</li>
-          <li>Coordinated project timelines and technical priorities, working directly with clients on tailored solutions.</li>
-        </ul>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ EXPERTISE ============ -->
-<section class="section" id="skills">
-  <div class="container">
-    <div class="section-head" data-aos="fade-up">
-      <p class="kicker kicker--center"><span class="kicker__index">03</span><span class="kicker__line"></span><span>Expertise</span></p>
-      <h2 class="section-title">Core Expertise</h2>
-    </div>
-
-    <div class="expertise-grid" data-aos="fade-up" data-aos-delay="80">
-      <div class="expertise-card">
+    <div class="expertise-grid">
+      <div class="expertise-card" data-aos="fade-up" data-aos-delay="0">
         <span class="expertise-card__num">01</span>
-        <h3>Shopify &amp; E-commerce</h3>
-        <p>Shopify, Shopify Plus, Liquid, theme development, custom sections, cart experiences, checkout enhancements, migrations, optimization, and e-commerce customization.</p>
+        <h3>You talk to the developer</h3>
+        <p>No account managers or hand-offs. The person you speak to on the first call is the one designing and building your site.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card" data-aos="fade-up" data-aos-delay="70">
         <span class="expertise-card__num">02</span>
-        <h3>Web Development</h3>
-        <p>HTML5, CSS3, JavaScript, PHP, responsive development, browser compatibility, debugging, performance optimization, and custom web solutions.</p>
+        <h3>Shopify &amp; Shopify Plus depth</h3>
+        <p>Custom themes, sections, checkout tweaks, apps and integrations. We know where Shopify bends and where it breaks.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card" data-aos="fade-up" data-aos-delay="140">
         <span class="expertise-card__num">03</span>
-        <h3>CMS &amp; Platforms</h3>
-        <p>WordPress, WooCommerce, Joomla, Drupal, Wix, Webflow, Strapi, and custom CMS-based development.</p>
+        <h3>Fixed quotes, clear scope</h3>
+        <p>You get a written plan and a fixed price before we start, so you always know what you're paying for.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card" data-aos="fade-up" data-aos-delay="0">
         <span class="expertise-card__num">04</span>
-        <h3>Integrations</h3>
-        <p>Third-party applications, APIs, e-commerce integrations, checkout solutions, tracking/pixels, and custom JavaScript integrations.</p>
+        <h3>Built to sell, not just to look nice</h3>
+        <p>Fast pages, clear product layouts and a smooth checkout. Design choices are made with sales in mind.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card" data-aos="fade-up" data-aos-delay="70">
         <span class="expertise-card__num">05</span>
-        <h3>Modern JavaScript</h3>
-        <p>React, Nuxt.js, AJAX, JSON, API integration, interactive storefront functionality, and modern frontend practices.</p>
+        <h3>Honest advice</h3>
+        <p>If a small fix will do the job, we'll tell you. We'd rather earn your trust than sell you a bigger project.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card" data-aos="fade-up" data-aos-delay="140">
         <span class="expertise-card__num">06</span>
-        <h3>Technical Leadership</h3>
-        <p>Team leadership, task planning, code reviews, mentoring, technical direction, client communication, delivery coordination, and problem solving.</p>
+        <h3>We stay after launch</h3>
+        <p>Bug fixes, updates and new features when you need them, from someone who already knows your site.</p>
       </div>
     </div>
-
-    <div class="tag-cloud" data-aos="fade-up" data-aos-delay="120">
-      <span class="tag-pill">Shopify</span>
-      <span class="tag-pill">Shopify Plus</span>
-      <span class="tag-pill">Liquid</span>
-      <span class="tag-pill">JavaScript</span>
-      <span class="tag-pill">PHP</span>
-      <span class="tag-pill">HTML5</span>
-      <span class="tag-pill">CSS3</span>
-      <span class="tag-pill">React</span>
-      <span class="tag-pill">Nuxt.js</span>
-      <span class="tag-pill">WordPress</span>
-      <span class="tag-pill">WooCommerce</span>
-      <span class="tag-pill">Strapi</span>
-      <span class="tag-pill">AJAX</span>
-      <span class="tag-pill">JSON</span>
-      <span class="tag-pill">API Integration</span>
-      <span class="tag-pill">Tailwind CSS</span>
-      <span class="tag-pill">Bootstrap</span>
-      <span class="tag-pill">MERN Stack</span>
-      <span class="tag-pill">Python</span>
-    </div>
   </div>
 </section>
 
-<!-- ============ EDUCATION ============ -->
-<section class="section" id="education">
+<!-- ============ WORK ============ -->
+<section class="section svc-work" id="work">
   <div class="container">
-    <div class="split-head">
-      <div class="split-head__left" data-aos="fade-up">
-        <p class="kicker"><span class="kicker__index">04</span><span class="kicker__line"></span><span>Education</span></p>
-        <h2>Education</h2>
-      </div>
-      <article class="edu-card" data-aos="fade-up" data-aos-delay="80">
-        <span class="edu-card__date">2017 — 2021</span>
-        <h3>Bachelor of Science in Computer Science</h3>
-        <h4>Virtual University of Pakistan</h4>
-        <p>Built a strong foundation in computer science, including algorithms, data structures, software engineering, databases, networking, and problem-solving. Balanced academic studies with professional development work, strengthening practical application, time management, and multitasking skills.</p>
-      </article>
+    <div class="svc-work__head" data-aos="fade-up">
+      <h2 class="outline-title">The <span>Work</span></h2>
+      <p>A few stores we've built. They're live right now, so click through and have a look around.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ VALUE STATEMENT ============ -->
-<section class="statement-band">
-  <div class="container">
-    <p class="kicker" data-aos="fade-up"><span class="kicker__index">05</span><span class="kicker__line"></span><span>Value</span></p>
-    <h2 data-aos="fade-up" data-aos-delay="60">From storefront development to technical ownership.</h2>
-    <p class="statement-sub" data-aos="fade-up" data-aos-delay="120">I bring hands-on engineering experience together with e-commerce expertise, leadership, problem solving, and responsibility for production web environments.</p>
-  </div>
-</section>
-
-<!-- ============ UPWORK TRANSPARENCY ============ -->
-<section class="upwork-section" id="upwork">
-  <div class="container upwork-grid">
-
-    <div class="upwork-grid__text" data-aos="fade-up">
-      <p class="kicker"><span class="kicker__index">06</span><span class="kicker__line"></span><span>Verified Track Record</span></p>
-      <h2 class="section-title">Full transparency, backed by Upwork</h2>
-      <p class="section-sub section-sub--left">The Upwork work listed above isn't just a line on this page — it's independently verified. Every review, rating, and completed job on my profile is public, so you can check it yourself before we talk.</p>
-
-      <ul class="upwork-list">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>Verified client reviews</strong> — every review is tied to a completed, paid job.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>Job Success Score</strong> — a public, Upwork-calculated measure of client satisfaction.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>Secure milestone payments</strong> — funds are held and released through Upwork, not off-platform.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>Full work history</strong> — every project on the record, visible to anyone.</span>
-        </li>
-      </ul>
-
-      <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg ripple">
-        <span>View My Verified Upwork Profile</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="frames">
+      <a class="frame frame--big" href="https://humansandland.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="0">
+        <div class="frame__bar"><i></i><i></i><i></i><span>humansandland.com</span></div>
+        <div class="frame__shot"><img src="../assets/humans-and-land.webp" alt="Humans &amp; Land website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>Humans &amp; Land</strong><span>Shopify Store</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+      <a class="frame " href="https://durapaw.ca" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="80">
+        <div class="frame__bar"><i></i><i></i><i></i><span>durapaw.ca</span></div>
+        <div class="frame__shot"><img src="../assets/durapaw.webp" alt="DuraPaw website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>DuraPaw</strong><span>Shopify Store</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
+      </a>
+      <a class="frame " href="https://norani.com" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="160">
+        <div class="frame__bar"><i></i><i></i><i></i><span>norani.com</span></div>
+        <div class="frame__shot"><img src="../assets/norani.webp" alt="Norani website built by Dev Logic Studio" loading="lazy"></div>
+        <div class="frame__meta"><div><strong>Norani</strong><span>Shopify Store</span></div><em>Visit site <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></em></div>
       </a>
     </div>
+    <p class="about-more" data-aos="fade-up"><a href="../index.html#portfolio">See more projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+  </div>
+</section>
 
-    <aside class="hero__panel upwork-panel" data-aos="fade-up" data-aos-delay="120">
-      <div class="hero__panel-head">
-        <span class="hero__panel-dot"></span>
-        <span class="hero__panel-dot"></span>
-        <span class="hero__panel-dot"></span>
-        <span class="hero__panel-title">upwork.com/freelancers/hamdanzafar</span>
-      </div>
-      <div class="hero__panel-body">
-        <div class="hero__panel-row">
-          <span class="hero__panel-key">role</span>
-          <span class="hero__panel-val">Web &amp; E-commerce Developer</span>
-        </div>
-        <div class="hero__panel-row">
-          <span class="hero__panel-key">specialization</span>
-          <span class="hero__panel-val">Shopify Plus · WordPress</span>
-        </div>
-        <div class="hero__panel-row">
-          <span class="hero__panel-key">active since</span>
-          <span class="hero__panel-val">Jan 2022</span>
-        </div>
-        <div class="hero__panel-row">
-          <span class="hero__panel-key">status</span>
-          <span class="hero__panel-val hero__panel-val--ok">Available</span> <!-- Placeholder: swap for your real Upwork badge, e.g. Top Rated -->
-        </div>
-        <div class="hero__panel-divider"></div>
-        <p style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim);line-height:1.6;">
-          Job Success Score, total jobs, and hours worked are visible directly on the live profile — click through to see current numbers.
-        </p>
-      </div>
-      <div class="upwork-panel-footer">
-        <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--block ripple"><span>Open Upwork Profile</span></a>
-      </div>
-    </aside>
+<!-- ============ PROCESS ============ -->
+<section class="section svc-process">
+  <div class="container">
+    <div class="svc-head svc-head--center" data-aos="fade-up">
+      <h2>How a project with us works</h2>
+      <p>Four steps, and you always know what's happening next.</p>
+    </div>
+    <ol class="flow" id="svcFlow">
+      <span class="flow__line" aria-hidden="true"><span class="flow__fill"></span></span>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="0">
+        <span class="flow__node">1</span>
+        <h3>Free discovery call</h3>
+        <p>We talk through your goals, what's not working and what success looks like for you.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="90">
+        <span class="flow__node">2</span>
+        <h3>Clear plan &amp; quote</h3>
+        <p>You get a written scope, timeline and fixed price. No vague estimates, no surprises.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="180">
+        <span class="flow__node">3</span>
+        <h3>Design &amp; build</h3>
+        <p>We design, develop and share progress at every milestone so you're never in the dark.</p>
+      </li>
+      <li class="flow__step" data-aos="fade-up" data-aos-delay="270">
+        <span class="flow__node">4</span>
+        <h3>Launch &amp; support</h3>
+        <p>We test everything, launch with monitoring in place and stay on for fixes and growth.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 
+<!-- ============ TRUST ============ -->
+<section class="section about-trust">
+  <div class="container">
+    <div class="about-trust__box" data-aos="fade-up">
+      <div>
+        <h2>Want proof before we talk?</h2>
+        <p>My Upwork profile has my full work history and client reviews, each one tied to a real, paid job. Have a look, then come back and tell us about your project.</p>
+      </div>
+      <a href="https://www.upwork.com/freelancers/hamdanzafar" class="btn btn--ghost btn--lg" target="_blank" rel="noopener noreferrer"><span>See Upwork reviews</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
   </div>
 </section>
 
 <!-- ============ CONTACT ============ -->
-<section class="section" id="about-contact">
+<section class="contact svc-contact" id="contact">
   <div class="container">
-    <div class="about-cta" data-aos="fade-up">
-      <div class="about-cta__inner">
-        <p class="kicker kicker--center"><span class="kicker__index">07</span><span class="kicker__line"></span><span>Contact</span></p>
-        <h2>Ready to start your next project?</h2>
-        <p>Open to professional opportunities, e-commerce development projects, and technical collaborations — through Dev Logic Studio or directly.</p>
-        <a href="../index.html#contact" class="btn btn--primary btn--lg ripple">
-          <span>Start a Project</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="about-cta__links">
-          <a href="../index.html#portfolio">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 9h16M9 9v11" stroke="currentColor" stroke-width="1.6"/></svg>
-            Portfolio
-          </a>
-          <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8 9v3.2a2.8 2.8 0 005.6 0V9M13.6 12a2.4 2.4 0 112.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Upwork
-          </a>
-          <a href="mailto:hello@devlogicstudio.com">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 5l8 7 8-7" stroke="currentColor" stroke-width="1.6"/></svg>
-            Email
-          </a>
-        </div>
+    <div class="contact__grid">
+      <div class="contact__info" data-aos="fade-up">
+        <h2 class="svc-contact__title">Tell us about your project</h2>
+        <p class="section-sub section-sub--left">Whether it's a new store, a redesign or a few fixes, send a quick message and you'll hear back from me within one business day.</p>
+        <ul class="contact__details">
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 5l8 7 8-7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+            <div><strong>Email us directly</strong><span><a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a></span></div>
+          </li>
+          <li>
+            <span class="contact__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div><strong>Fast replies</strong><span>Within one business day</span></div>
+          </li>
+        </ul>
+        <p class="contact__alt">Prefer to hire through Upwork? <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">See my verified profile</a>.</p>
       </div>
+
+      <form class="contact__form js-contact-form" data-aos="fade-up" data-aos-delay="100" novalidate>
+        <!-- spam trap: real people never see or fill this -->
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-name">Your name</label>
+            <input type="text" id="sf-name" name="name" autocomplete="name" required>
+            <span class="field__error" data-error-for="name"></span>
+          </div>
+          <div class="field">
+            <label for="sf-email">Email</label>
+            <input type="email" id="sf-email" name="email" autocomplete="email" required>
+            <span class="field__error" data-error-for="email"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="sf-service">What do you need?</label>
+            <select id="sf-service" name="service" required>
+              <option value="" disabled selected>Pick a service</option>
+            <option>Shopify Development</option>
+            <option>WordPress Development</option>
+            <option>E-commerce Development</option>
+            <option>Website Development</option>
+            <option>UI/UX &amp; Website Design</option>
+            <option>Website Maintenance</option>
+            <option>Custom Web Development</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="service"></span>
+          </div>
+          <div class="field">
+            <label for="sf-budget">Budget <small>(optional)</small></label>
+            <select id="sf-budget" name="budget">
+              <option value="" selected>Prefer not to say</option>
+            <option>Under $1,000</option>
+            <option>$1,000 – $3,000</option>
+            <option>$3,000 – $7,000</option>
+            <option>$7,000+</option>
+            <option>Not sure yet</option>
+            </select>
+            <span class="field__error" data-error-for="budget"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sf-website">Current website <small>(optional)</small></label>
+          <input type="text" id="sf-website" name="website" inputmode="url" placeholder="yourbusiness.com">
+          <span class="field__error" data-error-for="website"></span>
+        </div>
+        <div class="field">
+          <label for="sf-message">Tell us about your project</label>
+          <textarea id="sf-message" name="message" rows="5" required placeholder="What are you trying to build or fix? Any deadline?"></textarea>
+          <span class="field__error" data-error-for="message"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block ripple">
+          <span class="btn__label">Send Message</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-note">We reply within one business day. No spam, no sales pressure. See our <a href="../privacy/">privacy policy</a>.</p>
+
+        <div class="form-success" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="form-success__text">Thanks! Your message is on its way. We'll reply within one business day.</span>
+        </div>
+      </form>
     </div>
   </div>
 </section>
-
 
 </main>
 
@@ -472,17 +537,17 @@
       <div class="footer__col">
         <h4>Quick Links</h4>
         <a href="../index.html#home">Home</a>
-        <a href="../index.html#expertise">Why Us</a>
+        <a href="../services/">All Services</a>
         <a href="../index.html#portfolio">Portfolio</a>
         <a href="../index.html#testimonials">Testimonials</a>
-        <a href="index.html">About Me</a>
+        <a href="../about/index.html">About Me</a>
       </div>
 
       <div class="footer__col">
         <h4>Get in Touch</h4>
         <a href="mailto:hello@devlogicstudio.com">hello@devlogicstudio.com</a>
         <a href="https://www.upwork.com/freelancers/hamdanzafar" target="_blank" rel="noopener noreferrer">Upwork Profile</a>
-        <a href="../index.html#contact">Request a Quote</a>
+        <a href="#contact">Request a Quote</a>
       </div>
     </div>
 
@@ -500,5 +565,6 @@
 </a>
 
 <script src="../script.js"></script>
+<script src="../services/services.js"></script>
 </body>
 </html>
