@@ -2298,3 +2298,15 @@ main:focus{outline:none;}
   .nav__links > a.nav__link[href="#contact"]{display:none;}
   .nav__logo-subtext{display:none;}
 }
+
+/* ---------- Portfolio: whole card is clickable on every device ----------
+   The link lives on the small arrow; stretch its hit area over the card.
+   The arrow's hover rotation moves to the icon, because a transform on the
+   arrow wrapper would trap the stretched link inside the 30px circle. */
+.owp-card{cursor:pointer;}
+.owp-card-arrow a::before{content:"";position:absolute;inset:0;z-index:2;}
+.owp-card:hover .owp-card-arrow{transform:none;}
+.owp-card-arrow svg{transition:transform .3s ease;}
+.owp-card:hover .owp-card-arrow svg{transform:rotate(45deg);}
+.owp-card:has(a:focus-visible){border-color:var(--gold-line);}
+.owp-card-arrow a:focus-visible{outline:none;}
