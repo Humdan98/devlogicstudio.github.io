@@ -2318,3 +2318,7 @@ main:focus{outline:none;}
 @media (min-width:700px) and (max-width:1199px){
   .hero{min-height:0;justify-content:flex-start;padding-top:140px;}
 }
+
+/* Contact section: email is a real link */
+.contact__details a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s;}
+.contact__details a:hover{color:var(--blue);text-decoration-color:currentColor;}
