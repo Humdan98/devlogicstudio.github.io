@@ -2322,3 +2322,12 @@ main:focus{outline:none;}
 /* Contact section: email is a real link */
 .contact__details a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s;}
 .contact__details a:hover{color:var(--blue);text-decoration-color:currentColor;}
+
+/* ---------- Header stacking ----------
+   Header sits at z-index 999 so nothing on the page (e.g. .section-head at 99)
+   can scroll over it. The mobile menu, the open-menu header and the modal are
+   lifted above it so they still work. */
+.nav{z-index:999;}
+.mobile-menu{z-index:1000;}
+body.menu-open .nav{z-index:1001;}
+.modal{z-index:1100;}
