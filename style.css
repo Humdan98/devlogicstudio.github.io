@@ -2310,3 +2310,11 @@ main:focus{outline:none;}
 .owp-card:hover .owp-card-arrow svg{transform:rotate(45deg);}
 .owp-card:has(a:focus-visible){border-color:var(--gold-line);}
 .owp-card-arrow a:focus-visible{outline:none;}
+
+/* ---------- Hero on tablets ----------
+   The hero fills the full screen height and centres its content, which on
+   tall tablet screens (iPad Pro / Air portrait) left a big empty gap under
+   the header and another under the marquee. Let it size to its content. */
+@media (min-width:700px) and (max-width:1199px){
+  .hero{min-height:0;justify-content:flex-start;padding-top:140px;}
+}
