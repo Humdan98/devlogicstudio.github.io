@@ -2295,7 +2295,6 @@ main:focus{outline:none;}
    The homepage has one more link (Contact) and a longer CTA, so free up room:
    hide the Contact link (the CTA does the same job) and the logo tagline. */
 @media (min-width:1000px) and (max-width:1199px){
-  .nav__links > a.nav__link[href="#contact"]{display:none;}
   .nav__logo-subtext{display:none;}
 }
 
@@ -2346,3 +2345,9 @@ body.menu-open .nav{z-index:1001;}
   mask-image:radial-gradient(ellipse 80% 100% at 14% 0%,#000 40%,transparent 80%);
 }
 .hero > .container,.about-hero > .container{position:relative;z-index:2;}
+
+/* ---------- Hero on tall screens (viewport height 1200px+) ----------
+   Don't stretch the hero to full screen height; let it size to its content. */
+@media (min-height:1200px){
+  .hero,.hero.svc-hero{min-height:auto;justify-content:flex-start;}
+}
