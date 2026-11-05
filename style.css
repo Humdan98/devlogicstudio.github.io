@@ -2290,3 +2290,11 @@ main:focus{outline:none;}
   .mobile-menu .mobile-menu__nav a.mm-sub{font-size:13px;gap:8px;padding:9px;}
   .mm-sub__ico{flex-basis:26px;width:26px;height:26px;}
 }
+
+/* ---------- Header on small laptops (1000–1199px) ----------
+   The homepage has one more link (Contact) and a longer CTA, so free up room:
+   hide the Contact link (the CTA does the same job) and the logo tagline. */
+@media (min-width:1000px) and (max-width:1199px){
+  .nav__links > a.nav__link[href="#contact"]{display:none;}
+  .nav__logo-subtext{display:none;}
+}
