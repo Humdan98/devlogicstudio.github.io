@@ -264,7 +264,9 @@ const sections = Array.from(navLinks)
 function updateActiveLink() {
   if (!sections.length) return;
 
-  let current = sections[0];
+  // Nothing is active until a section has actually been reached
+  // (otherwise pages with only #contact light it up at the top).
+  let current = null;
   const offset = 140;
 
   sections.forEach(section => {
@@ -282,7 +284,7 @@ function updateActiveLink() {
       return;
     }
 
-    link.classList.toggle('is-active', href === `#${current.id}`);
+    link.classList.toggle('is-active', !!current && href === `#${current.id}`);
   });
 }
 
@@ -1260,4 +1262,26 @@ updateActiveLink();
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+})();
+
+/* ---------- Light / dark mode toggle (dark is the default) ---------- */
+(function(){
+  var btn=document.getElementById('themeToggle');
+  if(!btn) return;
+  var root=document.documentElement;
+  var meta=document.querySelector('meta[name="theme-color"]');
+  function apply(mode){
+    if(mode==='light') root.setAttribute('data-theme','light'); else root.removeAttribute('data-theme');
+    var light=mode==='light';
+    var label=light?'Switch to dark mode':'Switch to light mode';
+    btn.setAttribute('aria-label',label); btn.setAttribute('title',label);
+    btn.setAttribute('aria-pressed',light?'true':'false');
+    if(meta) meta.setAttribute('content',light?'#F6F4EE':'#0B0F19');
+  }
+  apply(root.getAttribute('data-theme')==='light'?'light':'dark');
+  btn.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='light'?'dark':'light';
+    apply(next);
+    try{localStorage.setItem('dls-theme',next);}catch(e){}
+  });
 })();

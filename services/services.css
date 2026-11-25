@@ -333,7 +333,7 @@
   .frame--big{grid-column:auto;}
   .related{grid-template-columns:1fr;}
   .hub-grid{grid-template-columns:1fr;}
-  .hub-card,.hub-card:nth-child(1),.hub-card:nth-child(2),.hub-card:nth-child(7){grid-column:auto;min-height:320px;}
+  .hub-card,.hub-card:nth-child(1),.hub-card:nth-child(2),.hub-card:nth-child(6),.hub-card:nth-child(7){grid-column:auto;min-height:320px;}
 }
 @media (prefers-reduced-motion:reduce){
   .svc-marquee__track{animation:none;}
