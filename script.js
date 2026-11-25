@@ -148,15 +148,13 @@
     twTitle.querySelectorAll('.reveal-line__inner').forEach(el => el.classList.add('is-inview'));
     const ems = [...twTitle.querySelectorAll('em')];
     const lastOfEm = new Map(ems.map(em => [[...em.querySelectorAll('.tw-ch')].pop(), em]));
-    const HOLD = 2600;          // how long the full headline stays up
     let i = 0;
 
     // Write forward, one letter at a time
     const type = () => {
       caret.classList.remove('is-idle');
       if (i >= twChars.length){
-        caret.classList.add('is-idle');
-        setTimeout(erase, HOLD);
+        caret.classList.add('is-idle');   // done: headline stays, caret keeps blinking
         return;
       }
       const ch = twChars[i];
@@ -169,27 +167,6 @@
       if (next && next.dataset.line !== ch.dataset.line) delay = 380;    // pause at line end
       else if (ch.textContent === '.') delay = 220;
       setTimeout(type, delay);
-    };
-
-    // Then delete it backwards, a little quicker, and start again
-    const erase = () => {
-      caret.classList.remove('is-idle');
-      if (i <= 0){
-        twChars[0].before(caret);
-        caret.classList.add('is-idle');
-        setTimeout(type, 700);
-        return;
-      }
-      i--;
-      const ch = twChars[i];
-      ch.classList.remove('on');
-      const em = ch.closest('em');
-      if (em && em.classList.contains('tw-done')) em.classList.remove('tw-done');
-      ch.before(caret);
-      const prev = twChars[i - 1];
-      let delay = 38;
-      if (prev && prev.dataset.line !== ch.dataset.line) delay = 160;
-      setTimeout(erase, delay);
     };
 
     // start with the caret blinking at the beginning for a moment
