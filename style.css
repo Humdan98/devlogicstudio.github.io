@@ -2351,3 +2351,12 @@ body.menu-open .nav{z-index:1001;}
 @media (min-height:1200px){
   .hero,.hero.svc-hero{min-height:auto;justify-content:flex-start;}
 }
+
+/* ---------- Hero title typewriter ---------- */
+.hero__title.tw .reveal-line__inner{transform:none;opacity:1;transition:none;}
+.hero__title.tw .tw-ch{opacity:0;}
+.hero__title.tw .tw-ch.on{opacity:1;}
+.tw-caret{display:inline-block;position:relative;width:0;height:1em;vertical-align:-.12em;}
+.tw-caret::after{content:"";position:absolute;left:.04em;top:0;bottom:0;width:.07em;border-radius:2px;background:var(--blue);}
+.tw-caret.is-idle::after{animation:twBlink 1s steps(1) infinite;}
+@keyframes twBlink{50%{opacity:0;}}

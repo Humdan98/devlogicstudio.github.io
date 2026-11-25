@@ -110,7 +110,70 @@
     });
   }
 
+  /* Homepage hero title types itself out, letter by letter.
+     Letters are wrapped up front (invisible but holding their space),
+     so nothing jumps while it types. */
+  const twTitle = document.querySelector('.hero__title');
+  const twReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let twChars = [];
+  if (twTitle && !twReduced){
+    twTitle.setAttribute('aria-label', twTitle.textContent.replace(/\s+/g, ' ').trim());
+    twTitle.classList.add('tw');
+    twTitle.querySelectorAll('.reveal-line__inner').forEach((line, li) => {
+      line.setAttribute('aria-hidden', 'true');
+      const walk = (node) => {
+        [...node.childNodes].forEach(n => {
+          if (n.nodeType === 3){
+            const frag = document.createDocumentFragment();
+            [...n.textContent].forEach(ch => {
+              const sp = document.createElement('span');
+              sp.className = 'tw-ch';
+              sp.textContent = ch;
+              sp.dataset.line = li;
+              frag.appendChild(sp);
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1){ walk(n); }
+        });
+      };
+      walk(line);
+    });
+    twChars = [...twTitle.querySelectorAll('.tw-ch')];
+  }
+
+  function typeHeroTitle(){
+    const caret = document.createElement('span');
+    caret.className = 'tw-caret';
+    caret.setAttribute('aria-hidden', 'true');
+    twTitle.querySelectorAll('.reveal-line__inner').forEach(el => el.classList.add('is-inview'));
+    let i = 0;
+    const step = () => {
+      if (i >= twChars.length){ caret.classList.add('is-idle'); return; }
+      const ch = twChars[i];
+      ch.classList.add('on');
+      ch.after(caret);
+      const em = ch.closest('em');
+      if (em && ch === [...em.querySelectorAll('.tw-ch')].pop()) em.classList.add('tw-done');
+      const next = twChars[i + 1];
+      i++;
+      let delay = 45 + Math.random() * 45;            // natural typing rhythm
+      if (next && next.dataset.line !== ch.dataset.line) delay = 380;  // short pause at line end
+      else if (ch.textContent === '.') delay = 220;
+      setTimeout(step, delay);
+    };
+    // start with the caret blinking at the beginning for a moment
+    twChars[0] && twChars[0].before(caret);
+    setTimeout(step, 450);
+  }
+
   function revealHero(){
+    if (twTitle && twChars.length){
+      typeHeroTitle();
+      document.querySelectorAll('.reveal-line__inner').forEach((el) => {
+        if (!twTitle.contains(el)) el.classList.add('is-inview');
+      });
+      return;
+    }
     document.querySelectorAll('.reveal-line__inner').forEach((el, i) => {
       setTimeout(() => el.classList.add('is-inview'), i * 120);
     });

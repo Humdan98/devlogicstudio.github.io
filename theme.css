@@ -414,3 +414,8 @@ html[data-theme="light"] .hub-card::after{bottom:auto;height:232px;background:li
 @media (max-width:640px){html[data-theme="light"] .hub-card{padding-top:200px;}html[data-theme="light"] .hub-card img{height:190px;}html[data-theme="light"] .hub-card::after{height:192px;}}
 html[data-theme="light"] .hub-card p{color:#46463F;}
 html[data-theme="light"] .hub-card:hover{box-shadow:var(--shadow-card-hover);border-color:rgba(255,177,0,.5);}
+
+/* hero typewriter: marker stripe sweeps in once the word is typed */
+html[data-theme="light"] .hero__title.tw em{background-size:0% 100%;background-repeat:no-repeat;transition:background-size .55s cubic-bezier(.65,0,.35,1);}
+html[data-theme="light"] .hero__title.tw em.tw-done{background-size:100% 100%;}
+html[data-theme="light"] .tw-caret::after{background:#FFB100;}
